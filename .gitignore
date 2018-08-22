@@ -40,10 +40,13 @@ rsconnect/
 # Other 
 *.pdf
 *.png
+!/resources/Coursera\ data\ science\ course/**/*.png	
 *.html
 *.pptx
 *.jpeg
+!/resources/Coursera data science course/*.jpeg
 *.jpg
+!/resources/Coursera data science course/*.jpg	
 *.gz
 *.zip
 
