@@ -50,3 +50,4 @@ rsconnect/
 *.gz
 *.zip
 
+.Rproj.user
