@@ -51,3 +51,7 @@ rsconnect/
 *.zip
 
 .Rproj.user
+
+# mac rubbish
+.DS_Store
+
