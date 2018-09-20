@@ -1,4 +1,4 @@
-Your data analysis ecosystem
+Getting tidy data
 ========================================================
 author: Robert Arbon
 date: 
@@ -7,9 +7,9 @@ autosize: true
 Overview
 ========================================================
 1. Our example analysis project
-1. The analysis pipeline
-2. Storing data
-3. Version control
+2. Getting data and storing data
+3. Inspecting data
+4. Tidying data
 
 Our project
 ========================================================
@@ -19,22 +19,20 @@ Our project
 
 ***
 
-![table3](eco-system-figure/table3.png)
+![table3](getting-data-figure/table3.png)
 
 Analysis pipeline
 ========================================================
 
-1. Data
-2. Tidy and clean data
-3. Exploratory data analysis
-4. Model building
-5. Report writing
-6. Sharing results
+1. Getting and storing raw data
+5. Loading into dataframes
+1. Tidying data
+
 
 Data
 ========================================================
 
-![original data location](eco-system-figure/file-system-original.png)
+![original data location](getting-data-figure/file-system-original.png)
 
 * *dili_from...tment.csv*: raw data - no metadata. 
 * *README.txt*: the metadata
@@ -44,7 +42,7 @@ Data
 Raw data
 ========================================================
 
-![raw data](eco-system-figure/raw-data.png)
+![raw data](getting-data-figure/raw-data.png)
 
 * *Tidy* - more on this later - but generally: 
   * Each row is an *observation*
@@ -55,7 +53,7 @@ Raw data
 Metadata
 ========================================================
 
-![raw data](eco-system-figure/readme.png)
+![raw data](getting-data-figure/readme.png)
 
 * Explanation of project and data  
 * Headers/variables explained
@@ -64,7 +62,7 @@ Metadata
 Sources
 ========================================================
 
-![source file](eco-system-figure/source.png)
+![source file](getting-data-figure/source.png)
 
 * Optional: depends on how/where the data was recorded. 
 * Notes location of permanent store of data and how to download it. 
@@ -88,6 +86,13 @@ Exercise
 4. Create a text file to describe how and when you downloaded the data. 
 5. Make the folder read only
 
+Tidying and cleaning data
+========================================================
 
+First get data into a *dataframe*:
 
+```{r}
+df <- read.csv('../data/original/dili_from_anti_TB_treatment.csv')
+head(df)
+```
 
