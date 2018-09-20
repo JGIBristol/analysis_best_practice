@@ -1,0 +1,39 @@
+---
+title: "Loading and tidying data"
+output: html_notebook
+---
+
+# Load data
+```{r}
+data_dir <- "/Users/robertarbon/Google Drive/Courses/Analysis-best-practice/data/original"
+output_dir <- "/Users/robertarbon/Google Drive/Courses/Analysis-best-practice/data/processed"
+```
+
+* Put variables up front: 
+  * Easy to change if directory structure changes
+  * Makes code easy to read. 
+
+```{r}
+df <- read.csv(paste(data_dir, "dili_from_anti_TB_treatment.csv", sep = "/"))
+head(df, 2)
+```
+
+* Load data into data frame
+* Check the `head` of the dataframe to see column titles have been read in correctly. 
+
+# Inspect the dataframe
+
+```{r}
+str(df)
+```
+
+* `str` gives:
+  * a description of the variables (`int`/`num`/`Factor` etc.)
+  * the size of the dataframe 
+  * the first few observations of each variable
+
+```{r}
+summary(df)
+```
+
+
