@@ -1,11 +1,16 @@
 ---
 title: "Loading and tidying data"
-output: html_notebook
+output:
+  pdf_document: default
+  html_notebook: default
 ---
 
 # Load data 
 ```{r}
+suppressMessages(library("tidyverse"))
+
 library(tidyverse)
+
 ```
 
 Import necessary packages upfront. 
