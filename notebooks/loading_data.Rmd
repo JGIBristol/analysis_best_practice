@@ -141,6 +141,7 @@ str(df2)
 # Save date frame
 
 ```{r}
-out_name = paste(output_dir, 'dili_df.Rda', sep='/')
+out_name = paste(output_dir, 'dili_df.Rdata', sep='/')
 save(df2, file=out_name)
+
 ```
