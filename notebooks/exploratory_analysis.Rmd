@@ -3,6 +3,16 @@ title: "Exploratory Analysis"
 output: html_notebook
 ---
 
+# Load data
+```{r}
+# Load the dataframe
+data_dir <- "/Users/robertarbon/Google Drive/Courses/Analysis-best-practice/data/original"
+f_name <- paste0(data_dir, '/dili_from_anti_TB_treatment.csv')
+df <- read.csv(f_name, stringsAsFactors = FALSE)
+str(df)
+```
+
+
 # Missing values
 
 * When you're taking the measurements yourself - not such an issue. 
@@ -17,12 +27,6 @@ output: html_notebook
 
 ## Visualization
 
-```{r}
-# Load the dataframe
-data_dir <- "/Users/robertarbon/Google Drive/Courses/Analysis-best-practice/data/processed"
-load(paste(data_dir, "dili_df.Rdata", sep='/'))
-head(df2)
-```
 
 Now use the `visdat` library to plot dataframe
 
@@ -31,8 +35,32 @@ Now use the `visdat` library to plot dataframe
 library(visdat)
 
 # plot: 
-vis_dat(df2)
+vis_dat(df)
 
 ```
+
+# Descriptive statistics
+
+## Table 1
+
+```{r}
+library(tidyverse)
+```
+
+### Summarize count factors 
+
+```{r}
+# Gathers up the factors we're going to count: 
+tmp1 <- gather(df, key, value, c(sex, agegroup, tb_site))
+
+#
+# tmp2 <- group_by(tmp1, pdili, key, value)
+head(tmp1)
+# tmp3 <- tally(tmp2)
+
+
+```
+
+
 
 
