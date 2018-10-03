@@ -41,13 +41,20 @@ vis_dat(df)
 
 # Descriptive statistics
 
+In order to describe our data we're going to use packages from the [`tidyverse`](https://www.tidyverse.org/).  
+
+
 ## Table 1
+
+Let's try to reproduce the  
 
 ```{r}
 library(tidyverse)
 ```
 
 ### Summarize count factors 
+
+
 
 ```{r}
 # Gathers up the factors we're going to count: 
