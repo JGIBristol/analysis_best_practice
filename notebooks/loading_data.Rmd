@@ -1,0 +1,147 @@
+---
+title: "Loading and tidying data"
+output:
+  pdf_document: default
+  html_notebook: default
+---
+
+# Load data 
+```{r}
+suppressMessages(library("tidyverse"))
+
+library(tidyverse)
+
+```
+
+Import necessary packages upfront. 
+
+
+```{r}
+data_dir <- "/Users/robertarbon/Google Drive/Courses/Analysis-best-practice/data/original"
+output_dir <- "/Users/robertarbon/Google Drive/Courses/Analysis-best-practice/data/processed"
+```
+
+* Put variables up front: 
+  * Easy to change if directory structure changes
+  * Makes code easy to read. 
+
+```{r}
+df <- read.csv(paste(data_dir, "dili_from_anti_TB_treatment.csv", sep = "/"))
+head(df, 2)
+```
+
+* Load data into data frame
+* Check the `head` of the dataframe to see column titles have been read in correctly. 
+
+# Inspect the dataframe
+
+```{r}
+str(df)
+```
+
+* `str` gives:
+  * a description of the variables (`int`/`num`/`Factor` etc.)
+  * the size of the dataframe 
+  * the first few observations of each variable
+
+```{r}
+summary(df)
+```
+
+* `summary` give a summary of each variable according to its type: 
+  * `int`/`num` - min, max, quartiles 
+  * `factor` - number in each factor.  
+* Also gives number of missing values (`NA`)
+
+# Cleaning the data
+
+There are a number of problems (of varying degrees) with the dataframe as it stands.  
+
+2. Some of the variables are miss-typed e.g. `pdili` should be a factor, not integer. 
+1. There are missing values
+3. The `agegroup` category labels aren't informative. 
+
+## Miss-typed variables
+
+```{r}
+int_to_factor <- c('pdili', 't1dili', 'hiv', 'hcv', 'hbv', 'alcohol', 'liver_disease', 'tb_site')
+
+df[int_to_factor] <- lapply(df[int_to_factor], factor)
+
+str(df)
+```
+
+## Missing values
+
+* Filling-in or *imputing* missing values is difficult and context dependent.  We shall save resolving this in **Exploratory data analysis**. 
+
+* Only remove any observations that are totally missing. 
+
+```{r}
+# Select all columns that aren't the id variable. 
+variables <- ! colnames(df) %in% c("id") 
+
+# Calculate the number of variables. 
+num_variables = length(variables)
+
+# Sum the number of missing variables in each observation
+num_na = rowSums(is.na(df[,variables]))
+
+# Remove any rows that are completely missing
+print(paste("Num obs before removal: ", dim(df)[1])) 
+df <- df[!num_variables == num_na, ]
+print(paste("Num obs after removal : ", dim(df)[1]))
+```
+
+
+## Relabel factors 
+
+* `18/29` should really be `18-29`
+* `40+` should really have an upper limit (see metadata and/or paper). Authors don't supply that information, so we'll leave it for now. 
+
+```{r}
+df$agegroup <- gsub("/", "-", df$agegroup)
+str(df$agegroup)
+```
+
+## Change index
+
+```{r}
+# Check there are no NAs in 'id' variable. 
+summary(df$id)
+# Check wether id variable is unique
+print(paste("Is ID unique? ", length(df$id) == length(unique(df$id))))
+row.names(df) <- df$id
+df <- df[,!names(df) %in% c("id")]
+tail(df,2)
+```
+
+## Summary 
+
+This can all be accomplished in easy way using the more obscure features of `read.csv`: 
+
+```{r}
+file_name = paste(data_dir, "dili_from_anti_TB_treatment.csv", sep = "/")
+# Specify 'na.strings' so that it doesn't interpret missing values as a specific factor level. 
+df2 <- read.csv(file_name,
+               row.names='id', 
+               colClasses=c('pdili'='factor', 
+                            't1dili'='factor', 
+                            'hiv'='factor', 
+                            'hcv'='factor', 
+                            'hbv'='factor', 
+                            'liver_disease'='factor', 
+                            'alcohol'='factor',
+                            'tb_site'='factor'), 
+               na.strings=c(""))
+df2$agegroup <- gsub("/", "-", df2$agegroup)
+str(df2)
+```
+
+# Save date frame
+
+```{r}
+out_name = paste(output_dir, 'dili_df.Rdata', sep='/')
+save(df2, file=out_name)
+
+```
