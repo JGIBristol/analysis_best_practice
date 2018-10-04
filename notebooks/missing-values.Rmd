@@ -1,7 +1,11 @@
 ---
-title: "Exploratory Analysis"
-output: html_notebook
+title: "Missing-values"
+output: pdf_document
 ---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
 # Load data
 ```{r}
@@ -9,9 +13,8 @@ output: html_notebook
 data_dir <- "/Users/robertarbon/Google Drive/Courses/Analysis-best-practice/data/original"
 f_name <- paste0(data_dir, '/dili_from_anti_TB_treatment.csv')
 df <- read.csv(f_name, stringsAsFactors = FALSE)
-str(df)
-```
 
+```
 
 # Missing values
 
@@ -38,36 +41,3 @@ library(visdat)
 vis_dat(df)
 
 ```
-
-# Descriptive statistics
-
-In order to describe our data we're going to use packages from the [`tidyverse`](https://www.tidyverse.org/).  
-
-
-## Table 1
-
-Let's try to reproduce the  
-
-```{r}
-library(tidyverse)
-```
-
-### Summarize count factors 
-
-
-
-```{r}
-# Gathers up the factors we're going to count: 
-tmp1 <- gather(df, key, value, c(sex, agegroup, tb_site))
-
-#
-# tmp2 <- group_by(tmp1, pdili, key, value)
-head(tmp1)
-# tmp3 <- tally(tmp2)
-
-
-```
-
-
-
-

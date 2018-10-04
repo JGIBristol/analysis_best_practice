@@ -1,0 +1,219 @@
+---
+title: "Exploratory Analysis"
+output: html_notebook
+---
+# Preamble
+## Load Packages
+Here we load packages and set options for this notebook. 
+```{r}
+library(tidyverse)
+library(pander)
+panderOptions('round', 2)
+```
+
+## Load data
+```{r}
+# Load the dataframe
+data_dir <- "/Users/robertarbon/Google Drive/Courses/Analysis-best-practice/data/original"
+f_name <- paste0(data_dir, '/dili_from_anti_TB_treatment.csv')
+df <- read.csv(f_name, stringsAsFactors = FALSE)
+str(df)
+```
+
+# Descriptive statistics
+
+* In order to describe our data we're going to use packages from the [`tidyverse`](https://www.tidyverse.org/).  
+* This is a suite of packages in `R` which make handling data particularly easy and intuitive. 
+* The equivalent  in `python` is [`Pandas`](https://pandas.pydata.org/) with [`seaborn`](https://seaborn.pydata.org/). 
+* This notebook will take you through reproducing two tables from the paper as well as other summary statistics. 
+* We will focus on reproducing the information content rather than nicely formatting a table. 
+
+
+## Baseline characteristics
+
+### Factor variables
+Let's try to reproduce the first part of table 1 from the paper.  
+
+![First three characteristics from Table 1](images/Table 1a.png)
+
+The first characteristic is the number of cases of possible drug induced liver injury, `pDILI`. There are a number of ways we could do this.  
+
+In the `pDILI` column, `1` represents a possible case, so simply summing that column will give us the number of cases: 
+
+```{r}
+sum(df$pdili)
+```
+
+If `pdili` was a factor variable then we couldn't just sum. 
+
+```{r}
+df$pdili <- as.factor(df$pdili)
+sum(df$pdili)
+```
+
+In order to summarize factors (and any other variable) we'll need: 
+
+* [`summarise`](https://dplyr.tidyverse.org/reference/summarise.html) and
+* [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html)
+
+from the [`dplyr`](https://dplyr.tidyverse.org/) package. 
+
+`summarise` requires a dataframe and a summary statistic.  The summary statistic in this case is just the number of observations (`n()`)
+
+```{r}
+summarise(df, num_obs=n())
+```
+
+By itself, this has just told us the number of rows in the dataframe. Now lets add in `group_by`.  This groups the dataframe by the levels in variable you specify, so let's specify `pdili` (the `head` function just shows the top of the dataframe)
+
+```{r}
+head(group_by(df, pdili))
+```
+
+By itself, it doesn't do anything, it just allows other functions to use the dataframes in groups. So let's use it with summarise. 
+
+```{r}
+tmp <- group_by(df, pdili)
+summarise(tmp, n_obs=n())
+```
+
+You can of course shorten this to a single line of code by doing: 
+
+```{r}
+summarise(group_by(df, pdili), n_obs=n())
+```
+
+The downside to this is that when you want to chain many functions, this kind of pattern becomes very unweildy. So we have the `%>%` operator which allows you to write `f(x,y)` as `x %>% f(y)`:
+
+```{r}
+df %>% group_by(pdili) %>% summarise(n=n())
+```
+
+This is the pattern we'll use from now on. 
+
+What about the other variables? You can give `group_by` as many variables (column names) as you like, so let's try that: 
+
+```{r}
+df %>% group_by(pdili, sex, agegroup) %>% summarise(n_obs=n())
+```
+
+This is interesting but not **quite** what we want.  When you give `group_by` a list of variables you group in a hierarchy specified by the order of the variables in the function (`pdili` at the top, `agegroup` at the bottom).  
+
+We'd like to keep the first column above (the `pdili` column) but after that we'd like a `characteristic` column which has `sex` and `agegroup`, then a `level` column which specifies the levels in `sex` and `agegroup` and then last of all the `n_obs` column which counts the instances in each level.  Something like this: 
+
+| pdili  |  characteristic | level | n_obs  |
+|---|---|---|---|
+| 1  |  sex | F  |  ? |
+| 1  |  sex  | M  | ? |  
+| 1  |  agegroup |  18/29 | ?  |
+| ...| ...| ...| ...| 
+| 0  |  agegroup |  29/39 | ?  |
+| 0  |  agegroup |  40+ | ?  |
+
+To do this we're going to use the [`gather`](https://tidyr.tidyverse.org/reference/gather.html) from another `tidyverse` package, [`tidyr`](https://tidyr.tidyverse.org).  `gather` puts variable names into a `key` column and its values into a `value` column.  You'll need to look at the far right hand side of the dataframe to see what it's done. 
+
+```{r}
+df %>% gather(key='characteristic', value='level', sex) %>% head()
+
+```
+
+When you just give it one variable, all that happens is an extra column is created and some names are shifted about.  
+
+Let's give it a list of column names and see what happens, again check the far right of the dataframe. 
+
+```{r}
+tmp <- df %>% gather(key='characteristic', value='level', c(sex, agegroup)) 
+head(tmp)
+```
+
+The dimensions have gone from `r dim(df)` to `r dim(tmp)`. 
+
+Let's save ourselves the problem of constantly looking at columns we're not interested in and use [`select`](https://dplyr.tidyverse.org/reference/select.html) function: 
+
+```{r}
+df %>% 
+  gather(key='characteristic', value='level', c(sex, agegroup)) %>% 
+  select(c(pdili, characteristic, level)) %>%
+  head()
+```
+
+This looks like it could be useful now.  Now we can use `group_by` to group by `pdili` and `characteristic` and then use `summarise` to count the number of the observations in each level. 
+
+```{r}
+df %>% 
+  gather(key='characteristic', value='level', c(sex, agegroup)) %>% 
+  select(c(pdili, characteristic, level)) %>%
+  group_by(pdili, characteristic, level) %>%
+  summarise(n_obs=n())
+```
+
+In table 1 (unlike table 2) we're not interested in the `pdili=0` case.  So let's use `filter` to remove those observations: 
+
+```{r}
+df %>% 
+  gather(key='characteristic', value='level', c(sex, agegroup)) %>% 
+  select(c(pdili, characteristic, level)) %>%
+  group_by(pdili, characteristic, level) %>%
+  summarise(n_obs=n()) %>%
+  filter(pdili==1)
+```
+
+ 
+```{r}
+head(df)
+```
+
+And actually, I want `agegroup` to be at the bottom - so let's (re)`arrange` them so it's at the bottom by having the variables in descending order.  We'll also save this dataframe for the next part.  
+
+```{r}
+df_nobs <- df %>% 
+  gather(key='characteristic', value='level', c(sex, agegroup)) %>% 
+  select(c(pdili, characteristic, level)) %>%
+  group_by(pdili, characteristic, level) %>%
+  summarise(n_obs=n()) %>%
+  filter(pdili==1) %>%
+  arrange(desc(characteristic))
+df_nobs
+```
+
+Now that we've got the number of observations in each category we need to add the proportion of the total observations that they represent.  We could create a new column equal to `n_obs` and divide by 105.
+
+However a more elegant solution, which would take into account missing values, is to calculate the group totals (the total for group `sex` and group `agegroup`) and divide by that number. 
+
+The way we create new variables is using the [`mutate`](https://dplyr.tidyverse.org/reference/mutate.html) from [`dplyr`](https://dplyr.tidyverse.org/). The arguments are specified as `[new variable name] = formula()`.  As usual, if we give it a dataframe that has been parsed through `group_by` the formula acts on each group separately. 
+
+```{r}
+df_nobs %>% 
+  group_by(characteristic) %>% 
+  mutate(total=sum(n_obs))
+
+```
+
+Now we can divide `n_obs` by `total`: 
+
+```{r}
+df_nobs %>% 
+  group_by(characteristic) %>% 
+  mutate(total=sum(n_obs)) %>%
+  mutate(proportion = n_obs/total*100) 
+```
+
+if you want less decimal places, just adjust your formula: 
+
+```{r}
+df_nobs %>% 
+  group_by(characteristic) %>% 
+  mutate(total=sum(n_obs)) %>%
+  mutate(proportion = as.character(round(n_obs/total*100, 1))) 
+```
+
+Let's compare this to the original table: 
+![First three characteristics from Table 1](images/Table 1a.png)
+
+### Numerical variables
+
+The bottom part of table 1 contains summaries of numerical variable
+
+![Numeric characteristics from Table 1](images/Table 1b.png)
+
+
