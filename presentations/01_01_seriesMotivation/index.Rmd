@@ -1,5 +1,5 @@
 ---
-title       : The Data Science Track
+title       : Data analysis best practice
 subtitle    : 
 author      : Jeffrey Leek
 job         : Johns Hopkins Bloomberg School of Public Health
