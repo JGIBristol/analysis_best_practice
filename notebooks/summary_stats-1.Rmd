@@ -7,8 +7,6 @@ output: html_notebook
 Here we load packages and set options for this notebook. 
 ```{r}
 library(tidyverse)
-library(pander)
-panderOptions('round', 2)
 ```
 
 ## Load data
@@ -32,7 +30,7 @@ str(df)
 ## Baseline characteristics
 
 ### Factor variables
-Let's try to reproduce the first part of table 1 from the paper.  
+Let's try to do an analysis similar to the first part of table 1 from the paper. 
 
 ![First three characteristics from Table 1](images/Table 1a.png)
 
@@ -46,7 +44,7 @@ sum(df$pdili)
 
 If `pdili` was a factor variable then we couldn't just sum. 
 
-```{r}
+```{r, error=TRUE}
 df$pdili <- as.factor(df$pdili)
 sum(df$pdili)
 ```
@@ -207,13 +205,46 @@ df_nobs %>%
   mutate(proportion = as.character(round(n_obs/total*100, 1))) 
 ```
 
-Let's compare this to the original table: 
-![First three characteristics from Table 1](images/Table 1a.png)
+
 
 ### Numerical variables
 
-The bottom part of table 1 contains summaries of numerical variable
-
-![Numeric characteristics from Table 1](images/Table 1b.png)
+We can use similar techniques to summarise numerical variables as well. Let's look at part of table 2:
 
 
+![Numeric characteristics from Table 2](images/Table 2.png)
+
+The *Controls* are those cases which didn't have any type of DILI (`pdili==0`) and those 
+
+As an example let's reproduce the `weight` and `Moxifloxacin` summaries.  First we gather the variables : 
+
+```{r}
+df %>% 
+  gather(key='characteristic', value='value', c(moxi_dpw, weight)) %>%
+  select(c(t1dili, characteristic, value)) %>%
+  group_by(t1dili, characteristic) %>% head()
+```
+
+As each characteristic is a continuous variable - we don't need to group by the `level` (we'd get a level for every value).  Once grouped we can use `summarise` with the `median` and `n()` functions for the median and number of observations, respectively: 
+
+```{r}
+df %>% 
+  gather(key='characteristic', value='value', c(moxi_dpw, weight)) %>%
+  select(c(t1dili, characteristic, value)) %>%
+  group_by(t1dili, characteristic) %>% 
+  summarise(n_obs=n(), median=median(value)) 
+```
+
+Something's gone wrong here - we haven't accounted for the missing values, the `NA`s.  Both functions have included them by default.  In both cases the missing values count as an observation: if `x = c(1, 2, 3, NA)` then `n_obs(x) = 4` and `median(x) = NA`. 
+
+To get around this, we use the `na.rm` option for the median.  The number of non-`NA` observations, we convert the `value` to a `TRUE/FALSE` depending on whether it is/isn't a `NA` using `is.na`.  Then we take the negation of this (`!is.na`) so that we have `TRUE/FALSE` if it isn't/is a `NA`.  Then we sum these, as `TRUE=1` AND `FALSE=0`.  
+
+```{r}
+df %>% 
+  gather(key='characteristic', value='value', c(moxi_dpw, weight)) %>%
+  select(c(t1dili, characteristic, value)) %>%
+  group_by(t1dili, characteristic) %>% 
+  summarise(n_obs=sum(!is.na(value)), median=median(value, na.rm=TRUE)) 
+```
+
+zz
