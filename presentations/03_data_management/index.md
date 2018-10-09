@@ -4,7 +4,7 @@ author: "Robert Arbon"
 highlighter: highlight.js
 hitheme: tomorrow
 job: Data scientist, Jean Golding Institute
-logo: bloomberg_shield.png
+logo: 
 mode: selfcontained
 subtitle: Data management
 framework: io2012
@@ -20,8 +20,10 @@ widgets: mathjax
 ## Overview 
 
 1. Storing data
-2. Retrieving data
+1. Backing up
+1. Metadata
 3. Tidy data
+2. Retrieving data
 4. File formats
 
 
@@ -81,23 +83,87 @@ If it's just stored on your laptop **YOU DON'T HAVE IT**
 
 ---
 
-## Storage locations - Open Science Foundation
-
-
-
-
----
-
 ## Backing up
 
 * Backing up your data is **NON NEGOTIABLE**
 * Redundancy is key: 
-  1. Use rolling back up with external hard drive: 
-      e.g. Time Machine for Mac, Backup and Restore for Windows 10
+  1. Use rolling back up of whole disk using:
+    * external hard drive, e.g. Time Machine for Mac, Backup and Restore for Windows 10
+    * cloud storage, e.g. [Backblaze](https://www.backblaze.com/cloud-backup.html)
   2. Use OneDrive to back up all important directories
   3. Keep important research data on RDSF
   4. Back important code on Github
-  
-  
+
 ---
+
+## Metadata
+
+* Metadata = data about the data, e.g.
+  * units of measurement
+  * variable explanation
+  * how/when/where it was collected
+  * software/hardware used
+  * author information (contact details)
+* Should be kept in separate files but in same directory as data 
+* Often called a *data dictionary*
+
+---
+
+## Tidy data
+
+* Most data sets need **cleaning** before they can be used. 
+* **Cleaning** involves:
+  * Getting data into tables
+  * Getting formats correct e.g., dates and times, units of measurement
+  * Grouping observations together in meaningful ways
+  * Tidying data: structuring datasets to facilitate analysis
+* **Tidy data** is a set of standards for organizig data values within a dataset.
+* You can read about it [here]()
+
+---
+
+## Tidy data  - Semantics
+
+* **Values**: entries in a data set
+  * Ranged: they have a consistent metric e.g. integers, floats
+  * Factors: No consistent metric e.g.
+    * Ordinal: ordered e.g. Likert scale
+    * Categorical: unordered e.g. male/female/trans
+* **Variable**: measures an attribute
+* **Observation**: all values measured on a unit (e.g. subject, time) across attributes. 
+* Each value belongs to an observation and a variable. 
+
+
+---
+
+## Tidy data - Semantics quiz
+
+> - Q: Are `height` and `weight` variables or observations?
+
+> - A: They are both variables. 
+
+> - Q: Are `height` and `width` variables or observations?
+
+> - A: They could be both variables **or** observations of a `dimension` variable. 
+
+> - Conclusion: not always easy to make rules for what is a variable and what is an observation. 
+
+---
+
+## Tidy data - the rules
+
+1. Every variable is a column
+2. Every observation is a row
+3. Every type of observational unit forms a table
+
+* Variable vs observation - if there is ambiguity: 
+  * **Wide format**: `area = height * width` then `height` and `width` are variables
+  * **Long format**: summarise average height to average width then `height` and `width` are observations. 
+  * more on this when plotting. 
+
+--- 
+
+## Tidy data - tools
+
+<div class="rimage center"><img src="fig/tidyverse.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="100%" class="plot" /></div>
 

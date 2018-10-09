@@ -40,15 +40,13 @@ rsconnect/
 # Other 
 *.pdf
 *.png
-!resources/CourseraDataScience/**/*.png
 !presentations/assets/**/*.png
 *.html
 *.pptx
+*.xls*
 *.jpeg
-!resources/CourseraDataScience/**/*.jpeg
 !presentations/assets/**/*.jpeg
 *.jpg
-!resources/CourseraDataScience/**/*.jpg
 !presentations/assets/**/*.jpg
 *.gz
 *.zip
