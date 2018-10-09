@@ -12,23 +12,27 @@ url:
   assets: ../assets
   lib: ../librariesNew
 widgets: mathjax
+output: ioslides_presentation
 ---
 
 
 ```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
 # make this an external chunk that can be included in any file
 library(knitr)
+library(tidyverse)
+library(FSA)
+
 options(width = 100)
-opts_chunk$set(message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
+opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
 options(xtable.type = 'html')
-knit_hooks$set(inline = function(x) {
-  if(is.numeric(x)) {
-    round(x, getOption('digits'))
-  } else {
-    paste(as.character(x), collapse = ', ')
-  }
-})
+# knit_hooks$set(inline = function(x) {
+#   if(is.numeric(x)) {
+#     round(x, getOption('digits'))
+#   } else {
+#     paste(as.character(x), collapse = ', ')
+#   }
+# })
 knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
 
@@ -183,3 +187,107 @@ If it's just stored on your laptop **YOU DON'T HAVE IT**
 ```{r, echo=F, out.width="100%"}
 include_graphics("fig/tidyverse.png")
 ```
+
+---{.build}
+
+### `tidyr` - example 1
+
+* Scores after 50 sec, 100 sec,..., 350 sec in a game
+* Q: Why isn't this tidy?
+
+```{r, echo=F, eval=T}
+scores <- read.table(header = TRUE, check.names = FALSE, text = "
+   Name    50  100  150  200  250  300  350
+   Carla  1.2  1.8  2.2  2.3  3.0  2.5  1.8
+   Mace   1.5  1.1  1.9  2.0  3.6  3.0  2.5
+   Lea    1.7  1.6  2.3  2.7  2.6  2.2  2.6
+   Karen  1.3  1.7  1.9  2.2  3.2  1.5  1.9")
+scores
+```
+
+> - A: the columns are observations!
+
+---
+
+### `tidyr` - example 1
+
+* use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
+
+```{r}
+scores %>%
+  # Gather ALL columns and give default names to columns
+  gather() %>%
+  headtail()
+```
+
+---
+
+### `tidyr` - example 1
+
+* use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
+
+```{r}
+scores %>%
+  # Gather all columns and give custom names to columns
+  gather(key="MyVariable", value="MyValue") %>%
+  headtail()
+```
+
+---
+
+### `tidyr` - example 1
+
+* use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
+
+```{r}
+scores %>%
+  # Gather all columns except 'Name' and give custom names to columns
+  gather(key="Time", value="Score", -Name) %>%
+  headtail()
+```
+
+---
+
+### `tidyr` - example 2
+
+* Q: What's wrong with this table of counts of males (`m`) and females (`f`) of different ages (`0.15` = 0 - 15) in different states
+
+```{r, echo=F}
+df <- data.frame(state=c('MA', 'NY', 'CN', 'OH'),
+                 'm0-15' = sample(1:10, 4, replace=T),
+                 'm16-60' = sample(1:10, 4, replace=T),
+                 'f0-15' = sample(1:10, 4, replace=T),
+                 'f16-60' = sample(1:10, 4, replace=T), check.names = F)
+df
+```
+
+> - A: Columns as variables AND multiple variables in a column
+
+---
+
+### `tidyr` - example 2
+
+* First use [`gather`](https://tidyr.tidyverse.org/reference/gather.html)
+
+```{r}
+df %>%
+  gather(key='sex-age', value='count', -state) %>%
+  headtail()
+```
+
+---
+
+### `tidyr` - example 2
+
+* Then use  [`separate`](https://tidyr.tidyverse.org/reference/separate.html)
+
+```{r}
+df %>%
+  gather(key='sex-age', value='count', -state) %>%
+  separate(col='sex-age', into=c('sex', 'age'), sep=1) %>%
+  headtail()
+```
+
+---
+
+## Retrieving data

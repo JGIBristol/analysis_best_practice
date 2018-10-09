@@ -12,6 +12,7 @@ url:
   assets: ../assets
   lib: ../librariesNew
 widgets: mathjax
+output: ioslides_presentation
 ---
 
 
@@ -167,3 +168,160 @@ If it's just stored on your laptop **YOU DON'T HAVE IT**
 
 <div class="rimage center"><img src="fig/tidyverse.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="100%" class="plot" /></div>
 
+---{.build}
+
+### `tidyr` - example 1
+
+* Scores after 50 sec, 100 sec,..., 350 sec in a game
+* Q: Why isn't this tidy?
+
+
+```
+   Name  50 100 150 200 250 300 350
+1 Carla 1.2 1.8 2.2 2.3 3.0 2.5 1.8
+2  Mace 1.5 1.1 1.9 2.0 3.6 3.0 2.5
+3   Lea 1.7 1.6 2.3 2.7 2.6 2.2 2.6
+4 Karen 1.3 1.7 1.9 2.2 3.2 1.5 1.9
+```
+
+> - A: the columns are observations!
+
+---
+
+### `tidyr` - example 1
+
+* use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
+
+
+```r
+scores %>%
+  # Gather ALL columns and give default names to columns
+  gather() %>%
+  headtail()
+```
+
+```
+    key value
+1  Name Carla
+2  Name  Mace
+3  Name   Lea
+30  350   2.5
+31  350   2.6
+32  350   1.9
+```
+
+---
+
+### `tidyr` - example 1
+
+* use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
+
+
+```r
+scores %>%
+  # Gather all columns and give custom names to columns
+  gather(key="MyVariable", value="MyValue") %>%
+  headtail()
+```
+
+```
+   MyVariable MyValue
+1        Name   Carla
+2        Name    Mace
+3        Name     Lea
+30        350     2.5
+31        350     2.6
+32        350     1.9
+```
+
+---
+
+### `tidyr` - example 1
+
+* use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
+
+
+```r
+scores %>%
+  # Gather all columns except 'Name' and give custom names to columns
+  gather(key="Time", value="Score", -Name) %>%
+  headtail()
+```
+
+```
+    Name Time Score
+1  Carla   50   1.2
+2   Mace   50   1.5
+3    Lea   50   1.7
+26  Mace  350   2.5
+27   Lea  350   2.6
+28 Karen  350   1.9
+```
+
+---
+
+### `tidyr` - example 2
+
+* Q: What's wrong with this table of counts of males (`m`) and females (`f`) of different ages (`0.15` = 0 - 15) in different states
+
+
+```
+  state m0-15 m16-60 f0-15 f16-60
+1    MA     1      5    10      5
+2    NY     1      1     5      5
+3    CN     3      9     6      1
+4    OH     3      2     8      4
+```
+
+> - A: Columns as variables AND multiple variables in a column
+
+---
+
+### `tidyr` - example 2
+
+* First use [`gather`](https://tidyr.tidyverse.org/reference/gather.html)
+
+
+```r
+df %>%
+  gather(key='sex-age', value='count', -state) %>%
+  headtail()
+```
+
+```
+   state sex-age count
+1     MA   m0-15     1
+2     NY   m0-15     1
+3     CN   m0-15     3
+14    NY  f16-60     5
+15    CN  f16-60     1
+16    OH  f16-60     4
+```
+
+---
+
+### `tidyr` - example 2
+
+* Then use  [`separate`](https://tidyr.tidyverse.org/reference/separate.html)
+
+
+```r
+df %>%
+  gather(key='sex-age', value='count', -state) %>%
+  separate(col='sex-age', into=c('sex', 'age'), sep=1) %>%
+  headtail()
+```
+
+```
+   state sex   age count
+1     MA   m  0-15     1
+2     NY   m  0-15     1
+3     CN   m  0-15     3
+14    NY   f 16-60     5
+15    CN   f 16-60     1
+16    OH   f 16-60     4
+```
+
+---
+
+## Retrieving data
