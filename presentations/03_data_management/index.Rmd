@@ -22,6 +22,7 @@ library(knitr)
 library(tidyverse)
 library(FSA)
 
+
 options(width = 100)
 opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
@@ -38,12 +39,17 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 
 ## Overview 
 
-1. Storing data
+1. FAIR principles
+1. Storing your data and research
 1. Backing up
 1. Metadata
 3. Tidy data
 2. Retrieving data
 4. File formats
+
+---
+
+## FAIR
 
 
 ---
@@ -61,6 +67,14 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
       2. The directory should be located on a **MANAGED STORAGE DATA** cluster (at least)
 
 If it's just stored on your laptop **YOU DON'T HAVE IT**
+
+---
+
+## Your research
+
+* Your research should also includes: 
+  * Statistical analysis
+  * 
 
 ---
 
@@ -291,3 +305,25 @@ df %>%
 ---
 
 ## Retrieving data
+
+* If you've retrieved data - put a note to say where it's from:
+```{r, echo=F,out.width="75%"}
+include_graphics('fig/source.png')
+```
+
+* Even better, write a script that downloads it: 
+
+```r
+library(data.table)
+file_name <- 'dili_from_anti_TB_treatment.csv'
+base_url <- 'http://data.bris.ac.uk/datasets/1vdt21e4mhxxd27hso89cqmhhh/'
+file_url <- paste0(base_url, file_name)
+df <- fread(file_url)
+save(df, file='local/directory/path')
+```
+
+---
+
+## File formats
+
+* You want your research to FAIR - Findable, Accessible, Interoprable, Reproducible. 

@@ -267,10 +267,10 @@ scores %>%
 
 ```
   state m0-15 m16-60 f0-15 f16-60
-1    MA     1      5    10      5
-2    NY     1      1     5      5
-3    CN     3      9     6      1
-4    OH     3      2     8      4
+1    MA     5     10     1      3
+2    NY     4      8     1      6
+3    CN     6      1     3      2
+4    OH    10      9     7      4
 ```
 
 > - A: Columns as variables AND multiple variables in a column
@@ -290,11 +290,11 @@ df %>%
 
 ```
    state sex-age count
-1     MA   m0-15     1
-2     NY   m0-15     1
-3     CN   m0-15     3
-14    NY  f16-60     5
-15    CN  f16-60     1
+1     MA   m0-15     5
+2     NY   m0-15     4
+3     CN   m0-15     6
+14    NY  f16-60     6
+15    CN  f16-60     2
 16    OH  f16-60     4
 ```
 
@@ -314,14 +314,28 @@ df %>%
 
 ```
    state sex   age count
-1     MA   m  0-15     1
-2     NY   m  0-15     1
-3     CN   m  0-15     3
-14    NY   f 16-60     5
-15    CN   f 16-60     1
+1     MA   m  0-15     5
+2     NY   m  0-15     4
+3     CN   m  0-15     6
+14    NY   f 16-60     6
+15    CN   f 16-60     2
 16    OH   f 16-60     4
 ```
 
 ---
 
 ## Retrieving data
+
+* If you've retrieved data - put a note to say where it's from:
+<div class="rimage center"><img src="fig/source.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="75%" class="plot" /></div>
+
+* Even better, write a script that downloads it: 
+
+```r
+library(data.table)
+file_name <- 'dili_from_anti_TB_treatment.csv'
+base_url <- 'http://data.bris.ac.uk/datasets/1vdt21e4mhxxd27hso89cqmhhh/'
+file_url <- paste0(base_url, file_name)
+df <- fread(file_url)
+save(df, file='local/directory/path')
+```
