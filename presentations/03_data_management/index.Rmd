@@ -49,8 +49,35 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 
 ---
 
-## FAIR
+## Your research
 
+* Your research includes: 
+  * Raw data
+  * Processed data 
+  * Statistical analyses and models
+  * Reports, presentations, papers
+* Your data will be handled slightly different but general principles apply to all of your research. 
+
+
+---
+
+## FAIR principles
+Your research should be FAIR
+
+* **F**indable
+  * accurate abstracts and keywords 
+  * appears in search engines
+  * use well known repositories
+* **A**ccessible
+  * open access if possible (ethics may prevent this)
+  * use web interfaces and APIs
+* **I**nteroperable
+  * Adhear to open standards, nomenclature and common syntax
+  * Good documentation
+  * Open source software
+* **R**eusable
+  * Can someone re-use your data, analysis and understand your reports?
+  * Use permissable licences (e.g. MIT)
 
 ---
 
@@ -66,22 +93,15 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
       1. Keep in a **READ ONLY** subdirectory
       2. The directory should be located on a **MANAGED STORAGE DATA** cluster (at least)
 
-If it's just stored on your laptop **YOU DON'T HAVE IT**
+If it's just stored on your personal computer **YOU DON'T HAVE IT**
 
----
-
-## Your research
-
-* Your research should also includes: 
-  * Statistical analysis
-  * 
 
 ---
 
 ## Storage locations - Bristol University
 
 * Research Data Storage Facility, [RDSF](http://www.bristol.ac.uk/acrc/research-data-storage-facility/)
-  * good for long-term archiving
+  * good for long-term archiving of data
   * DOI available
   * your PI needs to apply for space
   * you can map the drive to your local machine (ask IT services for help)
@@ -89,7 +109,7 @@ If it's just stored on your laptop **YOU DON'T HAVE IT**
 
 
 * [Microsoft OneDrive for Business](https://uob.sharepoint.com/sites/systemsupport/SitePages/onedrive-home.aspx)
-  * good for backing up files and sharing with colleagues
+  * good for backing up all files (not just data) and sharing with colleagues
   * personal space of 5TB
   * you can sync the drive with your local machine
   * not compatible with OSF (only personal OneDrive accounts are)
@@ -118,7 +138,7 @@ If it's just stored on your laptop **YOU DON'T HAVE IT**
 
 ## Backing up
 
-* Backing up your data is **NON NEGOTIABLE**
+* Backing up your research is **NON NEGOTIABLE**
 * Redundancy is key: 
   1. Use rolling back up of whole disk using:
     * external hard drive, e.g. Time Machine for Mac, Backup and Restore for Windows 10
@@ -326,4 +346,8 @@ save(df, file='local/directory/path')
 
 ## File formats
 
-* You want your research to FAIR - Findable, Accessible, Interoprable, Reproducible. 
+* File formats affect interoperability and accessibility. 
+* Proprietory formats for data (e.g. custom binary format) or analysis scripts lower interoperability
+* For small, simple data text based formats work well e.g. `.csv`
+* For structured data use [`XML`](https://www.w3schools.com/xml/xml_whatis.asp) or  [`json`](https://www.json.org/) or database format e.g. [`mySQL`](https://www.mysql.com/)
+* For large data sets use things like [`HDF5`](https://support.hdfgroup.org/HDF5/) which are usable without loading into memory. 

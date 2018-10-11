@@ -20,13 +20,45 @@ output: ioslides_presentation
 
 ## Overview 
 
-1. Storing data
+1. FAIR principles
+1. Storing your data and research
 1. Backing up
 1. Metadata
 3. Tidy data
 2. Retrieving data
 4. File formats
 
+---
+
+## Your research
+
+* Your research includes: 
+  * Raw data
+  * Processed data 
+  * Statistical analyses and models
+  * Reports, presentations, papers
+* Your data will be handled slightly different but general principles apply to all of your research. 
+
+
+---
+
+## FAIR principles
+Your research should be FAIR
+
+* **F**indable
+  * accurate abstracts and keywords 
+  * appears in search engines
+  * use well known repositories
+* **A**ccessible
+  * open access if possible (ethics may prevent this)
+  * use web interfaces and APIs
+* **I**nteroperable
+  * Adhear to open standards, nomenclature and common syntax
+  * Good documentation
+  * Open source software
+* **R**eusable
+  * Can someone re-use your data, analysis and understand your reports?
+  * Use permissable licences (e.g. MIT)
 
 ---
 
@@ -42,14 +74,15 @@ output: ioslides_presentation
       1. Keep in a **READ ONLY** subdirectory
       2. The directory should be located on a **MANAGED STORAGE DATA** cluster (at least)
 
-If it's just stored on your laptop **YOU DON'T HAVE IT**
+If it's just stored on your personal computer **YOU DON'T HAVE IT**
+
 
 ---
 
 ## Storage locations - Bristol University
 
 * Research Data Storage Facility, [RDSF](http://www.bristol.ac.uk/acrc/research-data-storage-facility/)
-  * good for long-term archiving
+  * good for long-term archiving of data
   * DOI available
   * your PI needs to apply for space
   * you can map the drive to your local machine (ask IT services for help)
@@ -57,7 +90,7 @@ If it's just stored on your laptop **YOU DON'T HAVE IT**
 
 
 * [Microsoft OneDrive for Business](https://uob.sharepoint.com/sites/systemsupport/SitePages/onedrive-home.aspx)
-  * good for backing up files and sharing with colleagues
+  * good for backing up all files (not just data) and sharing with colleagues
   * personal space of 5TB
   * you can sync the drive with your local machine
   * not compatible with OSF (only personal OneDrive accounts are)
@@ -86,7 +119,7 @@ If it's just stored on your laptop **YOU DON'T HAVE IT**
 
 ## Backing up
 
-* Backing up your data is **NON NEGOTIABLE**
+* Backing up your research is **NON NEGOTIABLE**
 * Redundancy is key: 
   1. Use rolling back up of whole disk using:
     * external hard drive, e.g. Time Machine for Mac, Backup and Restore for Windows 10
@@ -267,10 +300,10 @@ scores %>%
 
 ```
   state m0-15 m16-60 f0-15 f16-60
-1    MA     5     10     1      3
-2    NY     4      8     1      6
-3    CN     6      1     3      2
-4    OH    10      9     7      4
+1    MA     5      7     6      1
+2    NY     9      7     5      8
+3    CN     7      4     7      9
+4    OH     7     10     6      2
 ```
 
 > - A: Columns as variables AND multiple variables in a column
@@ -291,11 +324,11 @@ df %>%
 ```
    state sex-age count
 1     MA   m0-15     5
-2     NY   m0-15     4
-3     CN   m0-15     6
-14    NY  f16-60     6
-15    CN  f16-60     2
-16    OH  f16-60     4
+2     NY   m0-15     9
+3     CN   m0-15     7
+14    NY  f16-60     8
+15    CN  f16-60     9
+16    OH  f16-60     2
 ```
 
 ---
@@ -315,11 +348,11 @@ df %>%
 ```
    state sex   age count
 1     MA   m  0-15     5
-2     NY   m  0-15     4
-3     CN   m  0-15     6
-14    NY   f 16-60     6
-15    CN   f 16-60     2
-16    OH   f 16-60     4
+2     NY   m  0-15     9
+3     CN   m  0-15     7
+14    NY   f 16-60     8
+15    CN   f 16-60     9
+16    OH   f 16-60     2
 ```
 
 ---
@@ -339,3 +372,13 @@ file_url <- paste0(base_url, file_name)
 df <- fread(file_url)
 save(df, file='local/directory/path')
 ```
+
+---
+
+## File formats
+
+* File formats affect interoperability and accessibility. 
+* Proprietory formats for data (e.g. custom binary format) or analysis scripts lower interoperability
+* For small, simple data text based formats work well e.g. `.csv`
+* For structured data use [`XML`](https://www.w3schools.com/xml/xml_whatis.asp) or  [`json`](https://www.json.org/) or database format e.g. [`mySQL`](https://www.mysql.com/)
+* For large data sets use things like [`HDF5`](https://support.hdfgroup.org/HDF5/) which are usable without loading into memory. 
