@@ -1,12 +1,12 @@
 ---
 title: "Data analysis best practice"
+subtitle: "Data managment"
 author: "Robert Arbon"
 highlighter: highlight.js
 hitheme: tomorrow
 job: Data scientist, Jean Golding Institute
 logo: 
 mode: selfcontained
-subtitle: Data management
 framework: io2012
 url:
   assets: ../assets
