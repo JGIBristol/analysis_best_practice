@@ -1,7 +1,7 @@
 Tidy data
 ========================================================
 
-In this workbook we're going to be doing some basic data tidying exercises using *untidy* datasets we've untidied for you. 
+In this workbook we're going to be doing some basic data tidying exercises using *untidy* datasets we've created for you. 
 
 
 ```{r}

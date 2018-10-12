@@ -1,0 +1,49 @@
+Make some untidy data
+========================================================
+
+Import the libraries
+```{r}
+library(tidyverse)
+library(data.table)
+```
+
+Now load the original dataset from the `csv` online
+
+```{r}
+file_name <- 'dili_from_anti_TB_treatment.csv'
+base_url <- 'http://data.bris.ac.uk/datasets/1vdt21e4mhxxd27hso89cqmhhh/'
+file_url <- paste0(base_url, file_name)
+df <- fread(file_url)
+```
+
+Let's just check the dataframe to see it's what we want: 
+```{r}
+str(df)
+```
+
+let's split this up into two tables. First the basic facts about each patient:
+
+```{r}
+df1 <- select(df, id, agegroup:weight)
+str(df1)
+```
+
+```{r}
+df1_untidy <- df1 %>%
+  spread(sex, weight) %>%
+  rename(Female_weight=F, Male_weight=M) 
+head(df1_untidy)
+write_csv(df1_untidy, path="../data/untidy/dili_table1.csv")
+```
+
+
+
+
+Then the list of clinical measurements:
+
+```{r}
+df2 <- select(df, id:t1dili, rifam_dpw:time_to_onset_of_pDILI)
+str(df2)
+```
+
+
