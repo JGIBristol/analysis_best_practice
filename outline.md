@@ -2,13 +2,13 @@
 # Course outline
 
 ## Learning outcomes:
- * Understand what reproducible research is and why you should adopt it 
- * Gain a working knowledge of version control with git and github
- * Use the Open Science Framework to set up a project. 
- * Deepen your understanding of RStudio and IDEs in general. 
- * Understand literate programming and create your own R notebook
- * Use the `tidyverse` to create a tidy data set. 
- * Use all of the skills learnt to reproduce some findings from a paper and make your project FAIR. 
+ * Understand what **reproducible research** is and why you should adopt it 
+ * Gain a working knowledge of **version control** with `git` and `github`
+ * Use the **Open Science Framework** to set up a project. 
+ * Deepen your understanding of `RStudio` and IDEs in general. 
+ * Understand **literate programming** and create your own `R notebook`
+ * Use the `tidyverse` to create a **tidy data** set. 
+ * Use all of the skills learnt to reproduce some findings from a paper and make your project **FAIR**. 
 
 Topics not covered: 
  * General statistical inference. e.g. t-tests, model building. 
