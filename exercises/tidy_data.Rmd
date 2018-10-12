@@ -1,0 +1,16 @@
+Tidy data
+========================================================
+
+In this workbook we're going to be doing some basic data tidying exercises using *untidy* datasets we've untidied for you. 
+
+
+```{r}
+summary(cars)
+```
+
+You can also embed plots, for example:
+
+```{r fig.width=7, fig.height=6}
+plot(cars)
+```
+
