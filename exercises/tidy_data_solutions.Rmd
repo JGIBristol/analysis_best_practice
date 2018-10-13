@@ -1,0 +1,261 @@
+---
+title: "Tidy data solutions"
+output: html_notebook
+---
+
+
+## Introduction
+In this workbook we're going to be doing some basic data tidying exercises using *untidy* datasets we've created for you. First thing we have to do is import libraries: 
+
+```{r, message=F}
+library(tidyverse)
+library(FSA) # for headtail function
+
+```
+
+
+## Global variables
+The untidy data are in the directory, `data/untidy`, they are: 
+
+```{r}
+file_1 <- 'dili_table1.csv'
+file_2 <- 'dili_table2.csv'
+data_dir <- '../data/untidy/'
+```
+
+## The first dataframe
+Let's first load and take a quick peek at the data:
+
+```{r}
+df1 <- read.csv(paste0(data_dir, file_1))
+str(df1)
+head(df1)
+```
+
+**Q**: Look at the tidy data document (it's listed in the resources folder) - what feature of this dataframe is untidy?
+
+**A**: There are multiple variables in the columns `Female_weight` and `Male_weight`.  
+
+---
+
+**Q**: What should the table look like if it were to be tidy?  Write a markdown table with one data line entry (see [here](https://www.tablesgenerator.com/markdown_tables) for the syntax and how to automatically generate tables in markdown)
+
+
+**A**: 
+
+|id | agegroup | sex |weight |
+|:-:|:-:       |:-:  |:-:   |
+| 1 | 18/29    |  F  |  67   |
+
+---
+
+We're now going to build up, line by line, a method for making this dataframe tidy. To view the results of the manipulations, we'll use the `headtail()` function which shows three lines of the top and the bottom of the dataframe.  This way we can see what we've done.  Your answers should be code chunks which you should run.  You'll be using the `%>%` command chain functions, like this: 
+
+```r
+df1_tidy <- df1 %>% 
+  function_1(arguments) %>%
+  function_2(arguments)
+
+headtail(df1_tidy)
+```
+
+
+**Q**: First we'll use  [`mutate`](https://dplyr.tidyverse.org/reference/mutate.html) to create an `F` and `M` columns which tell us whether there is a value in the `Female_weight` of the `Male_weight` column.  We'll use the `is.na()` and the unary negation operator `!`: 
+
+**A**:
+
+```{r}
+df1_tidy <- df1 %>% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight))
+
+headtail(df1_tidy)
+```
+
+---
+
+**Q**: Now we must extract the weight from the columns and put it in a column called `weight`.  We'll use `mutate` again but this time we'll use the the `pmax(?, ??, na.rm=TRUE)` function.  You'll have to work out what goes in the two positions `?` and `??`
+
+**A**: 
+
+```{r}
+df1_tidy <- df1 %>% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %>%
+  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T))
+
+headtail(df1_tidy)
+```
+
+---
+
+**Q**: Now we can drop the `Female_weight` and `Male_weight` using [`select`](https://dplyr.tidyverse.org/reference/select.html). 
+
+**A**:
+
+```{r}
+df1_tidy <- df1 %>% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %>%
+  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %>%
+  select(-c(Female_weight, Male_weight))
+
+headtail(df1_tidy)
+```
+
+---
+
+**Q**: Create a new column called `sex` using `mutate` and [`if_else`](https://www.rdocumentation.org/packages/dplyr/versions/0.7.6/topics/if_else) to put a label `F` for female, `M` for male, or NULL if there's a missing value. 
+
+**Hint**: If `F` and `M` are both false then `weight` must be `NA`; also, if `x=NA` then `x>0` is also `NA`. Use these facts to include `weight` in your logical statement in `if_else`. 
+
+**A**: 
+
+```{r}
+df1_tidy <- df1 %>% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %>%
+  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %>%
+  select(-c(Female_weight, Male_weight)) %>%
+  mutate(sex=if_else(condition= Female & weight > 0, 'F', 'M', missing=NULL))
+
+headtail(df1_tidy)
+```
+
+---
+
+**Q**: Use select to drop the `Female` and `Male` column:
+
+**A**: 
+
+```{r}
+df1_tidy <- df1 %>% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %>%
+  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %>%
+  select(-c(Female_weight, Male_weight)) %>%
+  mutate(sex=if_else(condition= Female & weight > 0, 'F', 'M', missing=NULL)) %>%
+  select(-c(Female, Male))
+
+headtail(df1_tidy)
+```
+
+---
+
+## Second dataframe
+
+Now let's do the same for the second dataframe
+
+```{r}
+df2 <- read.csv(paste0(data_dir,file_2))
+str(df2)
+head(df2)
+```
+
+**Q**: What is untidy about this dataframe (check the meta data at https://data.bris.ac.uk/datasets/1vdt21e4mhxxd27hso89cqmhhh/README.txt).
+
+**A**: `pdili` and `t1dili` are both measuring the same thing.  They should be a single column with either `none`, `t1`, `t2_3` (there are three categories of DILI)
+
+---
+
+**Q**: Use mutate to create a new column which indicates `none` with either 1  or 0.  To do this note that `(TRUE)*1`/`(FALSE)*1 = 1`/`0`   You'll need to use [`select`](https://dplyr.tidyverse.org/reference/select.html) to move the new column to the left of the dataframe so you can see it easily (see the examples at the linked page for how to do this). 
+
+**A**: 
+
+```{r}
+
+df2_tidy <- df2 %>% 
+  mutate(none=(pdili==0)*1) %>%
+  select(none, everything())
+
+headtail(df2_tidy)
+```
+
+---
+
+**Q**: Now do the same for `t2_3`.  The:  rename `t1dili` to `t1` using `rename` (the documentation is the same as `select`), and remove the `pdili` variable. Note, you only need one `select` statement at the end (i.e. don't just copy and paste from previous answers)
+
+**A**:
+
+```{r}
+df2_tidy <- df2 %>% 
+  mutate(none=(pdili==0)*1) %>%
+  mutate(t2_3=(pdili==1 & t1dili==0)*1) %>%
+  rename(t1=t1dili) %>%
+  select(none, t1, t2_3, everything(), -pdili)
+headtail(df2_tidy)
+```
+
+---
+
+**Q**: Use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to create a new variable called `dili` which has three different `level`s: `none`, `t1`, `t2_3`.  You'll need to use `select` again to move it to the left hand side. 
+
+**A**: 
+```{r}
+df2_tidy <- df2 %>% 
+  mutate(none=(pdili==0)) %>%
+  mutate(t2_3=(pdili==1 & t1dili==0)) %>%
+  rename(t1=t1dili) %>%
+  gather(key='dili',value='level', c(none, t1, t2_3)) %>%
+  select(dili,level, everything(), -pdili)
+  
+headtail(df2_tidy)
+```
+
+---
+
+**Q**: What is dimension of this dataframe?  Look at it (by clikcing on the `df2_tidy` variable in the environment tab).  Which values of `level` can be dropped?  Drop them using [`filter`](https://dplyr.tidyverse.org/reference/filter.html) and then drop the `level` column. Arrange the table in asceding values of `id`
+
+**A**: 
+```{r}
+df2_tidy <- df2 %>% 
+  mutate(none=(pdili==0)) %>%
+  mutate(t2_3=(pdili==1 & t1dili==0)) %>%
+  rename(t1=t1dili) %>%
+  gather(key='dili',value='level', c(none, t1, t2_3)) %>%
+  filter(level==1) %>%
+  select(dili,-level, everything(), -pdili) %>%
+  arrange(id)
+ 
+headtail(df2_tidy)
+```
+
+---
+
+
+## Putting it together
+
+**Q**: We have two tidy dataframes.  How many should we have?
+
+**A**: Both tables refer to the same observational units so we should combine them! 
+
+---
+
+**Q**: Use the [`join`](https://dplyr.tidyverse.org/reference/join.html) function to join the two dataframes by matching on the `id` variable. It shouldn't matter which type of join you use - *however* you should use one that will allow you to check whether there have been data lost (or added by not matching properly). Call the new dataframe `df_tidy`
+
+**A**: Use the `full_join` and then check whether there are any extra rows or columns by comparing the `dim()` on the three dataframes. 
+
+```{r}
+df_tidy <- full_join(df1_tidy, df2_tidy, by='id')
+headtail(df_tidy)
+dim(df1_tidy)
+dim(df2_tidy)
+dim(df_tidy)
+```
+
+---
+
+
+**Q**: Now save this dataframe as a csv (`write_csv`) in the `data/processed` directory as `dili-tidy.csv` and commit these changes to the git repo push to the `participant` branch of your Github. 
+
+**A**: 
+
+```{r}
+write.csv(df_tidy, path='../data/processed/dili-tidy.csv')
+```
+
+In the home directory: 
+```
+$ git add exercises/tidy_data.Rmd
+$ git commit -m "Finished tidy data problems"
+$ git push origin participant
+```
+
+Well done! 
+
+

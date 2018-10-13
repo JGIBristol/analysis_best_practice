@@ -46,4 +46,9 @@ df2 <- select(df, id:t1dili, rifam_dpw:time_to_onset_of_pDILI)
 str(df2)
 ```
 
+This is already contains an important untidyness so let's just save that as-is. 
+
+```{r}
+write_csv(df2, path="../data/untidy/dili_table2.csv")
+```
 
