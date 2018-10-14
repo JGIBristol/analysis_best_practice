@@ -1,7 +1,5 @@
 # Resource list
 
-Here's a list of resources to further your understanding of the information convered today. 
-
 ## Jupyter notebooks
 * [Official quickstart guide](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/)
 * [In depth Jupyter tutorial/explaination](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) - in Python.
