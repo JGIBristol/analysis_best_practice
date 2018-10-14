@@ -1,11 +1,16 @@
-# Data analysis best practice one day 
+# Data analysis best practice one day workshop
 
-## Structure
+* `course_setup.md` - preliminary instructions for this course. 
+* `/data/original` - data directory containing the original data
+* `/data/processed` - the tidy data sets as created in `/exercises/tidy_data.Rmd`
+* `/data/untidy` - two untidy csv files for use in `/exercises/tidy_data.Rmd`
+* `/exercises` - two exercises in `Rmd` format. 
+* `/notebooks` - some notebooks used in creating this course. 
+* `outline.md` - the outline of the course
+* `resources.md` - links to resources used and recommended in this course. 
+* `/scripts` - some scripts used in creating this course. 
 
-* resources/CourseraDataScience/ - Some slides and materials from a Coursera data science course.  Useful inspiration for some topics
 
-* data/original - the original data file from the data.bris repo READONLY
-* data/processed - the processed data in data frame format
 
 
 
