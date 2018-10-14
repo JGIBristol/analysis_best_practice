@@ -1,12 +1,12 @@
 ---
 title: "Data analysis best practice"
-subtitle: "Data managment"
 author: "Robert Arbon"
 highlighter: highlight.js
 hitheme: tomorrow
 job: Data scientist, Jean Golding Institute
 logo: 
 mode: selfcontained
+subtitle: Data management
 framework: io2012
 url:
   assets: ../assets
@@ -17,13 +17,6 @@ output: ioslides_presentation
 
 
 
-```
-## Error in library(tidyverse): there is no package called 'tidyverse'
-```
-
-```
-## Error in library(FSA): there is no package called 'FSA'
-```
 
 ## Overview 
 
@@ -233,16 +226,159 @@ If it's just stored on your personal computer **YOU DON'T HAVE IT**
 * use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
 
 
+```r
+scores %>%
+  # Gather ALL columns and give default names to columns
+  gather() %>%
+  headtail()
+```
+
+```
+    key value
+1  Name Carla
+2  Name  Mace
+3  Name   Lea
+30  350   2.5
+31  350   2.6
+32  350   1.9
+```
+
+---
+
+### `tidyr` - example 1
+
+* use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
 
 
+```r
+scores %>%
+  # Gather all columns and give custom names to columns
+  gather(key="MyVariable", value="MyValue") %>%
+  headtail()
+```
+
+```
+   MyVariable MyValue
+1        Name   Carla
+2        Name    Mace
+3        Name     Lea
+30        350     2.5
+31        350     2.6
+32        350     1.9
+```
+
+---
+
+### `tidyr` - example 1
+
+* use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
 
 
+```r
+scores %>%
+  # Gather all columns except 'Name' and give custom names to columns
+  gather(key="Time", value="Score", -Name) %>%
+  headtail()
+```
+
+```
+    Name Time Score
+1  Carla   50   1.2
+2   Mace   50   1.5
+3    Lea   50   1.7
+26  Mace  350   2.5
+27   Lea  350   2.6
+28 Karen  350   1.9
+```
+
+---
+
+### `tidyr` - example 2
+
+* Q: What's wrong with this table of counts of males (`m`) and females (`f`) of different ages (`0.15` = 0 - 15) in different states
 
 
+```
+  state m0-15 m16-60 f0-15 f16-60
+1    MA     5      7     6      1
+2    NY     9      7     5      8
+3    CN     7      4     7      9
+4    OH     7     10     6      2
+```
+
+> - A: Columns as variables AND multiple variables in a column
+
+---
+
+### `tidyr` - example 2
+
+* First use [`gather`](https://tidyr.tidyverse.org/reference/gather.html)
 
 
+```r
+df %>%
+  gather(key='sex-age', value='count', -state) %>%
+  headtail()
+```
+
+```
+   state sex-age count
+1     MA   m0-15     5
+2     NY   m0-15     9
+3     CN   m0-15     7
+14    NY  f16-60     8
+15    CN  f16-60     9
+16    OH  f16-60     2
+```
+
+---
+
+### `tidyr` - example 2
+
+* Then use  [`separate`](https://tidyr.tidyverse.org/reference/separate.html)
 
 
+```r
+df %>%
+  gather(key='sex-age', value='count', -state) %>%
+  separate(col='sex-age', into=c('sex', 'age'), sep=1) %>%
+  headtail()
+```
 
+```
+   state sex   age count
+1     MA   m  0-15     5
+2     NY   m  0-15     9
+3     CN   m  0-15     7
+14    NY   f 16-60     8
+15    CN   f 16-60     9
+16    OH   f 16-60     2
+```
 
+---
 
+## Retrieving data
+
+* If you've retrieved data - put a note to say where it's from:
+<div class="rimage center"><img src="fig/source.png" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="75%" class="plot" /></div>
+
+* Even better, write a script that downloads it: 
+
+```r
+library(data.table)
+file_name <- 'dili_from_anti_TB_treatment.csv'
+base_url <- 'http://data.bris.ac.uk/datasets/1vdt21e4mhxxd27hso89cqmhhh/'
+file_url <- paste0(base_url, file_name)
+df <- fread(file_url)
+save(df, file='local/directory/path')
+```
+
+---
+
+## File formats
+
+* File formats affect interoperability and accessibility. 
+* Proprietory formats for data (e.g. custom binary format) or analysis scripts lower interoperability
+* For small, simple data text based formats work well e.g. `.csv`
+* For structured data use [`XML`](https://www.w3schools.com/xml/xml_whatis.asp) or  [`json`](https://www.json.org/) or database format e.g. [`mySQL`](https://www.mysql.com/)
+* For large data sets use things like [`HDF5`](https://support.hdfgroup.org/HDF5/) which are usable without loading into memory. 

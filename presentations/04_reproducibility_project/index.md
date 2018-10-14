@@ -17,13 +17,6 @@ output: ioslides_presentation
 
 
 
-```
-## Error in library(tidyverse): there is no package called 'tidyverse'
-```
-
-```
-## Error in library(FSA): there is no package called 'FSA'
-```
 
 ## Drug Induced Liver Injury (DILI)
 
