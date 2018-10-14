@@ -50,7 +50,7 @@ rsconnect/
 !presentations/assets/**/*.jpg
 *.gz
 *.zip
-!librariesNew/*.png
+!presentations/librariesNew/*.png
 .Rproj.user
 
 # mac rubbish
