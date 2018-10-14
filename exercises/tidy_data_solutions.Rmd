@@ -20,7 +20,7 @@ The untidy data are in the directory, `data/untidy`, they are:
 ```{r}
 file_1 <- 'dili_table1.csv'
 file_2 <- 'dili_table2.csv'
-data_dir <- '../data/untidy/'
+data_dir <- '~/Google Drive/Courses/Analysis-best-practice/data/untidy/'
 ```
 
 ## The first dataframe
@@ -188,8 +188,8 @@ headtail(df2_tidy)
 **A**: 
 ```{r}
 df2_tidy <- df2 %>% 
-  mutate(none=(pdili==0)) %>%
-  mutate(t2_3=(pdili==1 & t1dili==0)) %>%
+  mutate(none=(pdili==0)*1) %>%
+  mutate(t2_3=(pdili==1 & t1dili==0)*1) %>%
   rename(t1=t1dili) %>%
   gather(key='dili',value='level', c(none, t1, t2_3)) %>%
   select(dili,level, everything(), -pdili)
@@ -204,12 +204,12 @@ headtail(df2_tidy)
 **A**: 
 ```{r}
 df2_tidy <- df2 %>% 
-  mutate(none=(pdili==0)) %>%
-  mutate(t2_3=(pdili==1 & t1dili==0)) %>%
+  mutate(none=(pdili==0)*1) %>%
+  mutate(t2_3=(pdili==1 & t1dili==0)*1) %>%
   rename(t1=t1dili) %>%
   gather(key='dili',value='level', c(none, t1, t2_3)) %>%
   filter(level==1) %>%
-  select(dili,-level, everything(), -pdili) %>%
+  select(dili, everything(), -c(level, pdili)) %>%
   arrange(id)
  
 headtail(df2_tidy)
@@ -246,7 +246,9 @@ dim(df_tidy)
 **A**: 
 
 ```{r}
-write.csv(df_tidy, path='../data/processed/dili-tidy.csv')
+# the file path is relative to the working directory which isn't necessarily where this notebook is located!
+# Usually best to put full path!
+write.csv(df_tidy, file='~/Google Drive/Courses/Analysis-best-practice/data/processed/dili-tidy.csv', row.names=F)
 ```
 
 In the home directory: 
