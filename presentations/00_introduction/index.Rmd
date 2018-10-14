@@ -70,14 +70,40 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 ## Who we are
 
 *** =left
-
 ### Natalie Thurlby 
+```{r, out.width='50%', echo=F, fig.align='left'}
+include_graphics('fig/natalie.jpg')
+```
 
+- Phd in computational biology
+- Data science specialist at Jean Golding Institute
 
 *** =right
 ### Robert Arbon
+```{r, echo=F, fig.align='left'}
+include_graphics('fig/robert.jpg')
+```
 
---- 
+- Finishing PhD in computational chemistry (Markov state models, Bayesian optimization)
+- Data scientist at Jean Golding Institute
+- Worked as data scientist and economics analyst for various clients (e.g. World Bank)
+
+--- &twocol
+
+## Ask JGI
+
+*** =left
+
+- ask-jgi@bristol.ac.uk
+- A free service for University of Bristol doctoral researchers and staff offering support, signposting and advice for all your data science and data intensive research queries.
+
+*** =right
+
+```{r, echo=F,out.width='100%', fig.align='center'}
+include_graphics('fig/concepts-with-hyphens.png')
+```
+
+---
 
 ## UK Reproducibility Network
 ![](fig/ukrn-logo.jpg)
@@ -106,7 +132,7 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 
 ---
 
-## Itinerary
+## Itinerary (approximate!)
 
 1. 09:15 - 09:30 Introduction (RA)
 1. 09:30 - 10:30 Reproducible research (NT)
@@ -117,4 +143,6 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 1. 13:30 - 15:00 Managing and processing data (RA)
   * FAIR principles, storing and retrieving data, tidy data, metadata, file formats. 
 1. 15:00 - 15:30 Coffee
-1. 15:30 - 17:00 Mini reproducibility project (RA & NT)
+1. 15:30 - 16:00 Publishing your results
+1. 16:00 - 16:30 Mini reproducibility project (RA & NT)
+
