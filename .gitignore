@@ -40,14 +40,14 @@ rsconnect/
 # Other 
 *.pdf
 *.png
-!presentations/assets/**/*.png
+!presentations/**/*.png
 *.html
 *.pptx
 *.xls*
 *.jpeg
-!presentations/assets/**/*.jpeg
+!presentations/**/*.jpeg
 *.jpg
-!presentations/assets/**/*.jpg
+!presentations/**/*.jpg
 *.gz
 *.zip
 !presentations/librariesNew/*.png

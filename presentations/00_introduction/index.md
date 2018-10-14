@@ -55,14 +55,34 @@ widgets: mathjax
 ## Who we are
 
 *** =left
-
 ### Natalie Thurlby 
+<div class="rimage left"><img src="fig/natalie.jpg" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="50%" class="plot" /></div>
 
+- Phd in computational biology
+- Data science specialist at Jean Golding Institute
 
 *** =right
 ### Robert Arbon
+<div class="rimage left"><img src="fig/robert.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div>
 
---- 
+- Finishing PhD in computational chemistry (Markov state models, Bayesian optimization)
+- Data scientist at Jean Golding Institute
+- Worked as data scientist and economics analyst for various clients (e.g. World Bank)
+
+--- &twocol
+
+## Ask JGI
+
+*** =left
+
+- ask-jgi@bristol.ac.uk
+- A free service for University of Bristol doctoral researchers and staff offering support, signposting and advice for all your data science and data intensive research queries.
+
+*** =right
+
+<div class="rimage center"><img src="fig/concepts-with-hyphens.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
+
+---
 
 ## UK Reproducibility Network
 ![](fig/ukrn-logo.jpg)
