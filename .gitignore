@@ -41,13 +41,16 @@ rsconnect/
 *.pdf
 *.png
 !presentations/assets/**/*.png
+!presentations/**/fig/*.png
 *.html
 *.pptx
 *.xls*
 *.jpeg
 !presentations/assets/**/*.jpeg
+!presentations/**/fig/*.jpeg
 *.jpg
 !presentations/assets/**/*.jpg
+!presentations/**/fig/*.jpg
 *.gz
 *.zip
 

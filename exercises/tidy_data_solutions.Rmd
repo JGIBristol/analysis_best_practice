@@ -5,7 +5,11 @@ output: html_notebook
 
 
 ## Introduction
-In this workbook we're going to be doing some basic data tidying exercises using *untidy* datasets we've created for you. First thing we have to do is import libraries: 
+In this workbook we're going to be doing some basic data tidying exercises using *untidy* datasets we've created for you. We're going to make use of the `tidyverse`.  For each function we use there is a link to its reference on the web.  It will be expected that you follow that link and read the documentation and **especially** the examples.  This goes for all subsequent exercise books. 
+
+
+## Import libraries
+First thing we have to do is import libraries: 
 
 ```{r, message=F}
 library(tidyverse)
@@ -251,11 +255,12 @@ dim(df_tidy)
 write.csv(df_tidy, file='~/Google Drive/Courses/Analysis-best-practice/data/processed/dili-tidy.csv', row.names=F)
 ```
 
+Now knit this into the `html` notebook and then: 
 In the home directory: 
 ```
 $ git add exercises/tidy_data.Rmd
 $ git commit -m "Finished tidy data problems"
-$ git push origin participant
+$ git push origin master
 ```
 
 Well done! 
