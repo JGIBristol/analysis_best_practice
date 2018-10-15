@@ -3,6 +3,9 @@
 ## Jupyter notebooks
 * [Official quickstart guide](https://jupyter-notebook-beginner-guide.readthedocs.io/en/latest/)
 * [In depth Jupyter tutorial/explaination](https://www.datacamp.com/community/tutorials/tutorial-jupyter-notebook) - in Python.
+* [A basic R example](https://hub.mybinder.org/user/binder-examples-r-tdcez934/notebooks/index.ipynb)
+* [A huge gallery of interesting jupyter notebooks in python](https://github.com/jupyter/jupyter/wiki/A-gallery-of-interesting-Jupyter-Notebooks#introductory-tutorials)
+
 
 ## R
 * [Intro to statistical and data sciences in R](https://moderndive.com/) - Free online book (R basics, hypothesis testing, regression)

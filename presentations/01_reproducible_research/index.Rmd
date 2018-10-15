@@ -438,6 +438,7 @@ for (i in 1:n_repeats){
 pct_false_pos = false_pos/n_repeats
 print(pct_false_pos)
 ```
+You can update it to a __Gold__ solution, by knitting the R Notebook, then publishing it through Rpubs.
 
 ---
 
