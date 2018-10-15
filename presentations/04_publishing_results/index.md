@@ -1,6 +1,6 @@
 ---
 title: "Data analysis best practice"
-subtitle: "Introduction"
+subtitle: "Communicating results"
 author: "Robert Arbon"
 highlighter: highlight.js
 hitheme: tomorrow
@@ -17,109 +17,88 @@ widgets: mathjax
 
 
 
-## Jean Golding Institute
+## Outline
 
-* Jean Golding Institute for data intensive research
-* We support interdisciplinary research across the university:
-  * Build new multidisciplinary communities
-  * Catalyse new ideas
-  * Procure seed corn funding
-  * Deliver impact and engagement
-  * Promote and raise the profile of the University
-  * Enrich the undergraduate and postgraduate student experience
+* RMarkdown
+* Jupyter notebook
+* Shiny & Dash
+* Pre-print servers
+* Github pages
 
 ---
 
-## Jean Golding
+## RMarkdown - Formats
 
-* Professor Jean Golding OBE is an epidemiologist at Bristol
-* She set up the ALSPAC (Child of the 90s) study
-* One of 25 women selected as part of the [*put her forward*](http://putherforward.com) campaign. 
-  * The statue will be moved to Royal Fort House soon. 
-
---- &twocol
-
-## ALSPAC achievements 
-
-   
-*** =left
-    
-![](fig/backs.png)
-    
-*** =right
-
-![](fig/asthma.png)
-
---- &twocol
-
-## Who we are
-
-*** =left
-### Natalie Thurlby 
-<div class="rimage left"><img src="fig/natalie.jpg" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="50%" class="plot" /></div>
-
-- Phd in computational biology
-- Data science specialist at Jean Golding Institute
-
-*** =right
-### Robert Arbon
-<div class="rimage left"><img src="fig/robert.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div>
-
-- Finishing PhD in computational chemistry (Markov state models, Bayesian optimization)
-- Data scientist at Jean Golding Institute
-- Worked as data scientist and economics analyst for various clients (e.g. World Bank)
-
---- &twocol
-
-## Ask JGI
-
-*** =left
-
-- ask-jgi@bristol.ac.uk
-- A free service for University of Bristol doctoral researchers and staff offering support, signposting and advice for all your data science and data intensive research queries.
-
-*** =right
-
-<div class="rimage center"><img src="fig/concepts-with-hyphens.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
+* RMarkdown is an extension of markdown. 
+* RMarkdown can produce an incredible amount of formats
+  1. HTML notebooks
+  2. PDF/Latex
+  3. Word/ODT
+  4. Markdown (obviously)
+  5. Presentations (this one)
+  6. Journal formats
+  7. Books
+  8. Interactive dashboards. 
+  9. Websites
 
 ---
 
-## UK Reproducibility Network
-![](fig/ukrn-logo.jpg)
+## RMarkdown - Syntax
 
---- &twocol
+* The basic idea is that you mix text (markdown) with code chunks, written in run `R` (and `Python`, `bash`, etc. even compiled languages like `Fortran` and `C`). 
 
-## About this course
+* You can run the code and display the results inline. 
 
-*** =left
-- First course of its type at Bristol (AFAWK)
-- **Aim**: introduce you to ideas and tools which you will take further in your own time
-- **Delivery**:
-  - Lectures
-  - Discussion
-  - Practicals
-- **Outcomes**:
-  - Introduced to the ideas and tools of reproducible research
-  - Reproduce results of a paper 
-*** =right  
-- Please give constructive feedback on:
+* Options are configured in `YAML`  (Yet Another Markup Language) header
 
-[github.com/RobertArbon/analysis_best_practice](https://github.com/RobertArbon/analysis_best_practice)
+* Then you `knit` the package using `knitr` to produce a document
 
-
-![issues](fig/gihutb-issues.png)
+<div class="rimage center"><img src="fig/knit.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="40%" class="plot" /></div>
 
 ---
 
-## Itinerary
+## RMarkdown - exercises
 
-1. 09:15 - 09:30 Introduction (RA)
-1. 09:30 - 10:30 Reproducible research (NT)
-1. 10:30 - 11:00 Coffee break
-1. 11:00 - 12:30 Your research ecosystem (NT)
-  * IDEs, Version control, literate programming, Open Science Framework
-1. 12:30 - 13:30 Lunch
-1. 13:30 - 15:00 Managing and processing data (RA)
-  * FAIR principles, storing and retrieving data, tidy data, metadata, file formats. 
-1. 15:00 - 15:30 Coffee
-1. 15:30 - 17:00 Mini reproducibility project (RA & NT)
+* Create a new markdown document in the following formats: 
+  * `html_notebook`
+  * `pdf_document`
+  * `md_document`
+* Select `R Notebook` from the new file button. 
+* You should configure your `YAML` as:
+
+```
+---
+title: "Habits"
+author: John Doe
+date: March 22, 2005
+output: md_document 
+---
+```
+
+* Put whatever text you like in and then `knit` it. 
+
+---
+
+## Jupyter notebooks
+
+* Similar to RMarkdown
+* Can run many different languages. 
+* Accessed through web browswer. 
+
+---
+
+## Shiny and Dash
+
+* Shiny (`R`) and Dash (`python`) are both frameworks for publishing interactive web pages. 
+* Shiny can also be used for interactive dashboards within R Markdown documents. 
+* Search 'Shiny gallery' and 'Dash python gallery'
+
+---
+
+## Preprint servers
+
+* OSF.io 
+* Many differnt ones depending on discpline. 
+<div class="rimage center"><img src="fig/preprints.jpg_large" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" class="plot" /></div>
+
+---

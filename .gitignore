@@ -52,7 +52,7 @@ rsconnect/
 *.zip
 !presentations/librariesNew/*.png
 .Rproj.user
-.Rproj
+!Example_html.html
 
 # mac rubbish
 .DS_Store
