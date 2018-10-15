@@ -74,19 +74,20 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 ```{r, out.width='50%', echo=F, fig.align='left'}
 include_graphics('fig/natalie.jpg')
 ```
-
+- @statalieT
 - Phd in computational biology
 - Data science specialist at Jean Golding Institute
+
 
 *** =right
 ### Robert Arbon
 ```{r, echo=F, fig.align='left'}
 include_graphics('fig/robert.jpg')
 ```
-
-- Finishing PhD in computational chemistry (Markov state models, Bayesian optimization)
+- @bertiearbon
+- Finishing PhD in computational chemistry 
 - Data scientist at Jean Golding Institute
-- Worked as data scientist and economics analyst for various clients (e.g. World Bank)
+- Previously data scientist/economics analyst for dev. agencies (e.g. World Bank)
 
 --- &twocol
 
@@ -103,10 +104,16 @@ include_graphics('fig/robert.jpg')
 include_graphics('fig/concepts-with-hyphens.png')
 ```
 
----
+--- &twocol
 
+*** =left
 ## UK Reproducibility Network
 ![](fig/ukrn-logo.jpg)
+
+*** =right
+
+* There will be a local Bristol working group to promote reproducible research
+* Please email  marcus.munafo@bristol.ac.uk
 
 --- &twocol
 
