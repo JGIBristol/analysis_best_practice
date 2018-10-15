@@ -1,6 +1,9 @@
 Version Control using GitHub and RStudio
 ========================================================
+## A clear description of how GitHub is designed to work:
+[GitHub Flow](https://guides.github.com/introduction/flow/)
 
+## Version Control task:
 ### Forking the repository and finding the rest of the instructions.
 * Go to [https://github.com/RobertArbon/analysis_best_practice]. Login and fork the repository.
 * The instructions are in "exercises/version-control.md"
