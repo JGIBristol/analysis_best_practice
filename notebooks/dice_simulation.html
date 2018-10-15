@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dice simulation</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Dice simulation">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Dice simulation</h1>
+    <h2></h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    <p>With this <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook, we can make a simulated version of the experiment we just did that is much easier to reproduce.</p>
+
+<p>When you execute code within the notebook, the results appear beneath the code. Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Cmd+Shift+Enter</em>. </p>
+
+<pre><code class="r"># This code snippet generates a random number between 1 and 20 (inclusive), simulating rolling the dice once.
+dice_roll &lt;- sample(1:20,1)
+dice_roll
+</code></pre>
+
+<pre><code>## [1] 9
+</code></pre>
+
+<p>If you run this code snipped you&#39;ll probably get a different number than me (and if you keep running the code you will continue to get new random numbers) since the numbers are randomly generated. 
+In the interests of reproducibility, it is sometimes useful to have the same &quot;random&quot; numbers by setting the seed.</p>
+
+<pre><code class="r">set.seed(12345)
+dice_roll &lt;- sample(1:20,1)
+dice_roll
+</code></pre>
+
+<pre><code>## [1] 15
+</code></pre>
+
+<p>Running the above chunk of code will always give the same number (15) assuming that the seed is unchanged.</p>
+
+<pre><code class="r"># Dice experiment 1 - How often is a null finding found to be significant?
+repeats = 1000
+false_positives = 0
+num_rolls = 1
+for (i in 1:repeats){
+  dice_roll = sample(1:20,num_rolls)
+  if (dice_roll==1){
+    false_positives = false_positives+1
+  }
+}
+print(false_positives/repeats)
+</code></pre>
+
+<pre><code>## [1] 0.047
+</code></pre>
+
+<p>As we&#39;d expect, experiment 1 shows us that there&#39;s roughly a 1 in 20 (0.05) of getting false positives using a 0.05 significance rate.</p>
+
+<pre><code class="r"># Dice experiment 2 - How often will we get a &quot;significant result&quot; if we check 20 different things?
+
+repeats = 1000
+num_rolls = 20
+false_positives = 0
+for (i in 1:repeats){
+  simulated_data = sample(1:20,num_rolls,replace=TRUE) # replace=TRUE allows repeated numbers.
+  if(sum(simulated_data==1)&gt;0){
+    false_positives=false_positives+1
+  }
+}
+print(false_positives/repeats)
+</code></pre>
+
+<pre><code>## [1] 0.636
+</code></pre>
+
+<p>Experiment 2 shows the effect of p-hacking. With a 1 in 20 chance of having any individual experiment have a false positive, but trying 20 different hypotheses, we have a better than 50% chance of getting a false positive. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

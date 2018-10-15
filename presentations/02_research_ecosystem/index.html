@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Data analysis best practice</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Data analysis best practice">
+  <meta name="author" content="Natalie Thurlby">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="../librariesNew/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../librariesNew/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="../librariesNew/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../librariesNew/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../librariesNew/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../librariesNew/frameworks/io2012/js/slides" 
+    src="../librariesNew/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Data analysis best practice</h1>
+    <h2>Research Ecosystem</h2>
+    <p>Natalie Thurlby<br/>Data scientist, Jean Golding Institute</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Overview</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Most of this session will be spent on using version control with GitHub in RStudio:</p>
+
+<ul>
+<li>IDEs (RStudio)</li>
+<li>Version control (git) and GitHub 
+There will also be a brief introduction to:</li>
+<li>Literate programming (RNotebooks and Jupyter Notebooks)</li>
+<li>The OSF (Open Science Framework)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>IDEs</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Open a new RStudio window</strong> 
+Make sure you have the Console, Files, and Source windows visible.</p>
+
+<div style='float:left;width:48%;'>
+  <p><strong>IDEs are Integrated Development Environments</strong> - they let you do development in one place. </p>
+
+<p>We&#39;re using <a href="https://www.rstudio.com/">R Studio</a> today, but I personally rate <a href="https://www.sublimetext.com/">Sublime Text</a> as my favourite IDE for lots of different languages (especially Python).There are lots of others!</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><strong>IDEs usually have:</strong></p>
+
+<ul>
+<li>Editor</li>
+<li>Compiler or interpreter</li>
+<li>Debugger</li>
+<li>Sometimes extra stuff (auto-completion, console, terminal, file viewer, built-in version control...)</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Version Control with Git and GitHub</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p><strong>Git</strong> is a version control system that&#39;s used by ~70% of developers across all programming languages.</p>
+
+<p><strong>GitHub</strong> is a platform to which hosts code for collaboration.</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>They help you avoid this sort of thing:</p>
+
+<div class="rimage center"><img src="fig/final_version.jpg" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="60%" class="plot" /></div>
+
+<p>They also help you keep track of the changes that you&#39;ve been making to your code and help you collaborate with others.</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Git Glossary</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p><strong>repository</strong>: A repository represents a project - it&#39;s a directory where changes will be tracked. A repository is where your project is stored.</p>
+
+<p><strong>branches</strong>: Branches are different (parallel) versions of the repository. You should make a new branch for each different feature in your code.</p>
+
+<p><strong>fork</strong>: A fork is your own private version of the repository (stored on GitHub) which you can make changes to without affecting the original version.</p>
+
+<p><strong>commit</strong>: A commit is a snapshot of your files at a particular time.</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div class="rimage center"><img src="fig/git-tree.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="65%" class="plot" /></div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>The basics of the git/github workflow</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li><font size = 3>The <strong>master</strong> branch should always be in good working order.</font></li>
+<li><font size = 3>If you want to add new functionality/work on the code, create and move to (<strong>checkout</strong>) a development <strong>branch</strong>.</font></li>
+<li><font size = 3>When you make changes to a local branch that you are happy with, you can decide to take a snapshot of your files (a <strong>commit</strong>) and label them with a message about the changes. To <strong>commit</strong> you must first decide which files you wish you commit to changing - known as adding the files to to a <strong>staging</strong> area. Then you <strong>push</strong> your committed changes from your local copy of the repository to the remote (online) version.</font></li>
+<li><font size = 3>After many commits, when you have finished the new functionality for the branch, you can <strong>merge</strong> it into the master branch/trunk of the tree using (via GitHub) by creating a <strong>pull_request</strong>.</font></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div class="rimage center"><img src="fig/git-tree.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="65%" class="plot" /></div>
+
+<div class="rimage center"><img src="fig/git_basic.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="60%" class="plot" /></div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>GitHub &quot;Tour&quot;</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>Let&#39;s check out the GitHub website where we have <a href="https://github.com/RobertArbon/analysis_best_practice">the repository</a> that me and Rob used to collaborate on this workshop. Here you can find all the information for this workshop! </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Things to note:</p>
+
+<ul>
+<li>The README.md</li>
+<li>How to navigate</li>
+<li>How to fork and clone an existing repository</li>
+<li>How to make a new repository</li>
+</ul>
+
+<p>GitHub likes Markdown. It will:</p>
+
+<ul>
+<li>automatically render READMEs written in Markdown</li>
+<li>render commit and pull request messages written in Markdown.</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Getting started</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Forking the repository and finding the rest of the instructions.</h3>
+
+<ul>
+<li>Go to [<a href="https://github.com/RobertArbon/analysis_best_practice">https://github.com/RobertArbon/analysis_best_practice</a>]. Login and fork the repository.</li>
+<li>The instructions are in &quot;exercises/version_control.Rmd&quot;</li>
+</ul>
+
+<!-- ### Making a new remote branch -->
+
+<!-- * Now go to the forked copy of the repository [https://github.com/YOURUSERNAME/analysis_best_practice]. -->
+
+<!-- * On GitHub, create a new branch called 'workshop-practice' in your fork of the repository. -->
+
+<!-- * Create a new first.md file inside 'workshop-practice' and edit it (from GitHub). -->
+
+<!-- ### Cloning the forked repository -->
+
+<!-- * Open a new RStudio window -->
+
+<!-- * File>New Project...>Version Control>Git -->
+
+<!-- * Enter the git@github.com:YOURUSERNAME/analysis_best_practice.git (which you can find on your forked github repository where the green clone button is) and choose where to store this information. RStudio will always clone the master branch. -->
+
+<!-- ### Working on your local copy of the repository - creating a new local branch: -->
+
+<!-- * Look inside the files area in RStudio (notice that your first.md file is not yet there) -->
+
+<!-- * Choose the new workshop-practice branch from the Git window inside RStudio (on the right hand side it should say master with a down arrow). This creates a new (local) copy of the workshop-practice branch which "tracks" the online version of that branch (allows you to push changes to it and pull changes from it).  -->
+
+<!-- Congratulations, you're set up on the repo and ready to start making changes! -->
+
+<!-- ### Your first commit! -->
+
+<!-- * Notice that the new first.md file has appeared in your directory. -->
+
+<!-- * On this occasion you are the only one using the repository, so there won't be any remote changes to __pull__ (there won't be any changes online that aren't in your local copy), but it's a really important habit to remember to pull before making any new changes. In Rstudio, you can pull from the tracked branch by clicking the blue down arrow in the git tab. -->
+
+<!-- * Open the first.md file in RStudio. -->
+
+<!-- * Make some changes to it and save it (try adding some lines and deleting others) -->
+
+<!-- * In RStudio, go to Tools>Version Control>Diff (or click Diff in the Git window), you will be able to see the __diff__erences between the local version of the file and the remote version, i.e. you'll be able to see the changes you have made (green lines have been added, red lines deleted). -->
+
+<!-- * Look inside the Git window inside RStudio. There will be an unchecked box next to the file and it's status will be 'M' for modified.  -->
+
+<!-- * Tick the 'Staged' checkbox, when you want to __add__ or __stage__ your changes.  -->
+
+<!-- * When you are ready, you can __commit__ these staged changes by clicking 'Commit'. This will require you to write a descriptive message about the changes you have made. You can use markdown (including the same emojis from HackMD for these commit messages) -->
+
+<!-- * You can then __push__ your changes to your forked copy of the repository (the green upwards arrow in the Git window of Rstudio). -->
+
+<!-- * Go to GitHub and check that you see your changes there. -->
+
+<!-- ### Pull from the repository -->
+
+<!-- * To simulate working with someone else, go to GitHub and create a new file called 'second.md'. -->
+
+<!-- * Go back to RStudio and notice that you do not yet have a copy of this file. -->
+
+<!-- * Pull the change from the repository to RStudio. -->
+
+<!-- ### Your first pull request. -->
+
+<!-- Think about a pull request in terms of you are requesting that the remote (online) repository pulls your changes. -->
+
+<!-- * Create a new local file inside your repository 'third.md' and make some changes to it. Notice how this shows up in the git window. These orange question marks mean the file is untracked.  -->
+
+<!-- * Go through the cycle of pulling changes from the remote repository, changing your three .md files, staging their changes, committing and pushing those changes a few more times until you feel you have the hang of it. -->
+
+<!-- * Once you're happy, go back to your GitHub page, go to the forked repository, go to the Pull requests tab and click "New pull request". -->
+
+<!-- * Choose the workshop-practice branch to request to merge it back into the master branch. You can make some comments in the pull request about why you are requesting to be merged back in. -->
+
+<!-- * You can then choose to review and accept the pull request by clicking the 'merge pull request' button, you may also leave some comments about how you feel about (emojis encouraged, :rage5: or :100:?) -->
+
+<!-- ### Take this opportunity to investigate the history/tree of your repository -->
+
+<!-- * In RStudio, go to Tools>Version Control>History (or click the clock face in the git window) -->
+
+<!-- * Invetigate your repository from GitHub, look at your commit logs, etc. -->
+
+<!-- ### When you are finished with your development branch, you can delete it: -->
+
+<!-- * Go to GitHub>Your forked repository>branches and click on the bin icon next to the branch you want to delete. -->
+
+<!-- ### Create a new branch for a new feature -->
+
+<!-- * Do this in the same way as before, by making a new branch in GitHub, then pulling in RStudio to get the new branch information, then changing to the new branch in RStudio (this will only work if your current branch is up to date). -->
+
+<!-- ### The Git Parable: -->
+
+<!-- If you have time you can read this fun metaphor/story about Git: [the Git Parable](http://tom.preston-werner.com/2009/05/19/the-git-parable.html) -->
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Literate Programming - R Notebooks and Jupyter notebooks</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Literate programming is the idea of interleaving easy to read information about what the code is doing with the code. Can embed visualisations, apps, interactive graphs, 3D models, etc.</p>
+
+<div style='float:left;width:48%;'>
+  <p><strong>RMarkdown Notebooks</strong>:</p>
+
+<ul>
+<li>Only available for R</li>
+<li>Allows you to insert interactive snippets of R code into a markdown document.</li>
+<li>Can publish on [<a href="https://rpubs.com/">https://rpubs.com/</a>]</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p><strong>Jupyter</strong>:
+Developed for Python (IPython Notebooks), but now works for many different languages, including R.</p>
+
+<ul>
+<li>Interweave interactive cells of markdown, and code (in different flavours) in order to communicate your findings and methods as well as possible. </li>
+<li>Can publish on <a href="http://nbviewer.jupyter.org/">nbviewer</a></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Open Science Framework &quot;Tour&quot;</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>The <a href="https://osf.io/dashboard">Open Science Framework</a> is a free web app for sharing scientific research. </p>
+
+<p>Researchers use OSF to collaborate, document, archive, share, and register research projects, materials, and data. </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Things to note:</p>
+
+<ul>
+<li>Read preprints</li>
+<li>Create/collborate on projects</li>
+<li>Register methods reports</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Overview'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='IDEs'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Version Control with Git and GitHub'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Git Glossary'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='The basics of the git/github workflow'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='GitHub &quot;Tour&quot;'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Getting started'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Literate Programming - R Notebooks and Jupyter notebooks'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Open Science Framework &quot;Tour&quot;'>
+         9
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../librariesNew/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../librariesNew/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

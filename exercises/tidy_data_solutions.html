@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tidy data solutions</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Tidy data solutions">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/slides" 
+    src="http://slidifylibraries2.googlecode.com/git/inst/libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Tidy data solutions</h1>
+    <h2></h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Introduction</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In this workbook we&#39;re going to be doing some basic data tidying exercises using <em>untidy</em> datasets we&#39;ve created for you. First thing we have to do is import libraries: </p>
+
+<pre><code class="r">library(tidyverse)
+library(FSA) # for headtail function
+</code></pre>
+
+<h2>Global variables</h2>
+
+<p>The untidy data are in the directory, <code>data/untidy</code>, they are: </p>
+
+<pre><code class="r">file_1 &lt;- &#39;dili_table1.csv&#39;
+file_2 &lt;- &#39;dili_table2.csv&#39;
+data_dir &lt;- &#39;../data/untidy/&#39;
+</code></pre>
+
+<h2>The first dataframe</h2>
+
+<p>Let&#39;s first load and take a quick peek at the data:</p>
+
+<pre><code class="r">df1 &lt;- read.csv(paste0(data_dir, file_1))
+str(df1)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    305 obs. of  4 variables:
+##  $ id           : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ agegroup     : Factor w/ 3 levels &quot;18/29&quot;,&quot;30/39&quot;,..: 2 2 2 3 3 1 1 1 3 2 ...
+##  $ Female_weight: num  67 51.6 NA NA 76.2 NA NA NA 56.5 NA ...
+##  $ Male_weight  : num  NA NA 63.1 83 NA 55 57.8 56.4 NA 46.6 ...
+</code></pre>
+
+<pre><code class="r">head(df1)
+</code></pre>
+
+<pre><code>##   id agegroup Female_weight Male_weight
+## 1  1    30/39          67.0          NA
+## 2  2    30/39          51.6          NA
+## 3  3    30/39            NA        63.1
+## 4  4      40+            NA        83.0
+## 5  5      40+          76.2          NA
+## 6  6    18/29            NA        55.0
+</code></pre>
+
+<p><strong>Q</strong>: Look at the tidy data document (it&#39;s listed in the resources folder) - what feature of this dataframe is untidy?</p>
+
+<p><strong>A</strong>: There are multiple variables in the columns <code>Female_weight</code> and <code>Male_weight</code>.  </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: What should the table look like if it were to be tidy?  Write a markdown table with one data line entry (see <a href="https://www.tablesgenerator.com/markdown_tables">here</a> for the syntax and how to automatically generate tables in markdown)</p>
+
+<p><strong>A</strong>: </p>
+
+<table><thead>
+<tr>
+<th align="center">id</th>
+<th align="center">agegroup</th>
+<th align="center">sex</th>
+<th align="center">weight</th>
+</tr>
+</thead><tbody>
+<tr>
+<td align="center">1</td>
+<td align="center">18/29</td>
+<td align="center">F</td>
+<td align="center">67</td>
+</tr>
+</tbody></table>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <article data-timings="">
+    <p>We&#39;re now going to build up, line by line, a method for making this dataframe tidy. To view the results of the manipulations, we&#39;ll use the <code>headtail()</code> function which shows three lines of the top and the bottom of the dataframe.  This way we can see what we&#39;ve done.  Your answers should be code chunks which you should run.  You&#39;ll be using the <code>%&gt;%</code> command chain functions, like this: </p>
+
+<pre><code class="r">df1_tidy &lt;- df1 %&gt;% 
+  function_1(arguments) %&gt;%
+  function_2(arguments)
+
+headtail(df1_tidy)
+</code></pre>
+
+<p><strong>Q</strong>: First we&#39;ll use  <a href="https://dplyr.tidyverse.org/reference/mutate.html"><code>mutate</code></a> to create an <code>F</code> and <code>M</code> columns which tell us whether there is a value in the <code>Female_weight</code> of the <code>Male_weight</code> column.  We&#39;ll use the <code>is.na()</code> and the unary negation operator <code>!</code>: </p>
+
+<p><strong>A</strong>:</p>
+
+<pre><code class="r">df1_tidy &lt;- df1 %&gt;% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight))
+
+headtail(df1_tidy)
+</code></pre>
+
+<pre><code>##       id agegroup Female_weight Male_weight Female  Male
+## 1      1    30/39          67.0          NA   TRUE FALSE
+## 2      2    30/39          51.6          NA   TRUE FALSE
+## 3      3    30/39            NA        63.1  FALSE  TRUE
+## 303 1000    30/39          63.1          NA   TRUE FALSE
+## 304 1049      40+            NA        38.6  FALSE  TRUE
+## 305 1105    30/39            NA        77.0  FALSE  TRUE
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Now we must extract the weight from the columns and put it in a column called <code>weight</code>.  We&#39;ll use <code>mutate</code> again but this time we&#39;ll use the the <code>pmax(?, ??, na.rm=TRUE)</code> function.  You&#39;ll have to work out what goes in the two positions <code>?</code> and <code>??</code></p>
+
+<p><strong>A</strong>: </p>
+
+<pre><code class="r">df1_tidy &lt;- df1 %&gt;% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %&gt;%
+  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T))
+
+headtail(df1_tidy)
+</code></pre>
+
+<pre><code>##       id agegroup Female_weight Male_weight Female  Male weight
+## 1      1    30/39          67.0          NA   TRUE FALSE   67.0
+## 2      2    30/39          51.6          NA   TRUE FALSE   51.6
+## 3      3    30/39            NA        63.1  FALSE  TRUE   63.1
+## 303 1000    30/39          63.1          NA   TRUE FALSE   63.1
+## 304 1049      40+            NA        38.6  FALSE  TRUE   38.6
+## 305 1105    30/39            NA        77.0  FALSE  TRUE   77.0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Now we can drop the <code>Female_weight</code> and <code>Male_weight</code> using <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a>. </p>
+
+<p><strong>A</strong>:</p>
+
+<pre><code class="r">df1_tidy &lt;- df1 %&gt;% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %&gt;%
+  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %&gt;%
+  select(-c(Female_weight, Male_weight))
+
+headtail(df1_tidy)
+</code></pre>
+
+<pre><code>##       id agegroup Female  Male weight
+## 1      1    30/39   TRUE FALSE   67.0
+## 2      2    30/39   TRUE FALSE   51.6
+## 3      3    30/39  FALSE  TRUE   63.1
+## 303 1000    30/39   TRUE FALSE   63.1
+## 304 1049      40+  FALSE  TRUE   38.6
+## 305 1105    30/39  FALSE  TRUE   77.0
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Create a new column called <code>sex</code> using <code>mutate</code> and <a href="https://www.rdocumentation.org/packages/dplyr/versions/0.7.6/topics/if_else"><code>if_else</code></a> to put a label <code>F</code> for female, <code>M</code> for male, or NULL if there&#39;s a missing value. </p>
+
+<p><strong>Hint</strong>: If <code>F</code> and <code>M</code> are both false then <code>weight</code> must be <code>NA</code>; also, if <code>x=NA</code> then <code>x&gt;0</code> is also <code>NA</code>. Use these facts to include <code>weight</code> in your logical statement in <code>if_else</code>. </p>
+
+<p><strong>A</strong>: </p>
+
+<pre><code class="r">df1_tidy &lt;- df1 %&gt;% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %&gt;%
+  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %&gt;%
+  select(-c(Female_weight, Male_weight)) %&gt;%
+  mutate(sex=if_else(condition= Female &amp; weight &gt; 0, &#39;F&#39;, &#39;M&#39;, missing=NULL))
+
+headtail(df1_tidy)
+</code></pre>
+
+<pre><code>##       id agegroup Female  Male weight sex
+## 1      1    30/39   TRUE FALSE   67.0   F
+## 2      2    30/39   TRUE FALSE   51.6   F
+## 3      3    30/39  FALSE  TRUE   63.1   M
+## 303 1000    30/39   TRUE FALSE   63.1   F
+## 304 1049      40+  FALSE  TRUE   38.6   M
+## 305 1105    30/39  FALSE  TRUE   77.0   M
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Use select to drop the <code>Female</code> and <code>Male</code> column:</p>
+
+<p><strong>A</strong>: </p>
+
+<pre><code class="r">df1_tidy &lt;- df1 %&gt;% 
+  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %&gt;%
+  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %&gt;%
+  select(-c(Female_weight, Male_weight)) %&gt;%
+  mutate(sex=if_else(condition= Female &amp; weight &gt; 0, &#39;F&#39;, &#39;M&#39;, missing=NULL)) %&gt;%
+  select(-c(Female, Male))
+
+headtail(df1_tidy)
+</code></pre>
+
+<pre><code>##       id agegroup weight sex
+## 1      1    30/39   67.0   F
+## 2      2    30/39   51.6   F
+## 3      3    30/39   63.1   M
+## 303 1000    30/39   63.1   F
+## 304 1049      40+   38.6   M
+## 305 1105    30/39   77.0   M
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Second dataframe</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Now let&#39;s do the same for the second dataframe</p>
+
+<pre><code class="r">df2 &lt;- read.csv(paste0(data_dir,file_2))
+str(df2)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    305 obs. of  17 variables:
+##  $ id                    : int  1 2 3 4 5 6 7 8 9 10 ...
+##  $ pdili                 : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ t1dili                : int  1 1 0 1 1 1 1 1 1 1 ...
+##  $ rifam_dpw             : num  8.96 11.63 9.51 7.23 7.87 ...
+##  $ ison_dpw              : num  4.48 5.81 4.75 3.61 3.94 ...
+##  $ pyraz_dpw             : num  22.4 29.1 15.8 18.1 26.2 ...
+##  $ moxi_dpw              : num  NA NA NA 4.82 5.25 ...
+##  $ hiv                   : int  0 0 0 0 0 0 1 0 0 0 ...
+##  $ hcv                   : int  0 NA 1 0 0 0 0 0 0 0 ...
+##  $ hbv                   : int  0 NA 0 0 0 0 0 0 0 0 ...
+##  $ alcohol               : int  0 0 NA 1 NA 0 1 NA NA 1 ...
+##  $ liver_disease         : int  0 0 1 0 0 0 0 0 0 0 ...
+##  $ tb_site               : int  2 2 1 2 2 1 2 3 2 1 ...
+##  $ log10base_alt         : num  1.462 0.699 1.146 1.491 1.204 ...
+##  $ log10base_alp         : num  1.74 1.8 2 1.79 1.9 ...
+##  $ log10base_bili        : num  1 0.778 0.699 1.114 0.903 ...
+##  $ time_to_onset_of_pDILI: int  55 8 50 91 14 2 9 11 34 2 ...
+</code></pre>
+
+<pre><code class="r">head(df2)
+</code></pre>
+
+<pre><code>##   id pdili t1dili rifam_dpw ison_dpw pyraz_dpw moxi_dpw hiv hcv hbv
+## 1  1     1      1  8.955224 4.477612  22.38806       NA   0   0   0
+## 2  2     1      1 11.627907 5.813953  29.06977       NA   0  NA  NA
+## 3  3     1      0  9.508717 4.754358  15.84786       NA   0   1   0
+## 4  4     1      1  7.228916 3.614458  18.07229 4.819277   0   0   0
+## 5  5     1      1  7.874016 3.937008  26.24672 5.249344   0   0   0
+## 6  6     1      1 10.909091 5.454546  27.27273       NA   0   0   0
+##   alcohol liver_disease tb_site log10base_alt log10base_alp log10base_bili
+## 1       0             0       2      1.462398      1.740363      1.0000000
+## 2       0             0       2      0.698970      1.799341      0.7781513
+## 3      NA             1       1      1.146128      2.000000      0.6989700
+## 4       1             0       2      1.491362      1.792392      1.1139433
+## 5      NA             0       2      1.204120      1.897627      0.9030900
+## 6       0             0       1      1.724276      1.491362      1.1139433
+##   time_to_onset_of_pDILI
+## 1                     55
+## 2                      8
+## 3                     50
+## 4                     91
+## 5                     14
+## 6                      2
+</code></pre>
+
+<p><strong>Q</strong>: What is untidy about this dataframe (check the meta data at <a href="https://data.bris.ac.uk/datasets/1vdt21e4mhxxd27hso89cqmhhh/README.txt">https://data.bris.ac.uk/datasets/1vdt21e4mhxxd27hso89cqmhhh/README.txt</a>).</p>
+
+<p><strong>A</strong>: <code>pdili</code> and <code>t1dili</code> are both measuring the same thing.  They should be a single column with either <code>none</code>, <code>t1</code>, <code>t2_3</code> (there are three categories of DILI)</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Use mutate to create a new column which indicates <code>none</code> with either 1  or 0.  To do this note that <code>(TRUE)*1</code>/<code>(FALSE)*1 = 1</code>/<code>0</code>   You&#39;ll need to use <a href="https://dplyr.tidyverse.org/reference/select.html"><code>select</code></a> to move the new column to the left of the dataframe so you can see it easily (see the examples at the linked page for how to do this). </p>
+
+<p><strong>A</strong>: </p>
+
+<pre><code class="r">df2_tidy &lt;- df2 %&gt;% 
+  mutate(none=(pdili==0)*1) %&gt;%
+  select(none, everything())
+
+headtail(df2_tidy)
+</code></pre>
+
+<pre><code>##     none   id pdili t1dili rifam_dpw ison_dpw pyraz_dpw moxi_dpw hiv hcv
+## 1      0    1     1      1  8.955224 4.477612  22.38806       NA   0   0
+## 2      0    2     1      1 11.627907 5.813953  29.06977       NA   0  NA
+## 3      0    3     1      0  9.508717 4.754358  15.84786       NA   0   1
+## 303    1 1000     0      0  9.508717 4.754358  23.77179       NA   0   0
+## 304    1 1049     0      0 15.544042 7.772021  25.90674       NA   0   0
+## 305    1 1105     0      0  7.792208 3.896104  19.48052       NA   0   0
+##     hbv alcohol liver_disease tb_site log10base_alt log10base_alp
+## 1     0       0             0       2      1.462398      1.740363
+## 2    NA       0             0       2      0.698970      1.799341
+## 3     0      NA             1       1      1.146128      2.000000
+## 303   0       0             0      NA      1.204120      1.886491
+## 304   0       1             0      NA      0.845098      1.959041
+## 305   0       0             0      NA      1.255273      1.929419
+##     log10base_bili time_to_onset_of_pDILI
+## 1        1.0000000                     55
+## 2        0.7781513                      8
+## 3        0.6989700                     50
+## 303      0.9030900                     NA
+## 304      0.8450980                     NA
+## 305      1.0000000                     NA
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Now do the same for <code>t2_3</code>.  The:  rename <code>t1dili</code> to <code>t1</code> using <code>rename</code> (the documentation is the same as <code>select</code>), and remove the <code>pdili</code> variable. Note, you only need one <code>select</code> statement at the end (i.e. don&#39;t just copy and paste from previous answers)</p>
+
+<p><strong>A</strong>:</p>
+
+<pre><code class="r">df2_tidy &lt;- df2 %&gt;% 
+  mutate(none=(pdili==0)*1) %&gt;%
+  mutate(t2_3=(pdili==1 &amp; t1dili==0)*1) %&gt;%
+  rename(t1=t1dili) %&gt;%
+  select(none, t1, t2_3, everything(), -pdili)
+headtail(df2_tidy)
+</code></pre>
+
+<pre><code>##     none t1 t2_3   id rifam_dpw ison_dpw pyraz_dpw moxi_dpw hiv hcv hbv
+## 1      0  1    0    1  8.955224 4.477612  22.38806       NA   0   0   0
+## 2      0  1    0    2 11.627907 5.813953  29.06977       NA   0  NA  NA
+## 3      0  0    1    3  9.508717 4.754358  15.84786       NA   0   1   0
+## 303    1  0    0 1000  9.508717 4.754358  23.77179       NA   0   0   0
+## 304    1  0    0 1049 15.544042 7.772021  25.90674       NA   0   0   0
+## 305    1  0    0 1105  7.792208 3.896104  19.48052       NA   0   0   0
+##     alcohol liver_disease tb_site log10base_alt log10base_alp
+## 1         0             0       2      1.462398      1.740363
+## 2         0             0       2      0.698970      1.799341
+## 3        NA             1       1      1.146128      2.000000
+## 303       0             0      NA      1.204120      1.886491
+## 304       1             0      NA      0.845098      1.959041
+## 305       0             0      NA      1.255273      1.929419
+##     log10base_bili time_to_onset_of_pDILI
+## 1        1.0000000                     55
+## 2        0.7781513                      8
+## 3        0.6989700                     50
+## 303      0.9030900                     NA
+## 304      0.8450980                     NA
+## 305      1.0000000                     NA
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Use <a href="https://tidyr.tidyverse.org/reference/gather.html"><code>gather</code></a> to create a new variable called <code>dili</code> which has three different <code>level</code>s: <code>none</code>, <code>t1</code>, <code>t2_3</code>.  You&#39;ll need to use <code>select</code> again to move it to the left hand side. </p>
+
+<p><strong>A</strong>: </p>
+
+<pre><code class="r">df2_tidy &lt;- df2 %&gt;% 
+  mutate(none=(pdili==0)) %&gt;%
+  mutate(t2_3=(pdili==1 &amp; t1dili==0)) %&gt;%
+  rename(t1=t1dili) %&gt;%
+  gather(key=&#39;dili&#39;,value=&#39;level&#39;, c(none, t1, t2_3)) %&gt;%
+  select(dili,level, everything(), -pdili)
+
+headtail(df2_tidy)
+</code></pre>
+
+<pre><code>##     dili level   id rifam_dpw ison_dpw pyraz_dpw moxi_dpw hiv hcv hbv
+## 1   none     0    1  8.955224 4.477612  22.38806       NA   0   0   0
+## 2   none     0    2 11.627907 5.813953  29.06977       NA   0  NA  NA
+## 3   none     0    3  9.508717 4.754358  15.84786       NA   0   1   0
+## 913 t2_3     0 1000  9.508717 4.754358  23.77179       NA   0   0   0
+## 914 t2_3     0 1049 15.544042 7.772021  25.90674       NA   0   0   0
+## 915 t2_3     0 1105  7.792208 3.896104  19.48052       NA   0   0   0
+##     alcohol liver_disease tb_site log10base_alt log10base_alp
+## 1         0             0       2      1.462398      1.740363
+## 2         0             0       2      0.698970      1.799341
+## 3        NA             1       1      1.146128      2.000000
+## 913       0             0      NA      1.204120      1.886491
+## 914       1             0      NA      0.845098      1.959041
+## 915       0             0      NA      1.255273      1.929419
+##     log10base_bili time_to_onset_of_pDILI
+## 1        1.0000000                     55
+## 2        0.7781513                      8
+## 3        0.6989700                     50
+## 913      0.9030900                     NA
+## 914      0.8450980                     NA
+## 915      1.0000000                     NA
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: What is dimension of this dataframe?  Look at it (by clikcing on the <code>df2_tidy</code> variable in the environment tab).  Which values of <code>level</code> can be dropped?  Drop them using <a href="https://dplyr.tidyverse.org/reference/filter.html"><code>filter</code></a> and then drop the <code>level</code> column. Arrange the table in asceding values of <code>id</code></p>
+
+<p><strong>A</strong>: </p>
+
+<pre><code class="r">df2_tidy &lt;- df2 %&gt;% 
+  mutate(none=(pdili==0)) %&gt;%
+  mutate(t2_3=(pdili==1 &amp; t1dili==0)) %&gt;%
+  rename(t1=t1dili) %&gt;%
+  gather(key=&#39;dili&#39;,value=&#39;level&#39;, c(none, t1, t2_3)) %&gt;%
+  filter(level==1) %&gt;%
+  select(dili,-level, everything(), -pdili) %&gt;%
+  arrange(id)
+
+headtail(df2_tidy)
+</code></pre>
+
+<pre><code>##     dili   id rifam_dpw ison_dpw pyraz_dpw moxi_dpw hiv hcv hbv alcohol
+## 1     t1    1  8.955224 4.477612  22.38806       NA   0   0   0       0
+## 2     t1    2 11.627907 5.813953  29.06977       NA   0  NA  NA       0
+## 3   t2_3    3  9.508717 4.754358  15.84786       NA   0   1   0      NA
+## 303 none 1000  9.508717 4.754358  23.77179       NA   0   0   0       0
+## 304 none 1049 15.544042 7.772021  25.90674       NA   0   0   0       1
+## 305 none 1105  7.792208 3.896104  19.48052       NA   0   0   0       0
+##     liver_disease tb_site log10base_alt log10base_alp log10base_bili
+## 1               0       2      1.462398      1.740363      1.0000000
+## 2               0       2      0.698970      1.799341      0.7781513
+## 3               1       1      1.146128      2.000000      0.6989700
+## 303             0      NA      1.204120      1.886491      0.9030900
+## 304             0      NA      0.845098      1.959041      0.8450980
+## 305             0      NA      1.255273      1.929419      1.0000000
+##     time_to_onset_of_pDILI level
+## 1                       55     1
+## 2                        8     1
+## 3                       50     1
+## 303                     NA     1
+## 304                     NA     1
+## 305                     NA     1
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Putting it together</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Q</strong>: We have two tidy dataframes.  How many should we have?</p>
+
+<p><strong>A</strong>: Both tables refer to the same observational units so we should combine them! </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Use the <a href="https://dplyr.tidyverse.org/reference/join.html"><code>join</code></a> function to join the two dataframes by matching on the <code>id</code> variable. It shouldn&#39;t matter which type of join you use - <em>however</em> you should use one that will allow you to check whether there have been data lost (or added by not matching properly). Call the new dataframe <code>df_tidy</code></p>
+
+<p><strong>A</strong>: Use the <code>full_join</code> and then check whether there are any extra rows or columns by comparing the <code>dim()</code> on the three dataframes. </p>
+
+<pre><code class="r">df_tidy &lt;- full_join(df1_tidy, df2_tidy, by=&#39;id&#39;)
+headtail(df_tidy)
+</code></pre>
+
+<pre><code>##       id agegroup weight sex dili rifam_dpw ison_dpw pyraz_dpw moxi_dpw
+## 1      1    30/39   67.0   F   t1  8.955224 4.477612  22.38806       NA
+## 2      2    30/39   51.6   F   t1 11.627907 5.813953  29.06977       NA
+## 3      3    30/39   63.1   M t2_3  9.508717 4.754358  15.84786       NA
+## 303 1000    30/39   63.1   F none  9.508717 4.754358  23.77179       NA
+## 304 1049      40+   38.6   M none 15.544042 7.772021  25.90674       NA
+## 305 1105    30/39   77.0   M none  7.792208 3.896104  19.48052       NA
+##     hiv hcv hbv alcohol liver_disease tb_site log10base_alt log10base_alp
+## 1     0   0   0       0             0       2      1.462398      1.740363
+## 2     0  NA  NA       0             0       2      0.698970      1.799341
+## 3     0   1   0      NA             1       1      1.146128      2.000000
+## 303   0   0   0       0             0      NA      1.204120      1.886491
+## 304   0   0   0       1             0      NA      0.845098      1.959041
+## 305   0   0   0       0             0      NA      1.255273      1.929419
+##     log10base_bili time_to_onset_of_pDILI level
+## 1        1.0000000                     55     1
+## 2        0.7781513                      8     1
+## 3        0.6989700                     50     1
+## 303      0.9030900                     NA     1
+## 304      0.8450980                     NA     1
+## 305      1.0000000                     NA     1
+</code></pre>
+
+<pre><code class="r">dim(df1_tidy)
+</code></pre>
+
+<pre><code>## [1] 305   4
+</code></pre>
+
+<pre><code class="r">dim(df2_tidy)
+</code></pre>
+
+<pre><code>## [1] 305  17
+</code></pre>
+
+<pre><code class="r">dim(df_tidy)
+</code></pre>
+
+<pre><code>## [1] 305  20
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <article data-timings="">
+    <p><strong>Q</strong>: Now save this dataframe as a csv (<code>write_csv</code>) in the <code>data/processed</code> directory as <code>dili-tidy.csv</code> and commit these changes to the git repo push to the <code>participant</code> branch of your Github. 
+<strong>A</strong>: </p>
+
+<pre><code class="r">write.csv(df_tidy, path=&#39;../data/processed/dili-tidy.csv&#39;)
+</code></pre>
+
+<pre><code>## Error in write.table(df_tidy, path = &quot;../data/processed/dili-tidy.csv&quot;, : unused argument (path = &quot;../data/processed/dili-tidy.csv&quot;)
+</code></pre>
+
+<p>In the home directory: </p>
+
+<pre><code>$ git add exercises/tidy_data.Rmd
+$ git commit -m &quot;Finished tidy data problems&quot;
+$ git push origin participant
+</code></pre>
+
+<p>Well done! </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Introduction'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='NA'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='NA'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='NA'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='NA'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='NA'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='NA'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Second dataframe'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='NA'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='NA'>
+         10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='NA'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='NA'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Putting it together'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='NA'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='NA'>
+         15
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="http://slidifylibraries2.googlecode.com/git/inst/libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
