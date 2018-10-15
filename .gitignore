@@ -41,7 +41,10 @@ rsconnect/
 *.pdf
 *.png
 !presentations/**/*.png
+<<<<<<< HEAD
 !*.html
+=======
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
 *.pptx
 *.xls*
 *.jpeg

@@ -67,7 +67,11 @@ There will also be a brief introduction to:</li>
     <p><strong>Open a new RStudio window</strong> 
 Make sure you have the Console, Files, and Source windows visible.</p>
 
+<<<<<<< HEAD
 <div style='float:left;width:48%;'>
+=======
+<div style='float:left;width:48%;' class='centered'>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   <p><strong>IDEs are Integrated Development Environments</strong> - they let you do development in one place. </p>
 
 <p>We&#39;re using <a href="https://www.rstudio.com/">R Studio</a> today, but I personally rate <a href="https://www.sublimetext.com/">Sublime Text</a> as my favourite IDE for lots of different languages (especially Python).There are lots of others!</p>
@@ -94,7 +98,11 @@ Make sure you have the Console, Files, and Source windows visible.</p>
   </hgroup>
   <article data-timings="">
     
+<<<<<<< HEAD
 <div style='float:left;width:48%;'>
+=======
+<div style='float:left;width:48%;' class='centered'>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   <p><strong>Git</strong> is a version control system that&#39;s used by ~70% of developers across all programming languages.</p>
 
 <p><strong>GitHub</strong> is a platform to which hosts code for collaboration.</p>
@@ -118,7 +126,11 @@ Make sure you have the Console, Files, and Source windows visible.</p>
   </hgroup>
   <article data-timings="">
     
+<<<<<<< HEAD
 <div style='float:left;width:48%;'>
+=======
+<div style='float:left;width:48%;' class='centered'>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   <p><strong>repository</strong>: A repository represents a project - it&#39;s a directory where changes will be tracked. A repository is where your project is stored.</p>
 
 <p><strong>branches</strong>: Branches are different (parallel) versions of the repository. You should make a new branch for each different feature in your code.</p>
@@ -142,7 +154,11 @@ Make sure you have the Console, Files, and Source windows visible.</p>
   </hgroup>
   <article data-timings="">
     
+<<<<<<< HEAD
 <div style='float:left;width:48%;'>
+=======
+<div style='float:left;width:48%;' class='centered'>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   <ul>
 <li><font size = 3>The <strong>master</strong> branch should always be in good working order.</font></li>
 <li><font size = 3>If you want to add new functionality/work on the code, create and move to (<strong>checkout</strong>) a development <strong>branch</strong>.</font></li>
@@ -167,7 +183,11 @@ Make sure you have the Console, Files, and Source windows visible.</p>
   </hgroup>
   <article data-timings="">
     
+<<<<<<< HEAD
 <div style='float:left;width:48%;'>
+=======
+<div style='float:left;width:48%;' class='centered'>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   <p>Let&#39;s check out the GitHub website where we have <a href="https://github.com/RobertArbon/analysis_best_practice">the repository</a> that me and Rob used to collaborate on this workshop. Here you can find all the information for this workshop! </p>
 
 </div>
@@ -195,7 +215,11 @@ Make sure you have the Console, Files, and Source windows visible.</p>
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
+<<<<<<< HEAD
     <h2>Getting started</h2>
+=======
+    <h2>Getting started - Fork the &#39;analysis_best_practice&#39; repository</h2>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   </hgroup>
   <article data-timings="">
     <h3>Forking the repository and finding the rest of the instructions.</h3>
@@ -205,6 +229,7 @@ Make sure you have the Console, Files, and Source windows visible.</p>
 <li>The instructions are in &quot;exercises/version_control.Rmd&quot;</li>
 </ul>
 
+<<<<<<< HEAD
 <!-- ### Making a new remote branch -->
 
 <!-- * Now go to the forked copy of the repository [https://github.com/YOURUSERNAME/analysis_best_practice]. -->
@@ -290,6 +315,89 @@ Make sure you have the Console, Files, and Source windows visible.</p>
 <!-- ### The Git Parable: -->
 
 <!-- If you have time you can read this fun metaphor/story about Git: [the Git Parable](http://tom.preston-werner.com/2009/05/19/the-git-parable.html) -->
+=======
+<h3>Making a new remote branch</h3>
+
+<ul>
+<li>Now go to the forked copy of the repository [<a href="https://github.com/YOURUSERNAME/analysis_best_practice">https://github.com/YOURUSERNAME/analysis_best_practice</a>].</li>
+<li>On GitHub, create a new branch called &#39;workshop-practice&#39; in your fork of the repository.</li>
+<li>Create a new first.md file inside &#39;workshop-practice&#39; and edit it (from GitHub).</li>
+</ul>
+
+<h3>Cloning the forked repository</h3>
+
+<ul>
+<li>Open a new RStudio window</li>
+<li>File&gt;New Project...&gt;Version Control&gt;Git</li>
+<li>Enter the <a href="mailto:git@github.com">git@github.com</a>:YOURUSERNAME/analysis_best_practice.git (which you can find on your forked github repository where the green clone button is) and choose where to store this information. RStudio will always clone the master branch.</li>
+</ul>
+
+<h3>Working on your local copy of the repository - creating a new local branch:</h3>
+
+<ul>
+<li>Look inside the files area in RStudio (notice that your first.md file is not yet there)</li>
+<li>Choose the new workshop-practice branch from the Git window inside RStudio (on the right hand side it should say master with a down arrow). This creates a new (local) copy of the workshop-practice branch which &quot;tracks&quot; the online version of that branch (allows you to push changes to it and pull changes from it). 
+Congratulations, you&#39;re set up on the repo and ready to start making changes!</li>
+</ul>
+
+<h3>Your first commit!</h3>
+
+<ul>
+<li>Notice that the new first.md file has appeared in your directory.</li>
+<li>On this occasion you are the only one using the repository, so there won&#39;t be any remote changes to <strong>pull</strong> (there won&#39;t be any changes online that aren&#39;t in your local copy), but it&#39;s a really important habit to remember to pull before making any new changes. In Rstudio, you can pull from the tracked branch by clicking the blue down arrow in the git tab.</li>
+<li>Open the first.md file in RStudio.</li>
+<li>Make some changes to it and save it (try adding some lines and deleting others)</li>
+<li>In RStudio, go to Tools&gt;Version Control&gt;Diff (or click Diff in the Git window), you will be able to see the <strong>diff</strong>erences between the local version of the file and the remote version, i.e. you&#39;ll be able to see the changes you have made (green lines have been added, red lines deleted).</li>
+<li>Look inside the Git window inside RStudio. There will be an unchecked box next to the file and it&#39;s status will be &#39;M&#39; for modified. </li>
+<li>Tick the &#39;Staged&#39; checkbox, when you want to <strong>add</strong> or <strong>stage</strong> your changes. </li>
+<li>When you are ready, you can <strong>commit</strong> these staged changes by clicking &#39;Commit&#39;. This will require you to write a descriptive message about the changes you have made. You can use markdown (including the same emojis from HackMD for these commit messages)</li>
+<li>You can then <strong>push</strong> your changes to your forked copy of the repository (the green upwards arrow in the Git window of Rstudio).</li>
+<li>Go to GitHub and check that you see your changes there.</li>
+</ul>
+
+<h3>Pull from the repository</h3>
+
+<ul>
+<li>To simulate working with someone else, go to GitHub and create a new file called &#39;second.md&#39;.</li>
+<li>Go back to RStudio and notice that you do not yet have a copy of this file.</li>
+<li>Pull the change from the repository to RStudio.</li>
+</ul>
+
+<h3>Your first pull request.</h3>
+
+<p>Think about a pull request in terms of you are requesting that the remote (online) repository pulls your changes.</p>
+
+<ul>
+<li>Create a new local file inside your repository &#39;third.md&#39; and make some changes to it. Notice how this shows up in the git window. These orange question marks mean the file is untracked. </li>
+<li>Go through the cycle of pulling changes from the remote repository, changing your three .md files, staging their changes, committing and pushing those changes a few more times until you feel you have the hang of it.</li>
+<li>Once you&#39;re happy, go back to your GitHub page, go to the forked repository, go to the Pull requests tab and click &quot;New pull request&quot;.</li>
+<li>Choose the workshop-practice branch to request to merge it back into the master branch. You can make some comments in the pull request about why you are requesting to be merged back in.</li>
+<li>You can then choose to review and accept the pull request by clicking the &#39;merge pull request&#39; button, you may also leave some comments about how you feel about (emojis encouraged, :rage5: or :100:?)</li>
+</ul>
+
+<h3>Take this opportunity to investigate the history/tree of your repository</h3>
+
+<ul>
+<li>In RStudio, go to Tools&gt;Version Control&gt;History (or click the clock face in the git window)</li>
+<li>Invetigate your repository from GitHub, look at your commit logs, etc.</li>
+</ul>
+
+<h3>When you are finished with your development branch, you can delete it:</h3>
+
+<ul>
+<li>Go to GitHub&gt;Your forked repository&gt;branches and click on the bin icon next to the branch you want to delete.</li>
+</ul>
+
+<h3>Create a new branch for a new feature</h3>
+
+<ul>
+<li>Do this in the same way as before, by making a new branch in GitHub, then pulling in RStudio to get the new branch information, then changing to the new branch in RStudio (this will only work if your current branch is up to date).</li>
+</ul>
+
+<h3>The Git Parable:</h3>
+
+<p>If you have time you can read this fun metaphor/story about Git: <a href="http://tom.preston-werner.com/2009/05/19/the-git-parable.html">the Git Parable</a></p>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
 
   </article>
   <!-- Presenter Notes -->
@@ -302,7 +410,11 @@ Make sure you have the Console, Files, and Source windows visible.</p>
   <article data-timings="">
     <p>Literate programming is the idea of interleaving easy to read information about what the code is doing with the code. Can embed visualisations, apps, interactive graphs, 3D models, etc.</p>
 
+<<<<<<< HEAD
 <div style='float:left;width:48%;'>
+=======
+<div style='float:left;width:48%;' class='centered'>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   <p><strong>RMarkdown Notebooks</strong>:</p>
 
 <ul>
@@ -332,7 +444,11 @@ Developed for Python (IPython Notebooks), but now works for many different langu
   </hgroup>
   <article data-timings="">
     
+<<<<<<< HEAD
 <div style='float:left;width:48%;'>
+=======
+<div style='float:left;width:48%;' class='centered'>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   <p>The <a href="https://osf.io/dashboard">Open Science Framework</a> is a free web app for sharing scientific research. </p>
 
 <p>Researchers use OSF to collaborate, document, archive, share, and register research projects, materials, and data. </p>
@@ -394,7 +510,11 @@ Developed for Python (IPython Notebooks), but now works for many different langu
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
+<<<<<<< HEAD
         data-slide=7 title='Getting started'>
+=======
+        data-slide=7 title='Getting started - Fork the &#39;analysis_best_practice&#39; repository'>
+>>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
          7
       </a>
     </li>
