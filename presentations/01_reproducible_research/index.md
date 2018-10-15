@@ -377,7 +377,6 @@ Use version control to track changes to your notebook.
 
 *** =right
 Using the following code snippet R as a starting point, create the __Silver__ solution in RStudio, using an R Notebook.
-
 ```r
 n_repeats = 100
 n_rolls = 20

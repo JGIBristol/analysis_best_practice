@@ -78,7 +78,6 @@ include_graphics('fig/natalie.jpg')
 - Phd in computational biology
 - Data science specialist at Jean Golding Institute
 
-
 *** =right
 ### Robert Arbon
 ```{r, echo=F, fig.align='left'}

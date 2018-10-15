@@ -61,7 +61,6 @@ widgets: mathjax
 - Phd in computational biology
 - Data science specialist at Jean Golding Institute
 
-
 *** =right
 ### Robert Arbon
 <div class="rimage left"><img src="fig/robert.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div>
