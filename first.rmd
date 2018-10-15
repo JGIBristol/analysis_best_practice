@@ -1,3 +1,8 @@
 # Test using R markdown
 
 Here's hoping this works, so can add R code to this document
+
+```{r}
+## Now this uses comments, right?
+```
+
