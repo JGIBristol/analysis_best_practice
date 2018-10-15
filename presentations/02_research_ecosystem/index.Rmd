@@ -1,0 +1,81 @@
+---
+title: "Data analysis best practice"
+subtitle: "Research Ecosystem"
+author: "Natalie Thurlby"
+highlighter: highlight.js
+hitheme: tomorrow
+job: Data scientist, Jean Golding Institute
+# logo: jgi-logo.jpg
+mode: selfcontained
+framework: io2012
+url:
+  assets: ../assets
+  lib: ../librariesNew
+widgets: mathjax
+---
+
+```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
+# make this an external chunk that can be included in any file
+library(knitr)
+options(width = 100)
+opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
+
+options(xtable.type = 'html')
+# knit_hooks$set(inline = function(x) {
+#   if(is.numeric(x)) {
+#     round(x, getOption('digits'))
+#   } else {
+#     paste(as.character(x), collapse = ', ')
+#   }
+# })
+knit_hooks$set(plot = knitr:::hook_plot_html)
+```
+
+## Overview
+
+First explain:
+* IDEs
+* Version control (git)
+* Github
+* Literate programming
+* Open Science Framework
+
+Then practice!
+---  &twocol
+
+## IDEs
+
+*** =left
+__IDEs are Integrated Development Environments__ - they let you do development in one place. 
+
+We're using ![R Studio]() today, but really rate ![SublimeTest](SublimeText).
+
+*** =right
+__IDEs usually have:__
+* Editor
+* Compiler or interpreter
+* Debugger
+* Sometimes extra stuff
+
+---
+## Version Control with Git
+---
+## The Git Parable
+A condensed excerpt from [the Git Parable]
+---
+## GitHub
+---
+## Markdown 
+---
+## GitHub Excercise
+---
+## Making RStudio play with GitHub
+---
+## Literate programming
+---
+## RNotebooks
+---
+## Open Science Framework
+---
+The ![Open Science Framework](https://osf.io/dashboard) is a 
+
