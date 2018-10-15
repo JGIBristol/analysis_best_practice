@@ -38,18 +38,13 @@ head(df1)
 
 **Q**: Look at the tidy data document (it's listed in the resources folder) - what feature of this dataframe is untidy?
 
-**A**: There are multiple variables in the columns `Female_weight` and `Male_weight`.  
-
+**A**: 
 ---
 
 **Q**: What should the table look like if it were to be tidy?  Write a markdown table with one data line entry (see [here](https://www.tablesgenerator.com/markdown_tables) for the syntax and how to automatically generate tables in markdown)
 
 
 **A**: 
-
-|id | agegroup | sex |weight |
-|:-:|:-:       |:-:  |:-:   |
-| 1 | 18/29    |  F  |  67   |
 
 ---
 
@@ -68,12 +63,6 @@ headtail(df1_tidy)
 
 **A**:
 
-```{r}
-df1_tidy <- df1 %>% 
-  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight))
-
-headtail(df1_tidy)
-```
 
 ---
 
@@ -81,13 +70,6 @@ headtail(df1_tidy)
 
 **A**: 
 
-```{r}
-df1_tidy <- df1 %>% 
-  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %>%
-  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T))
-
-headtail(df1_tidy)
-```
 
 ---
 
@@ -95,14 +77,6 @@ headtail(df1_tidy)
 
 **A**:
 
-```{r}
-df1_tidy <- df1 %>% 
-  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %>%
-  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %>%
-  select(-c(Female_weight, Male_weight))
-
-headtail(df1_tidy)
-```
 
 ---
 
@@ -112,15 +86,6 @@ headtail(df1_tidy)
 
 **A**: 
 
-```{r}
-df1_tidy <- df1 %>% 
-  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %>%
-  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %>%
-  select(-c(Female_weight, Male_weight)) %>%
-  mutate(sex=if_else(condition= Female & weight > 0, 'F', 'M', missing=NULL))
-
-headtail(df1_tidy)
-```
 
 ---
 
@@ -128,16 +93,6 @@ headtail(df1_tidy)
 
 **A**: 
 
-```{r}
-df1_tidy <- df1 %>% 
-  mutate(Female=!is.na(Female_weight), Male=!is.na(Male_weight)) %>%
-  mutate(weight=pmax(Female_weight, Male_weight, na.rm=T)) %>%
-  select(-c(Female_weight, Male_weight)) %>%
-  mutate(sex=if_else(condition= Female & weight > 0, 'F', 'M', missing=NULL)) %>%
-  select(-c(Female, Male))
-
-headtail(df1_tidy)
-```
 
 ---
 
@@ -153,7 +108,7 @@ head(df2)
 
 **Q**: What is untidy about this dataframe (check the meta data at https://data.bris.ac.uk/datasets/1vdt21e4mhxxd27hso89cqmhhh/README.txt).
 
-**A**: `pdili` and `t1dili` are both measuring the same thing.  They should be a single column with either `none`, `t1`, `t2_3` (there are three categories of DILI)
+**A**: 
 
 ---
 
@@ -161,14 +116,6 @@ head(df2)
 
 **A**: 
 
-```{r}
-
-df2_tidy <- df2 %>% 
-  mutate(none=(pdili==0)*1) %>%
-  select(none, everything())
-
-headtail(df2_tidy)
-```
 
 ---
 
@@ -176,48 +123,19 @@ headtail(df2_tidy)
 
 **A**:
 
-```{r}
-df2_tidy <- df2 %>% 
-  mutate(none=(pdili==0)*1) %>%
-  mutate(t2_3=(pdili==1 & t1dili==0)*1) %>%
-  rename(t1=t1dili) %>%
-  select(none, t1, t2_3, everything(), -pdili)
-headtail(df2_tidy)
-```
-
 ---
 
 **Q**: Use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to create a new variable called `dili` which has three different `level`s: `none`, `t1`, `t2_3`.  You'll need to use `select` again to move it to the left hand side. 
 
 **A**: 
-```{r}
-df2_tidy <- df2 %>% 
-  mutate(none=(pdili==0)*1) %>%
-  mutate(t2_3=(pdili==1 & t1dili==0)*1) %>%
-  rename(t1=t1dili) %>%
-  gather(key='dili',value='level', c(none, t1, t2_3)) %>%
-  select(dili,level, everything(), -pdili)
-  
-headtail(df2_tidy)
-```
+
 
 ---
 
 **Q**: What is dimension of this dataframe?  Look at it (by clikcing on the `df2_tidy` variable in the environment tab).  Which values of `level` can be dropped?  Drop them using [`filter`](https://dplyr.tidyverse.org/reference/filter.html) and then drop the `level` column. Arrange the table in asceding values of `id`
 
 **A**: 
-```{r}
-df2_tidy <- df2 %>% 
-  mutate(none=(pdili==0)*1) %>%
-  mutate(t2_3=(pdili==1 & t1dili==0)*1) %>%
-  rename(t1=t1dili) %>%
-  gather(key='dili',value='level', c(none, t1, t2_3)) %>%
-  filter(level==1) %>%
-  select(dili, everything(), -c(level, pdili)) %>%
-  arrange(id)
- 
-headtail(df2_tidy)
-```
+
 
 ---
 
@@ -226,7 +144,7 @@ headtail(df2_tidy)
 
 **Q**: We have two tidy dataframes.  How many should we have?
 
-**A**: Both tables refer to the same observational units so we should combine them! 
+**A**: 
 
 ---
 
@@ -234,13 +152,6 @@ headtail(df2_tidy)
 
 **A**: Use the `full_join` and then check whether there are any extra rows or columns by comparing the `dim()` on the three dataframes. 
 
-```{r}
-df_tidy <- full_join(df1_tidy, df2_tidy, by='id')
-headtail(df_tidy)
-dim(df1_tidy)
-dim(df2_tidy)
-dim(df_tidy)
-```
 
 ---
 
@@ -249,11 +160,6 @@ dim(df_tidy)
 
 **A**: 
 
-```{r}
-# the file path is relative to the working directory which isn't necessarily where this notebook is located!
-# Usually best to put full path!
-write.csv(df_tidy, file='~/Google Drive/Courses/Analysis-best-practice/data/processed/dili-tidy.csv', row.names=F)
-```
 
 Now knit this into the `html` notebook and then: 
 In the home directory: 
