@@ -14,22 +14,7 @@ url:
 widgets: mathjax
 ---
 
-```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
-# make this an external chunk that can be included in any file
-library(knitr)
-options(width = 100)
-opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
-options(xtable.type = 'html')
-# knit_hooks$set(inline = function(x) {
-#   if(is.numeric(x)) {
-#     round(x, getOption('digits'))
-#   } else {
-#     paste(as.character(x), collapse = ', ')
-#   }
-# })
-knit_hooks$set(plot = knitr:::hook_plot_html)
-```
 
 ## Overview
 
@@ -49,7 +34,7 @@ Then we'll practice using them.
 *** =left
 __IDEs are Integrated Development Environments__ - they let you do development in one place. 
 
-We're using ![R Studio](https://www.rstudio.com/) today, but I really rate [Sublime Text](https://www.sublimetext.com/).
+We're using ![R Studio]() today, but I really rate ![SublimeTest](SublimeText).
 
 *** =right
 __IDEs usually have:__
@@ -68,16 +53,14 @@ __GitHub__ is a platform to which hosts code for collaboration.
 
 *** =right
 They help you avoid this sort of thing and they also help you keep track of the changes that you've been making to your code and help you collaborate with others:
-```{r, echo=F, out.width='50%'}
-include_graphics('fig/final_version.jpg')
-```
+<div class="rimage center"><img src="fig/final_version.jpg" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="50%" class="plot" /></div>
 ---
 
 ## Git Glossary
 
 __repository__: A repository represents a project - it's a directory where changes will be tracked. A repository is where your project is stored.
 __branches__: Branches are different (parallel) versions of the repository. You should make a new branch for each different feature in your code.
-__clone__: A clone is a local copy of the repository which you can make changes to and later be synced into the "remote" (online) version.
+__clone__: A clone is a local copy of the repository which you can make changes to and later be synced into the "remote" (online) version. .
 
 ---&twocol
 
@@ -91,9 +74,8 @@ I'll be your guide!
 *** =right
 Things to note:
 * The README.md
-* How to navigate
-* How to clone an existing repository
-* How to make a new repository
+* How to look around
+* How to clone
 
 ---
 ## Markdown
@@ -105,12 +87,9 @@ It's very easy to make some words **bold** and other words *italic* with Markdow
 
 It's also very easy to  [link to Google!](http://google.com).
 
-It's also how this presentation was formatted!
+This presentation was also written in Markdown.
 
 ```
-GitHub likes Markdown. It will:
-* automatically render READMEs written in Markdown
-* render commit and pull request messages written in Markdown.
 
 ---
 
