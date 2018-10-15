@@ -34,7 +34,7 @@ Then we'll practice using them.
 *** =left
 __IDEs are Integrated Development Environments__ - they let you do development in one place. 
 
-We're using ![R Studio]() today, but I really rate ![SublimeTest](SublimeText).
+We're using ![R Studio](https://www.rstudio.com/) today, but I really rate [Sublime Text](https://www.sublimetext.com/).
 
 *** =right
 __IDEs usually have:__
@@ -60,22 +60,29 @@ They help you avoid this sort of thing and they also help you keep track of the 
 
 __repository__: A repository represents a project - it's a directory where changes will be tracked. A repository is where your project is stored.
 __branches__: Branches are different (parallel) versions of the repository. You should make a new branch for each different feature in your code.
-__clone__: A clone is a local copy of the repository which you can make changes to and later be synced into the "remote" (online) version. .
+__clone__: A clone is a local copy of the repository which you can make changes to and later be synced into the "remote" (online) version.
 
 ---&twocol
 
 ## GitHub "Tour"
 
 *** =left
-Let's check out [the repository](https://github.com/RobertArbon/analysis_best_practice) that me and Rob used to work on this workshop. 
-
-I'll be your guide!
+Let's check out the GitHub website where we have [the repository](https://github.com/RobertArbon/analysis_best_practice) that me and Rob used to collaborate on this workshop. 
 
 *** =right
 Things to note:
 * The README.md
-* How to look around
-* How to clone
+* How to navigate
+* How to clone an existing repository
+* How to make a new repository
+
+--- 
+
+## Clone the 'analysis_best_practice' repository.
+* Go to [https://github.com/RobertArbon/analysis_best_practice]
+* Open RStudio (a new window)
+* File>New Project...>Version Control>Git
+
 
 ---
 ## Markdown
@@ -87,9 +94,12 @@ It's very easy to make some words **bold** and other words *italic* with Markdow
 
 It's also very easy to  [link to Google!](http://google.com).
 
-This presentation was also written in Markdown.
+It's also how this presentation was formatted!
 
 ```
+GitHub likes Markdown. It will:
+* automatically render READMEs written in Markdown
+* render commit and pull request messages written in Markdown.
 
 ---
 
