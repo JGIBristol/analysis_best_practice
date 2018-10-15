@@ -172,7 +172,27 @@ __Solve by:__
 - Writing scripts
 - Writing scripts in non-proprietry software (i.e. R and python beat STATA and SPSS)
 - Writing scripts that are easy to understand: comment your code or embed it in "notebooks" (eg. [Jupyter](http://jupyter.org/) or [R notebooks](https://rmarkdown.rstudio.com/r_notebooks) and name your variables sensibly. 
+- Documenting your scripts (README files, comments, documented functions)
 
+---
+
+## Markdown
+
+Markdown is a intuitive language which can easily be converted to html. It's a really simple way to style text on for websites. It's a good language to write your README files in (as well as commits/pull requests on GitHub) and it's also how to write R Notebooks.
+
+```markdown
+It's very easy to make some words **bold** and other words *italic* with Markdown. 
+
+It's also very easy to  [link to Google!](http://google.com).
+
+It's also how this presentation was formatted!
+
+```
+
+Try it out!
+* Go to [goo.gl/Kx1ys2] (a document I created at hackMD.io - like google docs for Markdown)
+* Sign up/log in
+* Spend 5-10 minutes playing with Markdown.
 
 ---&twocol
 
@@ -192,7 +212,6 @@ __Avoid because:__
 
 __Solve by:__
 - <font color='red'>Using version control (i.e. Git)</font>
-- Make use of literate programming principles (easy with notebooks!)
 
 ---&twocol
 ## P-values
@@ -254,7 +273,7 @@ Instead of trying the same hypothesis with 20 different methodologies, you can g
 
 ---
 
-## HARKing in science
+## HARKing example
 
 <div class="rimage center"><img src="fig/HARKing_real.jpg" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="80%" class="plot" /></div>
 
@@ -316,6 +335,7 @@ They help other researchers see that your work is reproducible.
 <div class="rimage center"><img src="fig/open-science-badges.jpg" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="100%" class="plot" /></div>
 
 ---&twocol
+
 ## Summary 
 
 *** =left
@@ -325,7 +345,6 @@ __Reproducible research is important because:__
 * Its good for your reputation (by avoiding disaster, improving your motivation to do good work, and through open science badges, etc).
 
 *** =right
-
 __Main causes of poor reproducibility:__
 * (1) Poor data storage
 * (2) Poor analysis pipeline
@@ -335,10 +354,49 @@ __Main causes of poor reproducibility:__
 (1)-(3) are just a matter of becoming familiar with the tools we're going to be using today. If you have any more questions about (4), you can email us <ask-jgi@bristol.ac.uk>
 
 ---
+## Practice - making our dice experiment more reproducible.
+
+* Get into pairs/small groups and chat for 2-3 minutes about how the dice experiment we did could be more reproducible, using some of the things we discussed.
+
+---&twocol
+
+## Practice - making our dice experiment more reproducible.
+
+*** =left
+__Bronze:__
+Write a script to simulate rolling the dice.
+
+__Silver:__
+Write an R Notebook to simulate rolling the dice, which will also make it easy to explain how it works.
+
+__Gold:__ 
+Publish the Notebook online so that it can be useful to other people.
+
+__Platinum:__
+Use version control to track changes to your notebook.
+
+*** =right
+Using the following code snippet R as a starting point, create the __Silver__ solution in RStudio, using an R Notebook.
+
+```r
+n_repeats = 100
+n_rolls = 20
+false_pos = 0
+for (i in 1:n_repeats){
+  rolls = sample(1:20,n_rolls,replace=T)
+  if(sum(rolls==1)>0){
+    false_pos=false_pos+1
+  }
+}
+pct_false_pos = false_pos/n_repeats
+print(pct_false_pos)
+```
+
+---
 
 ## Take home message:
 
 If you don't do anything else, these three things will massively improve the reproducibility of your work:
 * <font size = 20>Write some scripts</font>
 * <font size = 20>Share your data and code</font>
-* <font size = 20>Use version control!!</font>
+* <font size = 20>Use version control</font> (after coffee)
