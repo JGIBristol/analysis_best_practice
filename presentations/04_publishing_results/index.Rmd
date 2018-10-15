@@ -121,3 +121,8 @@ include_graphics('fig/preprints.jpg_large')
 ```
 
 ---
+
+## Github and Github pages
+
+* You can view ordinary markdown on Github repos
+* You can also create static web pages using `Jekyll` and Github. 

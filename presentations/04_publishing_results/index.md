@@ -102,3 +102,8 @@ output: md_document
 <div class="rimage center"><img src="fig/preprints.jpg_large" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="70%" class="plot" /></div>
 
 ---
+
+## Github and Github pages
+
+* You can view ordinary markdown on Github repos
+* You can also create static web pages using `Jekyll` and Github. 
