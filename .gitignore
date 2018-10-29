@@ -53,6 +53,9 @@ rsconnect/
 !presentations/librariesNew/*.png
 .Rproj.user
 *.Rproj
+exercises/**/*html
+notebooks/**/*html
+
 
 # mac rubbish
 .DS_Store
