@@ -1,6 +1,10 @@
 ---
 title: "Tidy data solutions"
-output: html_notebook
+output:
+  word_document: default
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 
@@ -38,13 +42,19 @@ head(df1)
 
 **Q**: Look at the tidy data document (it's listed in the resources folder) - what feature of this dataframe is untidy?
 
-**A**: 
+**A**: Two varibles in a column
 ---
 
 **Q**: What should the table look like if it were to be tidy?  Write a markdown table with one data line entry (see [here](https://www.tablesgenerator.com/markdown_tables) for the syntax and how to automatically generate tables in markdown)
 
 
 **A**: 
+
+| id |  agegroup |  sex | weight  |
+|:-:|---|---|---|
+| 1  |  30/39 | F  |  67 |
+
+
 
 ---
 
