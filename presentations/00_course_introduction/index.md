@@ -1,6 +1,6 @@
 ---
 title: "Data analysis best practice"
-subtitle: "Introduction"
+subtitle: "Course Introduction"
 author: "Robert Arbon"
 highlighter: highlight.js
 hitheme: tomorrow
@@ -10,45 +10,47 @@ mode: selfcontained
 framework: io2012
 url:
   assets: ../assets
-  lib: ../librariesNew
+  lib: ../libraries
 widgets: mathjax
----
+--- &twocol
 
 
 
 
 ## Jean Golding Institute
 
-* Jean Golding Institute for data intensive research
-* We support interdisciplinary research across the university:
-  * Build new multidisciplinary communities
-  * Catalyse new ideas
-  * Procure seed corn funding
-  * Deliver impact and engagement
-  * Promote and raise the profile of the University
-  * Enrich the undergraduate and postgraduate student experience
+*** =left
 
----
+* Jean Golding Institute for data intensive research 
+* http://www.bristol.ac.uk/golding/ 
+* We support interdisciplinary research across the university. 
+* This year: 
+  * Data science competition
+  * Reproducibility experiment and data visualisation competition
+  * *Data week* - a week of training in various 
 
-## Jean Golding
+*** =right
 
-* Professor Jean Golding OBE is an epidemiologist at Bristol
-* She set up the ALSPAC (Child of the 90s) study
-* One of 25 women selected as part of the [*put her forward*](http://putherforward.com) campaign. 
-  * The statue will be moved to Royal Fort House soon. 
+- **Ask-JGI**: `ask-jgi@bristol.ac.uk`
+- For researchers and staff, offering support, signposting and advice for all your data intensive research queries.
+  
+<div class="rimage center"><img src="fig/concepts-with-hyphens.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="70%" class="plot" /></div>
+
 
 --- &twocol
 
-## ALSPAC achievements 
 
-   
-*** =left
-    
-![](fig/backs.png)
-    
+## Jean Golding 
+
+*** =left 
+* Professor Jean Golding OBE is an epidemiologist at Bristol
+* She set up the ALSPAC (*Child of the 90s*) study
+* Led to many important discoveries in child development and health  
+
+<div class="rimage center"><img src="fig/backs.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="75%" class="plot" /></div>
+
 *** =right
-
-![](fig/asthma.png)
+<div class="rimage center"><img src="fig/jean.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="80%" class="plot" /></div>
 
 --- &twocol
 
@@ -56,42 +58,32 @@ widgets: mathjax
 
 *** =left
 ### Natalie Thurlby 
-<div class="rimage left"><img src="fig/natalie.jpg" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="50%" class="plot" /></div>
-- @statalieT
+<div class="rimage left"><img src="fig/natalie.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="50%" class="plot" /></div>
+- `@statalieT`
 - Phd in computational biology
 - Data science specialist at Jean Golding Institute
 
 *** =right
 ### Robert Arbon
-<div class="rimage left"><img src="fig/robert.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div>
-- @bertiearbon
+<div class="rimage left"><img src="fig/robert.jpg" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div>
+- `@bertiearbon`
 - Finishing PhD in computational chemistry 
 - Data scientist at Jean Golding Institute
 - Previously data scientist/economics analyst for dev. agencies (e.g. World Bank)
 
 --- &twocol
 
-## Ask JGI
-
-*** =left
-
-- ask-jgi@bristol.ac.uk
-- A free service for University of Bristol doctoral researchers and staff offering support, signposting and advice for all your data science and data intensive research queries.
-
-*** =right
-
-<div class="rimage center"><img src="fig/concepts-with-hyphens.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
-
---- &twocol
-
-*** =left
 ## UK Reproducibility Network
+
+*** =left
+
 ![](fig/ukrn-logo.jpg)
 
 *** =right
-
-* There will be a local Bristol working group to promote reproducible research
-* Please email  marcus.munafo@bristol.ac.uk
+* Multi-disciplinary network  working to promote reproducible research in the UK (`@ukrepro`)
+* Chair of advisory board is *Dorothy Bishop* (`@deevybee`) (Professor of developmental neuropsychology at Oxford)
+* There will be a local Bristol working group
+* Please email marcus.munafo@bristol.ac.uk (`@marcusmunafo`) to be put on the mailing list
 
 --- &twocol
 
@@ -119,15 +111,4 @@ widgets: mathjax
 
 ## Itinerary (approximate!)
 
-1. 09:15 - 09:30 Introduction (RA)
-1. 09:30 - 10:30 Reproducible research (NT)
-1. 10:30 - 11:00 Coffee break
-1. 11:00 - 12:30 Your research ecosystem (NT)
-  * IDEs, Version control, literate programming, Open Science Framework
-1. 12:30 - 13:30 Lunch
-1. 13:30 - 15:00 Managing and processing data (RA)
-  * FAIR principles, storing and retrieving data, tidy data, metadata, file formats. 
-1. 15:00 - 15:30 Coffee
-1. 15:30 - 16:00 Publishing your results
-1. 16:00 - 16:30 Mini reproducibility project (RA & NT)
-
+skdjhfalkdsjhf

@@ -8,18 +8,18 @@
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <link rel="stylesheet" href="../librariesNew/frameworks/io2012/css/default.css" media="all" >
-  <link rel="stylesheet" href="../librariesNew/frameworks/io2012/css/phone.css" 
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/phone.css" 
     media="only screen and (max-device-width: 480px)" >
-  <link rel="stylesheet" href="../librariesNew/frameworks/io2012/css/slidify.css" >
-  <link rel="stylesheet" href="../librariesNew/highlighters/highlight.js/css/tomorrow.css" />
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" />
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
   
   <!-- Grab CDN jQuery, fall back to local if offline -->
   <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
-  <script>window.jQuery || document.write('<script src="../librariesNew/widgets/quiz/js/jquery.js"><\/script>')</script> 
-  <script data-main="../librariesNew/frameworks/io2012/js/slides" 
-    src="../librariesNew/frameworks/io2012/js/require-1.0.8.min.js">
+  <script>window.jQuery || document.write('<script src="../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../libraries/frameworks/io2012/js/slides" 
+    src="../libraries/frameworks/io2012/js/require-1.0.8.min.js">
   </script>
   
   
@@ -32,7 +32,7 @@
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
     <h1>Data analysis best practice</h1>
-    <h2>Introduction</h2>
+    <h2>Course Introduction</h2>
     <p>Robert Arbon<br/>Data scientist, Jean Golding Institute</p>
   </hgroup>
   <article></article>  
@@ -45,20 +45,31 @@
     <h2>Jean Golding Institute</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Jean Golding Institute for data intensive research</li>
-<li>We support interdisciplinary research across the university:
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>Jean Golding Institute for data intensive research </li>
+<li><a href="http://www.bristol.ac.uk/golding/">http://www.bristol.ac.uk/golding/</a> </li>
+<li>We support interdisciplinary research across the university. </li>
+<li>This year: 
 
 <ul>
-<li>Build new multidisciplinary communities</li>
-<li>Catalyse new ideas</li>
-<li>Procure seed corn funding</li>
-<li>Deliver impact and engagement</li>
-<li>Promote and raise the profile of the University</li>
-<li>Enrich the undergraduate and postgraduate student experience</li>
+<li>Data science competition</li>
+<li>Reproducibility experiment and data visualisation competition</li>
+<li><em>Data week</em> - a week of training in various </li>
 </ul></li>
 </ul>
 
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li><strong>Ask-JGI</strong>: <code>ask-jgi@bristol.ac.uk</code></li>
+<li>For researchers and staff, offering support, signposting and advice for all your data intensive research queries.</li>
+</ul>
+
+<div class="rimage center"><img src="fig/concepts-with-hyphens.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="70%" class="plot" /></div>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -68,36 +79,54 @@
     <h2>Jean Golding</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
+    
+<div style='float:left;width:48%;'>
+  <ul>
 <li>Professor Jean Golding OBE is an epidemiologist at Bristol</li>
-<li>She set up the ALSPAC (Child of the 90s) study</li>
-<li>One of 25 women selected as part of the <a href="http://putherforward.com"><em>put her forward</em></a> campaign. 
-
-<ul>
-<li>The statue will be moved to Royal Fort House soon. </li>
-</ul></li>
+<li>She set up the ALSPAC (<em>Child of the 90s</em>) study</li>
+<li>Led to many important discoveries in child development and health<br></li>
 </ul>
 
+<div class="rimage center"><img src="fig/backs.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="75%" class="plot" /></div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div class="rimage center"><img src="fig/jean.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="80%" class="plot" /></div>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>ALSPAC achievements</h2>
+    <h2>Who we are</h2>
   </hgroup>
   <article data-timings="">
     
-<<<<<<< HEAD
 <div style='float:left;width:48%;'>
-=======
-<div style='float:left;width:48%;' class='centered'>
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
-  <p><img src="fig/backs.png" alt=""></p>
+  <h3>Natalie Thurlby</h3>
+
+<div class="rimage left"><img src="fig/natalie.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="50%" class="plot" /></div>
+
+<ul>
+<li><code>@statalieT</code></li>
+<li>Phd in computational biology</li>
+<li>Data science specialist at Jean Golding Institute</li>
+</ul>
 
 </div>
 <div style='float:right;width:48%;'>
-  <p><img src="fig/asthma.png" alt=""></p>
+  <h3>Robert Arbon</h3>
+
+<div class="rimage left"><img src="fig/robert.jpg" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div>
+
+<ul>
+<li><code>@bertiearbon</code></li>
+<li>Finishing PhD in computational chemistry </li>
+<li>Data scientist at Jean Golding Institute</li>
+<li>Previously data scientist/economics analyst for dev. agencies (e.g. World Bank)</li>
+</ul>
 
 </div>
   </article>
@@ -106,43 +135,22 @@
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Who we are</h2>
+    <h2>UK Reproducibility Network</h2>
   </hgroup>
   <article data-timings="">
     
-<<<<<<< HEAD
 <div style='float:left;width:48%;'>
-  <h3>Natalie Thurlby</h3>
+  <p><img src="fig/ukrn-logo.jpg" alt=""></p>
 
-<div class="rimage left"><img src="fig/natalie.jpg" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="50%" class="plot" /></div>
-
-<ul>
-<li>@statalieT</li>
-<li>Phd in computational biology</li>
-<li>Data science specialist at Jean Golding Institute</li>
-</ul>
-
-=======
-<div style='float:left;width:48%;' class='centered'>
-  <h3>Natalie Thurlby</h3>
-
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
 </div>
 <div style='float:right;width:48%;'>
-  <h3>Robert Arbon</h3>
-
-<<<<<<< HEAD
-<div class="rimage left"><img src="fig/robert.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" class="plot" /></div>
-
-<ul>
-<li>@bertiearbon</li>
-<li>Finishing PhD in computational chemistry </li>
-<li>Data scientist at Jean Golding Institute</li>
-<li>Previously data scientist/economics analyst for dev. agencies (e.g. World Bank)</li>
+  <ul>
+<li>Multi-disciplinary network  working to promote reproducible research in the UK (<code>@ukrepro</code>)</li>
+<li>Chair of advisory board is <em>Dorothy Bishop</em> (<code>@deevybee</code>) (Professor of developmental neuropsychology at Oxford)</li>
+<li>There will be a local Bristol working group</li>
+<li>Please email <a href="mailto:marcus.munafo@bristol.ac.uk">marcus.munafo@bristol.ac.uk</a> (<code>@marcusmunafo</code>) to be put on the mailing list</li>
 </ul>
 
-=======
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
 </div>
   </article>
   <!-- Presenter Notes -->
@@ -150,67 +158,11 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-<<<<<<< HEAD
-    <h2>Ask JGI</h2>
-  </hgroup>
-  <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-  <ul>
-<li><a href="mailto:ask-jgi@bristol.ac.uk">ask-jgi@bristol.ac.uk</a></li>
-<li>A free service for University of Bristol doctoral researchers and staff offering support, signposting and advice for all your data science and data intensive research queries.</li>
-</ul>
-
-</div>
-<div style='float:right;width:48%;'>
-  <div class="rimage center"><img src="fig/concepts-with-hyphens.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
-
-</div>
-=======
-    <h2>UK Reproducibility Network</h2>
-  </hgroup>
-  <article data-timings="">
-    <p><img src="fig/ukrn-logo.jpg" alt=""></p>
-
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-6" style="background:;">
-<<<<<<< HEAD
-  <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-  <h2>UK Reproducibility Network</h2>
-
-<p><img src="fig/ukrn-logo.jpg" alt=""></p>
-
-</div>
-<div style='float:right;width:48%;'>
-  <ul>
-<li>There will be a local Bristol working group to promote reproducible research</li>
-<li>Please email  <a href="mailto:marcus.munafo@bristol.ac.uk">marcus.munafo@bristol.ac.uk</a></li>
-</ul>
-
-</div>
-  </article>
-  <!-- Presenter Notes -->
-</slide>
-
-<slide class="" id="slide-7" style="background:;">
-=======
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
-  <hgroup>
     <h2>About this course</h2>
   </hgroup>
   <article data-timings="">
     
-<<<<<<< HEAD
 <div style='float:left;width:48%;'>
-=======
-<div style='float:left;width:48%;' class='centered'>
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   <ul>
 <li>First course of its type at Bristol (AFAWK)</li>
 <li><strong>Aim</strong>: introduce you to ideas and tools which you will take further in your own time</li>
@@ -244,40 +196,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<<<<<<< HEAD
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-6" style="background:;">
   <hgroup>
     <h2>Itinerary (approximate!)</h2>
-=======
-<slide class="" id="slide-7" style="background:;">
-  <hgroup>
-    <h2>Itinerary</h2>
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   </hgroup>
   <article data-timings="">
-    <ol>
-<li>09:15 - 09:30 Introduction (RA)</li>
-<li>09:30 - 10:30 Reproducible research (NT)</li>
-<li>10:30 - 11:00 Coffee break</li>
-<li>11:00 - 12:30 Your research ecosystem (NT)
-
-<ul>
-<li>IDEs, Version control, literate programming, Open Science Framework</li>
-</ul></li>
-<li>12:30 - 13:30 Lunch</li>
-<li>13:30 - 15:00 Managing and processing data (RA)
-
-<ul>
-<li>FAIR principles, storing and retrieving data, tidy data, metadata, file formats. </li>
-</ul></li>
-<li>15:00 - 15:30 Coffee</li>
-<<<<<<< HEAD
-<li>15:30 - 16:00 Publishing your results</li>
-<li>16:00 - 16:30 Mini reproducibility project (RA &amp; NT)</li>
-=======
-<li>15:30 - 17:00 Mini reproducibility project (RA &amp; NT)</li>
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
-</ol>
+    <p>skdjhfalkdsjhf</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -301,55 +225,28 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='ALSPAC achievements'>
+        data-slide=3 title='Who we are'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Who we are'>
+        data-slide=4 title='UK Reproducibility Network'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-<<<<<<< HEAD
-        data-slide=5 title='Ask JGI'>
-=======
-        data-slide=5 title='UK Reproducibility Network'>
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
+        data-slide=5 title='About this course'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-<<<<<<< HEAD
-        data-slide=6 title='NA'>
-=======
-        data-slide=6 title='About this course'>
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
+        data-slide=6 title='Itinerary (approximate!)'>
          6
       </a>
     </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-<<<<<<< HEAD
-        data-slide=7 title='About this course'>
-         7
-      </a>
-    </li>
-    <li>
-      <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Itinerary (approximate!)'>
-         8
-      </a>
-    </li>
-=======
-        data-slide=7 title='Itinerary'>
-         7
-      </a>
-    </li>
->>>>>>> b507a32741ecdc9fedf2be017188f868274a16d0
   </ul>
   </div>  <!--[if IE]>
     <script 
@@ -372,10 +269,10 @@
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
   </script> -->
-  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../librariesNew/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
 </script>
 <!-- LOAD HIGHLIGHTER JS FILES -->
-  <script src="../librariesNew/highlighters/highlight.js/highlight.pack.js"></script>
+  <script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->
    
