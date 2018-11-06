@@ -1,6 +1,6 @@
 ---
 title: "Data analysis best practice"
-subtitle: "Introduction"
+subtitle: "Project Introduction"
 author: "Robert Arbon"
 highlighter: highlight.js
 hitheme: tomorrow
@@ -31,4 +31,30 @@ options(xtable.type = 'html')
 knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
 
+## Project background
 
+* We are medical researchers interested in the risk factors of **Drug Induced Liver Injury** (DILI)
+* DILI arises from a reaction to drugs to treat Tuberculosis (TB)
+* The data we will use are hospital records taken from a London TB center. 
+* The data was hosted on Bristol University's **Research Data Repository**
+
+```{r, echo=F,out.width='70%', fig.align='center'}
+include_graphics('fig/rdr.png')
+```
+
+## The data
+
+* The most important variables are: 
+  * The dependent variables: 
+    * `pdili` - possible DILI (0 = no, 1 = yes)
+    * `t1dili` - type 1 DILI (0 = 0, 1 = yes) (the one we're interested in)
+  * The indepent variables (risk factors):
+    * `log10base_alt`, `log10base_alp`, `log10base_bili` - various blood component concentrations (log scale)
+    * `weight` - patient weight (kg)
+    * `rifam_dpw`, `ison_dpw`, `pyraz_dpw`, `moxi_dpw` - drugs adminstered
+    * `HIV` - HIV status (0 = HIV-, 1 = HIV+)
+    * `Alcohol` - whether the patient drank alcohol (0 = no, 1 = yes)
+
+## The methodology
+
+* We have two groups, control
