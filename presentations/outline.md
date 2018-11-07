@@ -26,3 +26,4 @@ So, it would be like:
 10: Reproducing a finding - RA - interactive
    - One simple statistical test
    - Upload to the OSF (edited)
+   

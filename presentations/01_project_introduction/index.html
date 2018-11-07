@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Data analysis best practice</title>
+  <title>Project Introduction</title>
   <meta charset="utf-8">
-  <meta name="description" content="Data analysis best practice">
+  <meta name="description" content="Project Introduction">
   <meta name="author" content="Robert Arbon">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,8 +31,8 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Data analysis best practice</h1>
-    <h2>Project Introduction</h2>
+    <h1>Project Introduction</h1>
+    <h2>Data analysis best practice</h2>
     <p>Robert Arbon<br/>Data scientist, Jean Golding Institute</p>
   </hgroup>
   <article></article>  
@@ -58,6 +58,91 @@
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>The data</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>The most important variables are: 
+
+<ul>
+<li>The dependent variables: </li>
+<li><code>pdili</code> - possible DILI (0 = no, 1 = yes)</li>
+<li><code>t1dili</code> - type 1 DILI (0 = 0, 1 = yes) (the one we&#39;re interested in)</li>
+</ul></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li>The indepent variables (risk factors):
+
+<ul>
+<li><code>log10base_alt</code>, <code>log10base_alp</code>, <code>log10base_bili</code> - various blood component concentrations (log scale)</li>
+<li><code>weight</code> - patient weight (kg)</li>
+<li><code>rifam_dpw</code>, <code>ison_dpw</code>, <code>pyraz_dpw</code>, <code>moxi_dpw</code> - drugs adminstered</li>
+<li><code>HIV</code> - HIV status (0 = HIV-, 1 = HIV+)</li>
+<li><code>Alcohol</code> - whether the patient drank alcohol (0 = no, 1 = yes)</li>
+</ul></li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>The methodology</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>We have two groups: 
+
+<ol>
+<li>control group, (C) - no DILI</li>
+<li>&#39;treatment&#39; group (T) - type 1 DILI</li>
+</ol></li>
+<li>Standard methodology for observational studies: 
+
+<ol>
+<li>C vs. T for baseline characteristics (check they&#39;re similar)</li>
+<li>Logistic regression using potential risk factors as covariates -&gt; adjusted odds ratio (AOR)</li>
+</ol></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div class="rimage center"><img src="fig/table3.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="100%" class="plot" /></div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Our project</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The plan for today will be: 
+1. Set up an <code>Open Science Framework</code> project and plan the analysis. 
+2. Understand how and why to make this project <em>reproducible</em>. 
+3. Get familiar with <code>git</code> and <code>Github</code> for <em>version control</em>. 
+4. Understand <code>RStudio</code> and IDEs to improve your analysis experience. 
+5. Learn how to get and store data. 
+6. Understand the concept of <em>Tidy data</em>.
+7. Do some analysis and upload it to the OSF. </p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
     <slide class="backdrop"></slide>
   </slides>
   <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
@@ -66,6 +151,24 @@
       <a href="#" target="_self" rel='tooltip' 
         data-slide=1 title='Project background'>
          1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='The data'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='The methodology'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Our project'>
+         4
       </a>
     </li>
   </ul>
