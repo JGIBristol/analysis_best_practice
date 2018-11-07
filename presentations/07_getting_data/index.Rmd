@@ -37,7 +37,6 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 1. Storing your data and research
 1. Backing up
 1. Metadata
-3. Tidy data
 2. Retrieving data
 4. File formats
 
