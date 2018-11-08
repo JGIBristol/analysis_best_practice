@@ -17,6 +17,8 @@ widgets: mathjax
 ```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
 # make this an external chunk that can be included in any file
 library(knitr)
+library(tidyverse)
+library(FSA)
 options(width = 100)
 opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
@@ -41,7 +43,14 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
   * Grouping observations together in meaningful ways
   * Tidying data: structuring datasets to facilitate analysis
 * **Tidy data** is a set of standards for organizig data values within a dataset.
-* You can read about it [here]()
+
+---
+
+## Tidy data
+```{r, echo=F, out.width="100%"}
+include_graphics("fig/tidydata.png")
+```
+
 
 ---
 
@@ -94,7 +103,7 @@ include_graphics("fig/tidyverse.png")
 
 ---{.build}
 
-### `tidyr` - example 1
+### `tidyr` - example
 
 * Scores after 50 sec, 100 sec,..., 350 sec in a game
 * Q: Why isn't this tidy?
@@ -113,7 +122,7 @@ scores
 
 ---
 
-### `tidyr` - example 1
+### `tidyr` - example
 
 * use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
 
@@ -121,12 +130,12 @@ scores
 scores %>%
   # Gather ALL columns and give default names to columns
   gather() %>%
-  headtail()
+  head()
 ```
 
 ---
 
-### `tidyr` - example 1
+### `tidyr` - example
 
 * use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
 
@@ -134,12 +143,12 @@ scores %>%
 scores %>%
   # Gather all columns and give custom names to columns
   gather(key="MyVariable", value="MyValue") %>%
-  headtail()
+  head()
 ```
 
 ---
 
-### `tidyr` - example 1
+### `tidyr` - example
 
 * use [`gather`](https://tidyr.tidyverse.org/reference/gather.html) to make tidy:
 
@@ -147,47 +156,50 @@ scores %>%
 scores %>%
   # Gather all columns except 'Name' and give custom names to columns
   gather(key="Time", value="Score", -Name) %>%
-  headtail()
+  head()
 ```
 
----
+--- 
 
-### `tidyr` - example 2
+### `dplyr` - example
 
-* Q: What's wrong with this table of counts of males (`m`) and females (`f`) of different ages (`0.15` = 0 - 15) in different states
-
-```{r, echo=F}
-df <- data.frame(state=c('MA', 'NY', 'CN', 'OH'),
-                 'm0-15' = sample(1:10, 4, replace=T),
-                 'm16-60' = sample(1:10, 4, replace=T),
-                 'f0-15' = sample(1:10, 4, replace=T),
-                 'f16-60' = sample(1:10, 4, replace=T), check.names = F)
-df
-```
-
-> - A: Columns as variables AND multiple variables in a column
-
----
-
-### `tidyr` - example 2
-
-* First use [`gather`](https://tidyr.tidyverse.org/reference/gather.html)
+* We may also want to create new variables in order to tidy data. 
+* Q: Why isn't our data tidy? 
+* Hint: `pdili` indicates whether there is any DILI at all. `t1dili` indicates that it is type 1 (the one we're interested in) and not type 2 or 3. 
 
 ```{r}
-df %>%
-  gather(key='sex-age', value='count', -state) %>%
-  headtail()
+df <- read.csv("../../data/original/dili_from_anti_TB_treatment.csv")
+head(df, 2)
+```
+
+> - A: `pdili` and `t1dili` both refer to the same variable (type of DILI). 
+
+---
+
+### `dplyr` - example
+
+* Q: Can we just use `gather` to make it tidy?
+
+> - A: No
+
+---
+
+### `dplyr` - example
+
+* Q: Can we just use `gather` to make it tidy?
+
+* A: No - now there are two rows for every observation. *We need to make a new variable*
+
+```{r}
+df %>% 
+  gather(key='dili', value='value', c(pdili, t1dili)) %>%
+  select(dili, value, everything()) %>%
+  arrange(id) %>%
+  head()
 ```
 
 ---
 
-### `tidyr` - example 2
+### `dplyr` - example
 
-* Then use  [`separate`](https://tidyr.tidyverse.org/reference/separate.html)
-
-```{r}
-df %>%
-  gather(key='sex-age', value='count', -state) %>%
-  separate(col='sex-age', into=c('sex', 'age'), sep=1) %>%
-  headtail()
-```
+* We can use mutate
