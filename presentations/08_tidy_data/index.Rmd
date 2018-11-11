@@ -19,17 +19,18 @@ widgets: mathjax
 library(knitr)
 library(tidyverse)
 library(FSA)
+library(xtable)
 options(width = 100)
 opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
 options(xtable.type = 'html')
-# knit_hooks$set(inline = function(x) {
-#   if(is.numeric(x)) {
-#     round(x, getOption('digits'))
-#   } else {
-#     paste(as.character(x), collapse = ', ')
-#   }
-# })
+knit_hooks$set(inline = function(x) {
+  if(is.numeric(x)) {
+    round(x, getOption('digits'))
+  } else {
+    paste(as.character(x), collapse = ', ')
+  }
+})
 knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
 
@@ -108,7 +109,7 @@ include_graphics("fig/tidyverse.png")
 * Scores after 50 sec, 100 sec,..., 350 sec in a game
 * Q: Why isn't this tidy?
 
-```{r, echo=F, eval=T}
+```{r, echo=F, results='asis'}
 scores <- read.table(header = TRUE, check.names = FALSE, text = "
    Name    50  100  150  200  250  300  350
    Carla  1.2  1.8  2.2  2.3  3.0  2.5  1.8
@@ -117,6 +118,7 @@ scores <- read.table(header = TRUE, check.names = FALSE, text = "
    Karen  1.3  1.7  1.9  2.2  3.2  1.5  1.9")
 scores
 ```
+
 
 > - A: the columns are observations!
 
@@ -169,7 +171,7 @@ scores %>%
 
 ```{r}
 df <- read.csv("../../data/original/dili_from_anti_TB_treatment.csv")
-head(df, 2)
+head(df, 4)
 ```
 
 > - A: `pdili` and `t1dili` both refer to the same variable (type of DILI). 
@@ -195,11 +197,38 @@ df %>%
   gather(key='dili', value='value', c(pdili, t1dili)) %>%
   select(dili, value, everything()) %>%
   arrange(id) %>%
-  head()
+  head(4)
 ```
 
 ---
 
 ### `dplyr` - example
 
-* We can use mutate
+* We can use `mutate` to create a new categorical variable called `dili` with the following levels based on `pdili` and `t1dili`. 
+* Easiest way is to add `pdili` to `t1dili`: 
+  
+| `pdili`  | `t1dili` | `pdili` + `t1dili`  |`dili`  |
+|:-:|:-:|:-:|:-:|
+| 0  |  0  |  0 |'C' |
+| 1  |  1 | 2   |'T1' |
+| 1  |  0 | 1   |'T23'|
+
+```{r}
+df %>%
+  mutate(dili=factor(pdili+t1dili, labels=c('C', 'T23', 'T1'))) %>% # create new variable base on sum of two other variables
+  mutate(pdili=NULL, t1dili=NULL) %>% # Drop columns
+  select(dili, everything()) %>%
+  head()
+
+```
+
+---
+
+### Exercises
+
+Navigate to `exercises/analysis.Rmd` and add code chunks to:
+1. Load data into a data frame. 
+2. Create a new variable called `dili` which has the following levels ('C', 'T1' and 'T23')
+3. Delete the `pdili`, `t1dili` AND `id`, `time_to_onset_of_pDILI`
+
+
