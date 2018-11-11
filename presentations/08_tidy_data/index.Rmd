@@ -109,7 +109,7 @@ include_graphics("fig/tidyverse.png")
 * Scores after 50 sec, 100 sec,..., 350 sec in a game
 * Q: Why isn't this tidy?
 
-```{r, echo=F, results='asis'}
+```{r, echo=F}
 scores <- read.table(header = TRUE, check.names = FALSE, text = "
    Name    50  100  150  200  250  300  350
    Carla  1.2  1.8  2.2  2.3  3.0  2.5  1.8
@@ -195,7 +195,7 @@ head(df, 4)
 ```{r}
 df %>% 
   gather(key='dili', value='value', c(pdili, t1dili)) %>%
-  select(dili, value, everything()) %>%
+  select(dili, value, 1:10) %>%
   arrange(id) %>%
   head(4)
 ```
@@ -213,13 +213,16 @@ df %>%
 | 1  |  1 | 2   |'T1' |
 | 1  |  0 | 1   |'T23'|
 
+---
+
+### `dplyr` - example
+
 ```{r}
 df %>%
-  mutate(dili=factor(pdili+t1dili, labels=c('C', 'T23', 'T1'))) %>% # create new variable base on sum of two other variables
+  mutate(dili=factor(pdili+t1dili, labels=c('C', 'T23', 'T1'))) %>% 
   mutate(pdili=NULL, t1dili=NULL) %>% # Drop columns
-  select(dili, everything()) %>%
-  head()
-
+  select(dili, 1:10) %>%
+  head(3)
 ```
 
 ---
@@ -227,6 +230,7 @@ df %>%
 ### Exercises
 
 Navigate to `exercises/analysis.Rmd` and add code chunks to:
+
 1. Load data into a data frame. 
 2. Create a new variable called `dili` which has the following levels ('C', 'T1' and 'T23')
 3. Delete the `pdili`, `t1dili` AND `id`, `time_to_onset_of_pDILI`
