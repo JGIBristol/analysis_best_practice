@@ -1,0 +1,45 @@
+---
+title: "Exercises"
+output: pdf_document
+---
+
+## 02 - Open science framework
+
+1. Make a project on the open science framework.  Call it 'Best practice workshop'
+2. Add a description 'Example project'
+3. Edit the wiki and add a link to the paper https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5366108/
+
+## 03 - pre-registration
+
+1. Navigate to https://cos.io/rr/ and see if you can find a journal in your area that allows registered reports. 
+2. Navigate to http://help.osf.io/m/registrations.  Find the template registration form which is eligible for the pre-registration challenge.  What is topic 8?
+??
+
+## 04 - reproducible research
+
+## 05 - version control 
+
+1. Navigate to https://github.com/RobertArbon/analysis_best_practice/exercises/version_control.Rmd
+2. Follow the instructions and questions up to 'Your first commit!'
+
+## 06 - dev environment
+
+1. Configure your RStudio with the following layout: 
+  1. Bottom left: `Console` and `Terminal`
+  2. Top left: `Source`
+  3. Top right: `Environment`, `History`, `VCS`
+  4. Bottom right: `Files`, `Plots`, `Packages`, `Help`, `Viewer`
+
+2. Check the 'Options'> 'RMarkdown': What directory are code chunks evaluted in?  Can you change this? What does this mean?
+
+3. Look in the 'History' pane - try and run a previous command in the console without typing it out. 
+
+## 08 - tidy data
+
+1. In `exercises/analysis.Rmd` add code to the empty code chunks in the sections **Data loading** and **Tidy data**
+
+## 09 - Analysis 
+
+1. In `exercises/analysis.Rmd` add code to the empty code chunks in the sections **Analysis**. 
+2. `knit` the document to a `pdf` and upload it to the project on `osf.io`.
+

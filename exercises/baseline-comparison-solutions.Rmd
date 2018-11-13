@@ -1,24 +1,25 @@
 ---
+title: "Baseline comparison - Solutions"
+output: pdf_document
+---
+
+---
 title: "Analysis - Solutions"
 output: pdf_document
 ---
 
 # Introduction
 
-This notebook forms our analysis which will be `knitr`-ed into a `pdf` and then uploaded to  `osf.io`.  It comprises three three sections: 
-
-1. *Data loading*: loading the data into workbook and inspecting its contents
-2. *Tidy data*: doing some simple manipulation with `dplyr` to  make the data frame *tidy*. Save the tidied dataframe. 
-4. *Analysis*: do a simple logistic regression.  
-3. *Baseline comparison*: use `group_by` and `summarise` to compare groups. 
+This notebook is about comparing the baseline characteristics of the two groups.  You will need to have completed the `analysis.Rmd` workbook first in order to do this. 
 
 
 # Data loading
 
-Load the data using `read.csv()` into a data frame called `df_raw`:
+
+Load the data saved at the end of the previous notebook. 
 
 ```{r}
-df_raw <- read.csv('../data/original/dili_from_anti_TB_treatment.csv')
+
 ```
 
 Check the dimensions using `dim` to make sure we've captured all the variables and observations. 
