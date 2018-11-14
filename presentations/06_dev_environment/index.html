@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Integrated Development Environment (IDE)</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Integrated Development Environment (IDE)">
+  <meta name="author" content="Robert Arbon">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../libraries/frameworks/io2012/js/slides" 
+    src="../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Integrated Development Environment (IDE)</h1>
+    <h2>Data analysis best practice</h2>
+    <p>Robert Arbon<br/>Data scientist, Jean Golding Institute</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>IDEs</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Goal: <strong>Make coding/data analysis easier</strong></li>
+<li>Content:
+
+<ul>
+<li>Text editor with syntax highlighting</li>
+<li>Compiler or interpreter</li>
+<li>Debugger</li>
+<li>Lots of other <em>little</em> things easier, e.g. version control, file manager, console, terminal, autocomplete...</li>
+</ul></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>IDE examples</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>For <code>R</code> there is <a href="https://www.rstudio.com/">R Studio</a> </li>
+<li>For <code>Python</code> there is <a href="https://www.jetbrains.com/pycharm/">PyCharm</a></li>
+<li>For general purpose there is <a href="https://www.sublimetext.com/">Sublime Text</a>. There are lots of others!</li>
+<li>For datascience type applications, the <a href="http://jupyter.org/">Jupyter</a> project is powerful (we will touch on that today)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>RStudio - projects</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li><code>.RData</code> - a snapshot of your workspace</li>
+<li><code>.RHistory</code> - a history of commands you ran in text</li>
+<li><code>MyProject.RProj</code> - project level settings for RStudio</li>
+<li>File templates: R scripts, RMarkdown, plain text, C++, R Presentation...</li>
+<li><code>Console</code>: Run R commands from a terminal</li>
+<li><code>Terminal</code>: run bash commands from a terminal</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <ul>
+<li><code>Environment</code>: view all objects in various environments</li>
+<li><code>History</code>: list of previously run commands</li>
+<li><code>Git</code>: manage your version control</li>
+<li><code>Files</code>: view and manage your files. </li>
+<li><code>Plots/Viewer</code>: view plots and other output (e.g. html documents)</li>
+<li><code>Packages</code>: manage packages</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Writing code</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li>LOTS of commands to make writing code easier in <code>Code</code> menu</li>
+<li><strong>Most useful</strong> is <code>tab</code> complete: </li>
+</ul>
+
+<div class="rimage center"><img src="fig/tabcomplete.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="100%" class="plot" /></div>
+
+<ul>
+<li>Debugger is also very useful</li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div class="rimage center"><img src="fig/code.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="50%" class="plot" /></div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Customize RStudio</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <div class="rimage center"><img src="fig/global.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div class="rimage center"><img src="fig/project.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="100%" class="plot" /></div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Exercises</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li><p>Configure your RStudio with the following layout: </p>
+
+<ol>
+<li>Bottom left: <code>Console</code> and <code>Terminal</code></li>
+<li>Top left: <code>Source</code></li>
+<li>Top right: <code>Environment</code>, <code>History</code>, <code>VCS</code></li>
+<li>Bottom right: <code>Files</code>, <code>Plots</code>, <code>Packages</code>, <code>Help</code>, <code>Viewer</code></li>
+</ol></li>
+<li><p>Check the &#39;Options&#39;&gt; &#39;RMarkdown&#39;: What directory are code chunks evaluted in?  Can you change this? What does this mean?</p></li>
+<li><p>Look in the &#39;History&#39; pane - try and run a previous command in the console without typing it out. </p></li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='IDEs'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='IDE examples'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='RStudio - projects'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Writing code'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Customize RStudio'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Exercises'>
+         6
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
