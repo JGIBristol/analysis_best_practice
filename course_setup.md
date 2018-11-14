@@ -5,7 +5,7 @@ Course instructions
 
 You will be using the following web services in the course, so please use sign up to them before the course.
 
-1. [Open science framework](www.osf.io) - Web based service for sharing your work. Also provides time stamps and is a preprint server.
+1. [Open science framework](https://osf.io) - Web based service for sharing your work. Also provides time stamps and is a preprint server.
 1. [Github](https://github.com/) - Web hosting service for Git
 
 Will be using the following software.  This should already be installed on your machine but please do check.
