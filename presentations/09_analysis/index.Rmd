@@ -43,7 +43,6 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 
 1. In `exercises/analysis.Rmd` add code to the empty code chunks in the sections **Analysis**. 
 2. `knit` the document to a `pdf` and upload it to the project on `osf.io`.
-3. **EXTENTION**: Complete the `baseline-comparison.Rmd` workbook, `knit` to `pdf` and upload the `osf.io`.  NB: it's long and difficult, but good practice for doing manipulations in R. 
 
 ---
 
