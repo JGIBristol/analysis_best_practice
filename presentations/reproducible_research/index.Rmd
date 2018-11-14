@@ -106,8 +106,8 @@ Of the 1576 scientists surveyed, __over 70% of scientists surveyed have experien
 
 ## Types of reproducibility problems
 
-* Data or methods not provided in full.
-* Data Storage
+* Lacking information: data or methods not provided in full.
+* Data Storage problems
 * Analysis environment
 * P-hacking (and HARKing)
 
@@ -122,7 +122,7 @@ This requires you to __make your data and methods available!__
 And __make what you provide usable to others__ by making sure that you store your data (with documentation) publicly wherever possible and provide a full description of your methodology as well as a script that others can run to check your results.
 
 *** =right
-If sharing your code sounds scary:
+If you don't then, great, but if sharing your code sounds scary:
 * You could run your scripts through a linter ([lintr](https://cran.r-project.org/web/packages/lintr/index.html) in R - supported in RStudio) first to have it tell you about any errors that can be automatially detected.
 * Everyone can improve at this stuff, so I think everyone finds it a bit scary. Share your stuff anyway, please!
 
@@ -386,10 +386,10 @@ include_graphics('fig/open-science-badges.jpg')
 ## Summary 
 
 *** =left
-__Reproducible research is important because:__
-* It saves us from bad science.
-* It saves you time when you come back to your work.
+__Reproducible research is important because:__.
+* It saves your time when you come back to your work.
 * Its good for your reputation (by avoiding disaster, improving your motivation to do good work, and through open science badges, etc).
+* It saves us from bad science.
 
 *** =right
 __Main causes of poor reproducibility:__

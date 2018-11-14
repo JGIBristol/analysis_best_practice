@@ -4,6 +4,8 @@ Version Control using GitHub and RStudio
 [GitHub Flow](https://guides.github.com/introduction/flow/)
 
 ## Version Control task:
+These instructions are specifically for using Git with GitHub and RStudio. There are other ways to use these tools, for example Git is often used in the command line. The principles are the same, so it should be easy to translate to your workflow having completed this worksheet.
+
 ### 1 Forking the repository and finding the rest of the instructions.
 * Go to [https://github.com/RobertArbon/analysis_best_practice]. Login and fork the repository.
 * The instructions are in "exercises/version-control.md"
@@ -20,7 +22,7 @@ Version Control using GitHub and RStudio
 
 ### 4 Working on your local copy of the repository - creating a new local branch:
 * Look inside the files area in RStudio (notice that your first.md file is not yet there)
-* Choose the new workshop-practice branch from the Git window inside RStudio (on the right hand side it should say master with a down arrow). This creates a new (local) copy of the workshop-practice branch which "tracks" the online version of that branch (allows you to push changes to it and pull changes from it). 
+* Change to the new workshop-practice branch: go to the Git window inside RStudio and on the right hand side it should say master with a down arrow, click the down arrow and choose workshop-practice. This creates a new (local) copy of the workshop-practice branch which "tracks" the online version of that branch (allows you to push changes to it and pull changes from it). 
 Congratulations, you're set up on the repo and ready to start making changes!
 
 ### 5 Your first commit!
@@ -44,18 +46,20 @@ Congratulations, you're set up on the repo and ready to start making changes!
 Think about a pull request in terms of you are requesting that the remote (online) repository pulls your changes.
 * Create a new local file inside your repository 'third.md' and make some changes to it. Notice how this shows up in the git window. These orange question marks mean the file is untracked. 
 * Go through the cycle of pulling changes from the remote repository, changing your three .md files, staging their changes, committing and pushing those changes a few more times until you feel you have the hang of it.
-* Once you're happy, go back to your GitHub page, go to the forked repository, go to the Pull requests tab and click "New pull request".
-* Choose the workshop-practice branch to request to merge it back into the master branch. You can make some comments in the pull request about why you are requesting to be merged back in.
-* You can then choose to review and accept the pull request by clicking the 'merge pull request' button, you may also leave some comments about how you feel about (emojis encouraged, :rage5: or :100:?)
+* Once you're happy with pulling, adding, commiting and pushing, it's time to make a pull request. In this case, you will be asking your own online repository to pull in your own changes (usually, you would be askig someone else to pull in your changes). To do this, go back to your GitHub page and go to the __forked__ repository (it should say YOURUSERNAME/analysis-best-practice, __not__ RobArbon/analysis-best-practice), then go to the Pull requests tab and click "New pull request".
+* Choose the workshop-practice branch to request to merge it back into the master branch. You can make some comments in the pull request (including emojis) about why you are requesting to be merged back in.
+* Since you are also the owner of the repository, you are also in charge of reviewing and accepting the pull request by clicking the 'merge pull request' button, you may also leave some comments about how you feel about (emojis encouraged, :rage5: or :100:?). This is the role you would usually take if someone else is requesting that you pull in their changes.
 
 ### 8 Take this opportunity to investigate the history/tree of your repository
 * In RStudio, go to Tools>Version Control>History (or click the clock face in the git window)
 * Invetigate your repository from GitHub, look at your commit logs, etc.
 
 ### 9 When you are finished with your development branch, you can delete it:
+* If you have pulled your development branch into master using a pull request, then there is no need to keep the development branch if you have finished working on it, meaning for tidiness, it makes sense to delete it.
 * Go to GitHub>Your forked repository>branches and click on the bin icon next to the branch you want to delete.
 
 ### 10 Create a new branch for a new feature
+If you want to add a different type of functionality to your code once you have finished developing your first branch (and sometimes in parallel), you can create a second branch.
 * Do this in the same way as before, by making a new branch in GitHub, then pulling in RStudio to get the new branch information, then changing to the new branch in RStudio (this will only work if your current branch is up to date).
 
 ### The Git Parable:

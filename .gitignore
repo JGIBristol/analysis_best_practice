@@ -38,6 +38,7 @@ vignettes/*.pdf
 rsconnect/
 
 # Other 
+.ipynb_checkpoints
 *.pdf
 *.png
 !presentations/**/*.png
