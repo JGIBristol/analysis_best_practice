@@ -8,12 +8,16 @@ output: pdf_document
 1. Make a project on the open science framework.  Call it 'Best practice workshop'
 2. Add a description 'Example project'
 3. Edit the wiki and add a link to the paper https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5366108/
+4. Link your project our project https://osf.io/zgwj2/ (go to components > link project)
 
 ## 03 - pre-registration
 
 1. Navigate to https://cos.io/rr/ and see if you can find a journal in your area that allows registered reports. 
 2. Navigate to http://help.osf.io/m/registrations.  Find the template registration form which is eligible for the pre-registration challenge.  What is topic 8?
 ??
+
+1. Navigate to https://cos.io/rr/ and see if you can find a journal in your area that allows registered reports. 
+2. Navigate to http://help.osf.io/m/registrations, consider the different types of template registration forms and choose which might be most applicable for your research.
 
 ## 04 - reproducible research
 
