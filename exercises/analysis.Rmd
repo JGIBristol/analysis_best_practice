@@ -1,0 +1,131 @@
+---
+title: "Analysis - Solutions"
+output: pdf_document
+---
+
+# Introduction
+
+This notebook forms our analysis which will be `knitr`-ed into a `pdf` and then uploaded to  `osf.io`.  It comprises three three sections: 
+
+1. *Data loading*: loading the data into workbook and inspecting its contents
+2. *Tidy data*: doing some simple manipulation with `dplyr` to  make the data frame *tidy*. Save the tidied dataframe. 
+4. *Analysis*: do a simple logistic regression.  
+
+
+# Data loading
+
+Load the data using `read.csv()` into a data frame called `df_raw`:
+
+```{r}
+
+```
+
+Check the dimensions using `dim` to make sure we've captured all the variables and observations. 
+
+```{r}
+
+```
+
+Use the `str` command to check how the variables have been read in: 
+
+```{r}
+
+```
+
+How use the `head` command to inspect the first few rows for a further check. 
+
+```{r}
+
+```
+
+## Tidy data
+
+We can use `mutate` with the function `factor` to create a new categorical variable called `dili`.  If we add add `pdili` to `t1dili` we get a unique set of *levels* (0,1,2) and we can *label* these how we choose.  
+  
+| `pdili`  | `t1dili` | `pdili` + `t1dili` (levels) |`dili` (labels)  |
+|:-:|:-:|:-:|:-:|
+| 0  |  0  |  0 |'C' |
+| 1  |  1 | 2   |'T1' |
+| 1  |  0 | 1   |'T23'|
+
+First make the categorical variable and save the new dataframe as `df_tidy`. Make sure you get the ordering of the labels correct! You'll also need to import `tidyverse`. 
+
+```{r, message=F}
+
+
+```
+
+Now use `str` it was created correctly. 
+
+```{r}
+
+```
+
+Use `head` on a subset of the columns to make sure the calculation was performed correctly: 
+
+```{r}
+
+```
+
+Now delete the columns: `pdili`, `t1dili`, `time_to_onset_of_pDILI`, `liver_disease`, and `tb_site` by using `mutate` to set these to `NULL`. Use `str` to check again. 
+
+```{r}
+
+
+```
+
+Now save the dataframe in `/data/processed/df_tidy.Rda`:
+
+```{r}
+
+```
+
+# Analysis
+
+![](fig/Table 3.png)
+
+Here's we're just going to calculate odds ratios (crude and adjusted) for the first risk factor, `log10base_alt`.  I'll give you the code for the crude odds ratios, then you can fill out the details for the adjusted odds ratio. 
+
+```{r}
+
+```
+
+Check the summary:
+
+```{r}
+
+```
+
+Put the coefficients and standard errors into a dataframe for easy manipulation.
+```{r}
+
+
+```
+
+Here we're doing three things: 
+1. Clean up the column names using `janitor` (you'll need to install this). 
+2. Change the row names to columns (otherwise they'll get lost). 
+3. Use `rename` (from `dplyr`) to change `estimate` to `beta` for clarity 
+
+```{r}
+
+
+```
+
+Now lets use the standard errors to get 95% confidence intervals:
+
+```{r}
+
+
+```
+
+Now we can exponentiate the betas:
+
+```{r}
+
+
+
+```
+
+To do the adjusted odds ratios, repeat as above, but the formula now includes `agegroup`, `sex`, `log10base_alp` and `log10base_bili` (e.g. 'dili ~ log10base_alt + agegroup...')
+
