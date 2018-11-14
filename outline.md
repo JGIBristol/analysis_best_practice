@@ -16,16 +16,24 @@ Topics not covered:
  
 ## Itinerary
 
-1. 09:15 - 09:30 Introduction (RA)
-1. 09:30 - 10:30 Reproducible research (NT)
-1. 10:30 - 11:00 Coffee break
-1. 11:00 - 12:30 Your research ecosystem (NT)
-  * IDEs, Version control, literate programming, Open Science Framework
-1. 12:30 - 13:30 Lunch
-1. 13:30 - 15:00 Managing and processing data (RA)
-  * FAIR principles, storing and retrieving data, tidy data, metadata, file formats. 
-1. 15:00 - 15:30 Coffee
-1. 15:30 - 17:00 Guided self study 
- 
+9:00 - Welcome
+9:15 - Course introduction
+9:20 - Project introduction
+9:25 - Open science framework
+9:45 - Reproducible research
+10:15 - Pre-registration
+10:30 - Break
+11:00 - Development environment
+11:15 - (R)Markdown
+12:00 - Lunch
+13:00 - Version control
+14:00 - Getting data
+14:15 - Tidy data
+15:00 - Coffee
+15:30 - Analysis 
+16:00 - Feedback, wrap up, independent study
+17:00 - Finish
+
+
 
  
