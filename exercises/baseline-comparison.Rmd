@@ -1,0 +1,283 @@
+---
+title: "Baseline comparison - Solutions"
+output: pdf_document
+---
+
+---
+title: "Analysis - Solutions"
+output: pdf_document
+---
+
+# Introduction
+
+This notebook is about comparing the baseline characteristics of the two groups.  You will need to have completed the `analysis.Rmd` workbook first in order to do this. 
+
+
+# Data loading
+
+Load libraries
+
+```{r, message=F}
+library(tidyverse)
+```
+
+Load the tidy data frame saved in the `analysis.Rmd` notebook. 
+
+```{r}
+
+```
+
+# Baseline comparison
+
+**This is long and difficult!**
+
+It is important to check that our control and treatment groups are sampled from similar distributions as we didn't have a
+chance for randomization in our study design. 
+
+In this section we'll take you through some manipulations in order to reproduce some of table 2 from the paper:
+
+![](fig/Table 2.png)
+
+The figure comprises many different statistics: 
+
+  1. median
+  2. interquartile range
+  3. total number of subjects with a particular variable measured (`n=178` subjects with weight measurements) 
+  4. fraction of subjects with a particular variable (e.g. `4/185` are HIV positive)
+  5. p-values for between group comparisons. 
+  
+We're not going to calculate p-values here although you're more than welcome to use this opportunity to do so. 
+
+The main object of this is to get used to using `group_by` and `summarise` in order to calculate summary statistics.  This should form a part of any statistical analysis. We'll go through it statistic by statistic. 
+
+## Clean up the dataframe
+
+We're not going to need all of these columns so let's just drop them:
+
+```{r}
+
+```
+
+While we don't really need `id`, we'll keep it to show which observations get changed/dropped etc. 
+
+The *Controls* in the table are those with `dili==C` and the *DILI cases* are those with `dili==T1`.
+
+**Q**: Use the [`filter`](https://dplyr.tidyverse.org/reference/filter.html) command to remove all those observations which are not either `T1` or `C`. You'll need the `or` logical operator which is `|`. 
+
+**A**: 
+```{r}
+
+```
+
+---
+
+**Q**: There's one last problem.  The units of the *ALT*, *ALP* and *bili* variables.  They're all in log10 units.  here we can use the [`mutate_at`](https://dplyr.tidyverse.org/reference/summarise_all.html) function, see one of the examples there - you'll also need to use the following function instead of `log`:
+
+```{r}
+ten_2_power <- function(x) 10**x
+```
+
+Then rename the them by using [`rename_at`](https://dplyr.tidyverse.org/reference/select_all.html) (the following isn't a code chunk!  You should copy and paste this into the code chunk below at the correct place):
+
+```r
+rename_at(vars(matches("log")), funs(str_replace_all(., 'log10base_', '')))
+```
+
+Hint - figure out the correct functions to use first and then resave the dataframe. 
+
+**A**:
+```{r}
+
+
+```
+
+---
+
+## Number of observations 
+
+Now we have all our observations and only the columns we want.  
+
+**Q**: use [`summarise`](https://dplyr.tidyverse.org/reference/summarise.html) with the summary statistic `n()` to calculate the number of rows in the dataframe. Call the summary statistic `num_obs`. 
+
+**A**: 
+```{r}
+
+
+```
+
+---
+
+Not all that useful.  Let's increase it's usefulness by calling  [`group_by`](https://dplyr.tidyverse.org/reference/group_by.html) first. 
+
+**Q**: use `group_by` to calculate the number of observations the two levels of `dili`: 
+
+**A**: 
+```{r}
+
+
+```
+
+---
+
+This is better.  Let's try to summarise the other variables.   To do this, we'll have to collect all the other columns into two columns - one that tells us what the variable is and one to tell us what the value for that variable is.  To do this we'll use [`gather`](https://tidyr.tidyverse.org/reference/gather.html). 
+
+**Q**: Discard the `group_by` line from above and gather all columns except `id` and `dili` into a key=`characteristic` and value=`value` column, pipe the results into `headtail()`. 
+
+**A**: 
+
+```{r}
+
+
+```
+
+---
+
+**Q**: Now we need to count the number of observations of each characteristic for `dili==C` and `dili==T1`. We can use a single call to `group_by` to do this. If you put two variables in the `group_by` call it will group them hierarchically.  We want to group by `dili` and `characteristic` - you decide which order to put them in (try both and see what happens).  After the `group_by` call, count the number of observations with `summarise`. 
+
+**A**: 
+
+```{r}
+
+
+```
+
+---
+
+**Q**: There's something obviously wrong here - the number of observations are the same for each characteristic.  This is because the missing values still count as an observation.  Instead of counting the number of observations using `n()` we will have to:
+
+  1. convert the values to `FALSE/TRUE` if they `NA` or not using `!is.na()` (what does `!` do?)
+  2. sum these logicals (`TRUE=1`, `FALSE=0`) using `sum()`. 
+
+So change the formula in `summarise` to count the number of non-NA values. 
+**A**: 
+
+```{r}
+
+
+```
+
+Great!  this is the information we need but the format isn't very nice. Let's have two columns with `dili=C` and `dili=T1` and the counts as the values. 
+
+---
+
+**Q**: Use [`spread`](https://tidyr.tidyverse.org/reference/spread.html) to split the values in `num_obs` into two columns labelled `C` and `T1`: 
+
+**A**: 
+
+```{r}
+
+
+```
+
+---
+
+## Median
+
+Now we have the pattern for summarising the data into nice tables, it should be easy to calculate the median for those variables which are double precision (i.e. not 0/1 integer variables like `hiv`).  
+
+**Q**: Use the `select_if` function to select only those variables which are floating ponit numbers (not integers) OR called `dili`.  To do this you'll need to use this [example](https://stackoverflow.com/questions/39592879/r-dpylr-select-if-with-multiple-conditions)  from `aichao` with  the [`is_double`](https://www.rdocumentation.org/packages/purrr/versions/0.2.2.2/topics/type-predicates) function form the tidyverse [`purrr`](https://purrr.tidyverse.org/) package.  
+
+
+**A**:
+```{r}
+
+
+```
+
+---
+
+**Q**: Now we have that selection pattern, we can use a similar set of functions as before but replacing the `num_obs = sum(!is.na())` with the `median(..., na.rm=T)` function. You'll need to adjust the `gather` function as well. 
+
+**A**: 
+```{r}
+
+
+```
+
+---
+
+## Interquartile range
+
+**Q**: The lower and upper quartile should now be likewise simple. Look at  `summarise` documentation to get the correct function. Call the lower quartile `lq` and the upper quartile `uq`.  Note in this one you'll not be able to `spread` the columns without  a bit more work (you can do it though using [`unite`](https://tidyr.tidyverse.org/reference/unite.html)) and making the numbers characters. I've included this code as well in the solutions. 
+
+**A**: 
+
+```{r}
+
+
+```
+
+```{r}
+
+
+```
+
+
+---
+
+## %/Fraction
+
+For integer variables (which really should be factor variables), such as `hiv`, we need to count the number of `0`s and the `1` in each level. 
+
+**Q**: First, let's turn integer variables into factor variables using [`mutate_if`](https://dplyr.tidyverse.org/reference/summarise_all.html) and the functions `is.integer()` and `as.factor()`.
+
+**A**:
+```{r}
+
+
+```
+
+---
+
+**Q**: Now it's easy just to select `factors` by using `select_if` with `is.factor`:
+
+**A**: 
+
+```{r}
+
+
+```
+
+---
+
+**Q**: We can `gather` in the same way as before.  Note, that this time we need to gather everything *except* `id` and `dili` as `id` is an integer variable. 
+
+**A**: 
+```{r}
+
+
+```
+
+---
+
+**Q**: The key to counting each value of each variable is to `group_by` `dili`, `characteristic` **AND** `value` and then count the non-`NA` values as we did before. 
+
+**A**: 
+```{r}
+
+
+```
+
+---
+
+**Q**: `spread`  `num_obs` by `value` column.  We should note that once we've `spread` the values, any `NA` represent `0`s - not actually missing values.  (Why?)  So after we `spread` the values, we can just convert all `NA`s to `0`s using the following: 
+
+```r
+mutate_all(funs(replace(., is.na(.), 0)))
+```
+
+**A**:
+```{r}
+
+
+```
+
+---
+
+**Q**: If you want you can now combine the `'0'` and `'1'` (note - they're strings, not numbers) columns using `unite` (and call it `fraction`), select the `dili`, `characteristic` and `fraction` columns and finally `spread` the `fraction` column by `dili`. 
+
+**A**:
+```{r}
+
+
+``` 
