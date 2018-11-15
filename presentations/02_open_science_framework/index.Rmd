@@ -30,34 +30,28 @@ options(xtable.type = 'html')
 knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
 
----&twocol
-## Preregistration
-
-
----&twocol
-```{r, echo=F,out.width='100%', fig.align='center'}
-include_graphics('fig/osf.png')
-```
-
 ## Open Science
 
 ***=left
 Science should be made publicly available and free at the point of use.
 
-Accessible to:
+Accessible/useful to:
 * All researchers
 * Big and small businesses
 * Communities
 * Individuals
 
 ***=right
-```{r, echo=F,out.width='100%', fig.align='center'}
-include_graphics('fig/openscience.png')
+
+```{r, echo=F, out.width='100%'}
+include_graphics('fig/umbrella.jpg')
 ```
+
+Open science is an umbrella term that includes open access, open data, equality, and reproducibility of research.
 
 ---
 
-## Guided tour of the OSF
+## Guided tour of the [OSF](https://osf.io/)
 
 Note:
 * Dashboard (create new projects, look at your old ones)
@@ -69,7 +63,7 @@ Note:
 
 ## Exercise
 
-1. Make a project on the open science framework.  Call it 'Best practice workshop'
+1. Make a project on the [open science framework](https://osf.io/).  Call it 'Best practice workshop'
 2. Add a description 'Example project'
 3. Edit the wiki and add a link to the paper https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5366108/
 4. Link your project our project https://osf.io/zgwj2/ (go to components > link project > search "Data Analysis Best Practice")

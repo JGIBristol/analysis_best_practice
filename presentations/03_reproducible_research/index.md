@@ -15,22 +15,7 @@ widgets: mathjax
 output: ioslides_presentation
 ---
 
-```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
-# make this an external chunk that can be included in any file
-library(knitr)
-options(width = 100)
-opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
-options(xtable.type = 'html')
-# knit_hooks$set(inline = function(x) {
-#   if(is.numeric(x)) {
-#     round(x, getOption('digits'))
-#   } else {
-#     paste(as.character(x), collapse = ', ')
-#   }
-# })
-knit_hooks$set(plot = knitr:::hook_plot_html)
-```
 
 
 ## What is reproducibility?
@@ -45,9 +30,7 @@ ___________
 
 Being reproducible is a prerequisite for being replicable; __at a minimum your work should be reproducible__. 
 
-Today we're going to try and __reproduce__ the results of a paper.
-
-Good practices in data analysis will help you with both reproducibility and replicability (plus other benefits)
+Good practices in data analysis will help you with both (and there are lots of other upsides to them which we'll discuss in a moment).
 
 ---
 
@@ -55,9 +38,7 @@ Good practices in data analysis will help you with both reproducibility and repl
 
 __Less than 40%__ of replications of well-known Psychology studies had significant results:
 
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/psychology-replication-paper.jpg')
-```
+<div class="rimage center"><img src="fig/psychology-replication-paper.jpg" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="100%" class="plot" /></div>
 "Open Science Collaboration. "Estimating the reproducibility of psychological science." Science 349.6251 (2015): aac4716.
 
 Only __11%__ of replications of well-known cancer biology studies had significant results. 
@@ -70,9 +51,7 @@ Begley, C. Glenn, and Lee M. Ellis. "Drug development: Raise standards for precl
 
 *** =left
 
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/is-there-a-crisis.jpg')
-```
+<div class="rimage center"><img src="fig/is-there-a-crisis.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="100%" class="plot" /></div>
 
 *** =right
 
@@ -84,9 +63,7 @@ Baker, Monya. "1,500 scientists lift the lid on reproducibility." Nature News 53
 ## Most researchers have failed to reproduce a result
 *** =left
 
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/failed-to-reproduce.jpg')
-```
+<div class="rimage center"><img src="fig/failed-to-reproduce.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
 
 *** =right
 
@@ -108,8 +85,8 @@ Of the 1576 scientists surveyed, __over 70% of scientists surveyed have experien
 
 ## Types of reproducibility problems
 
-* Lacking information: data or methods not provided in full.
-* Data Storage problems
+* Data or methods not provided in full.
+* Data Storage
 * Analysis environment
 * P-hacking (and HARKing)
 
@@ -124,13 +101,11 @@ This requires you to __make your data and methods available!__
 And __make what you provide usable to others__ by making sure that you store your data (with documentation) publicly wherever possible and provide a full description of your methodology as well as a script that others can run to check your results.
 
 *** =right
-If you don't then, great, but if sharing your code sounds scary:
+If sharing your code sounds scary:
 * You could run your scripts through a linter ([lintr](https://cran.r-project.org/web/packages/lintr/index.html) in R - supported in RStudio) first to have it tell you about any errors that can be automatially detected.
 * Everyone can improve at this stuff, so I think everyone finds it a bit scary. Share your stuff anyway, please!
 
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/imposter.jpg')
-```
+<div class="rimage center"><img src="fig/imposter.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="100%" class="plot" /></div>
 
 ---&twocol
 
@@ -153,9 +128,7 @@ __Suboptimal file names:__
 * "deprivation_final_actually_for_realsies.txt"
 * "bees_measurements.xls"
 
-```{r, echo=F, out.width='80%'}
-include_graphics('fig/duke-scandal.jpg')
-```
+<div class="rimage center"><img src="fig/duke-scandal.jpg" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="80%" class="plot" /></div>
 
 ---&twocol
 
@@ -164,15 +137,11 @@ include_graphics('fig/duke-scandal.jpg')
 *** =left
 
 __Anxiety-inducing:__
-```{r, echo=F, out.width='90%'}
-include_graphics('fig/directory_bad.jpg')
-```
+<div class="rimage center"><img src="fig/directory_bad.jpg" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="90%" class="plot" /></div>
 
 *** =right
 __Pretty good:__
-```{r, echo=F, out.width='90%'}
-include_graphics('fig/directory_good.jpg')
-```
+<div class="rimage center"><img src="fig/directory_good.jpg" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="90%" class="plot" /></div>
 
 * Organise files sensibly. 
 * Make data folders read only. 
@@ -239,9 +208,7 @@ __Avoid because:__
 - You won't be able to remember which is the actually_actually_real_final_file.txt
 
 *** =right
-```{r, echo=F, out.width='50%'}
-include_graphics('fig/final_version.jpg')
-```
+<div class="rimage center"><img src="fig/final_version.jpg" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="50%" class="plot" /></div>
 
 __Solve by:__
 - <font color='red'>Using version control (i.e. Git)</font>
@@ -259,9 +226,7 @@ __What does it mean if p < 0.05?__
   * Your result will be easier to publish?
 
 *** =right
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/dice.jpg')
-```
+<div class="rimage center"><img src="fig/dice.jpg" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="100%" class="plot" /></div>
 
 ---
 ## Experiments - Simulation 1
@@ -291,9 +256,7 @@ Assume now that I'm the PI of a lab and you are all my PhD students. Each of you
 * Did any of you get two false positives?
 
 *** =right
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/forking_paths.jpg')
-```
+<div class="rimage center"><img src="fig/forking_paths.jpg" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="100%" class="plot" /></div>
 
 --- &twocol
 
@@ -306,17 +269,13 @@ Instead of trying the same hypothesis with 20 different methodologies, you can g
 
 *** =right
 
-```{r, echo=F, out.width='45%'}
-include_graphics('fig/jellybean_xkcd.jpg')
-```
+<div class="rimage center"><img src="fig/jellybean_xkcd.jpg" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="45%" class="plot" /></div>
 
 ---
 
 ## HARKing example
 
-```{r, echo=F, out.width='80%'}
-include_graphics('fig/HARKing_real.jpg')
-```
+<div class="rimage center"><img src="fig/HARKing_real.jpg" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="80%" class="plot" /></div>
 
 __Bold__ = abstract presented
 
@@ -340,12 +299,8 @@ __Solutions to p-hacking:__
 * Simulating data.
 
 *** =right
-```{r, echo=F, out.width='40%'}
-include_graphics('fig/p_values_xkcd.jpg')
-```
-```{r, echo=F, out.width='50%'}
-include_graphics('fig/p-curve.jpg')
-```
+<div class="rimage center"><img src="fig/p_values_xkcd.jpg" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="40%" class="plot" /></div>
+<div class="rimage center"><img src="fig/p-curve.jpg" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="50%" class="plot" /></div>
 
 ---
 ## Pre-registration 
@@ -363,9 +318,7 @@ There is currently (until the end of the year) a drive/competition (with prizes)
 You apply to the journal before data collection providing your pre-registration. If you pass peer review at that stage and you stick to what you said you'd do, then you will be able to publish it in that journal.
 
 *** =right
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/reg-reports.jpg')
-```
+<div class="rimage center"><img src="fig/reg-reports.jpg" title="plot of chunk unnamed-chunk-15" alt="plot of chunk unnamed-chunk-15" width="100%" class="plot" /></div>
 
 ---&twocol
 
@@ -379,19 +332,17 @@ They are issued by a growing number of journals (currently ~35).
 They help other researchers see that your work is reproducible.
 
 *** =right
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/open-science-badges.jpg')
-```
+<div class="rimage center"><img src="fig/open-science-badges.jpg" title="plot of chunk unnamed-chunk-16" alt="plot of chunk unnamed-chunk-16" width="100%" class="plot" /></div>
 
 ---&twocol
 
 ## Summary 
 
 *** =left
-__Reproducible research is important because:__.
-* It saves your time when you come back to your work.
-* Its good for your reputation (by avoiding disaster, improving your motivation to do good work, and through open science badges, etc).
+__Reproducible research is important because:__
 * It saves us from bad science.
+* It saves you time when you come back to your work.
+* Its good for your reputation (by avoiding disaster, improving your motivation to do good work, and through open science badges, etc).
 
 *** =right
 __Main causes of poor reproducibility:__

@@ -5,21 +5,27 @@ output: pdf_document
 
 ## 02 - Open science framework
 
-1. Make a project on the open science framework.  Call it 'Best practice workshop'
+1. Make a project on the [open science framework](https://osf.io/).  Call it 'Best practice workshop'
 2. Add a description 'Example project'
 3. Edit the wiki and add a link to the paper https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5366108/
-4. Link your project our project https://osf.io/zgwj2/ (go to components > link project)
+4. Link your project our project https://osf.io/zgwj2/ (go to components > link project > search "Data Analysis Best Practice")
+5. Add tags to your project, e.g. 'reproduction', 'DILI', 'workshop'
 
-## 03 - pre-registration
-
+## 04 - pre-registration
 1. Navigate to https://cos.io/rr/ and see if you can find a journal in your area that allows registered reports. 
 2. Navigate to http://help.osf.io/m/registrations.  Find the template registration form which is eligible for the pre-registration challenge.  What is topic 8?
-??
 
-1. Navigate to https://cos.io/rr/ and see if you can find a journal in your area that allows registered reports. 
-2. Navigate to http://help.osf.io/m/registrations, consider the different types of template registration forms and choose which might be most applicable for your research.
+## 0X - Markdown and RMarkdown
+### Markdown
+1. Go to [goo.gl/Kx1ys2] (a document I created at hackMD.io - like google docs for Markdown - you can link your login to your GitHub account)
+2. Sign up/log in
+3. Spend 5-10 minutes playing with Markdown.
 
-## 04 - reproducible research
+### RMarkdown
+1. Open RStudio
+2. Create a new RMarkdown file (File>New File>R) (an example file will be generated)
+3. Run and individual code snippet from the generated file.
+4. Knit and convert the document into a PDF.
 
 ## 05 - version control 
 
