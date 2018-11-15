@@ -13,6 +13,7 @@ url:
   lib: ../libraries
 widgets: mathjax
 ---
+
 ```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
 # make this an external chunk that can be included in any file
 library(knitr)
@@ -29,10 +30,10 @@ options(xtable.type = 'html')
 # })
 knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
-
+---&twocol
 ## Open Science
 
-***=left
+*** =left
 Science should be made publicly available and free at the point of use.
 
 Accessible/useful to:
@@ -41,13 +42,15 @@ Accessible/useful to:
 * Communities
 * Individuals
 
-***=right
+*** =right
+
+Open science is an umbrella term that includes open access, open data, equality, and reproducibility of research.
 
 ```{r, echo=F, out.width='100%'}
 include_graphics('fig/umbrella.jpg')
 ```
 
-Open science is an umbrella term that includes open access, open data, equality, and reproducibility of research.
+
 
 ---
 

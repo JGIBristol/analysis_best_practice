@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Markdown and RMarkdown</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Markdown and RMarkdown">
+  <meta name="author" content="Natalie Thurlby">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../libraries/frameworks/io2012/js/slides" 
+    src="../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Markdown and RMarkdown</h1>
+    <h2>Data analysis best practice</h2>
+    <p>Natalie Thurlby<br/>Data scientist, Jean Golding Institute</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Good communication</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>In order for your work to be reproducible, you have to share it with others and communicate what it does. As I&#39;ve already said, that means writing READMEs, using version control (e.g. Git) and making your work available online (e.g. GitHub/OSF)</p>
+
+<p>Markdown is a nice and simple way to display READMEs, GitHub comments and pull requests (you will understand what they are by the end of the day if you don&#39;t yet!) and OSF pages.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Markdown</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Markdown is a intuitive language which can easily be converted to html. It&#39;s a really simple way to style text for websites. It&#39;s a good language to write your README files in, commits/pull requests on GitHub, or other files to store on GitHub/the OSF, and it&#39;s also the basis for RMarkdown. </p>
+
+<pre><code class="markdown">It&#39;s very easy to make some words **bold** and other words *italic* with Markdown. 
+
+It&#39;s also very easy to  [link to Google!](http://google.com).
+
+It&#39;s also how this presentation was formatted! 
+
+</code></pre>
+
+<p>Try it out!</p>
+
+<ul>
+<li>Go to <a href="a%20document%20I%20created%20at%20hackMD.io%20-%20like%20google%20docs%20for%20Markdown%20-%20you%20can%20link%20your%20login%20to%20your%20GitHub%20account">goo.gl/Kx1ys2</a></li>
+<li>Sign up/log in</li>
+<li>Spend 5-10 minutes playing with Markdown.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>RMarkdown</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>With RMarkdown, you can interlace the markdown language that you just practiced in HackMD.io (minus the smileys) with snippets of R code. This way you can create a document that contains all the code, figures, and explanation for your work.</p>
+
+<p>With Rmarkdown files you can:</p>
+
+<p>(A) <strong>knit</strong>: to run the code chunks and display the output of those code chunks. This stops author from doing the manual labour of making the graph, saving it as a file, and then copying and pasting it into the final report every time they want to update the graph.</p>
+
+<p>(B) <strong>convert</strong>: from Rmarkdown to html (websites), PDF, word files, presentations, or even books.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Exercise</h2>
+  </hgroup>
+  <article data-timings="">
+    <ol>
+<li>Open RStudio</li>
+<li>Create a new RMarkdown file (File&gt;New File&gt;R) (an example file will be generated)</li>
+<li>Run and individual code snippet from the generated file.</li>
+<li>Knit and convert the document into a PDF.</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Good communication'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Markdown'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='RMarkdown'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Exercise'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Version Control</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Version Control">
+  <meta name="author" content="Natalie Thurlby">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="../libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="../libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="../libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="../libraries/frameworks/io2012/js/slides" 
+    src="../libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Version Control</h1>
+    <h2>Data analysis best practice</h2>
+    <p>Natalie Thurlby<br/>Data scientist, Jean Golding Institute</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <hgroup>
+    <h2>Version Control</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>Version control helps you to keep track of different versions of the same file. </p>
+
+<p>Version control was developed for programming, but it works well on anything text-based. It helps you to get back to old versions of files if you don&#39;t like a change you made. It also helps you to create a log of what changes you are creating and why.</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>It also helps you avoid this sort of thing:</p>
+
+<div class="rimage center"><img src="fig/final_version.jpg" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="60%" class="plot" /></div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Git and GitHub</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><strong>Git</strong> is the most popular version control system: it&#39;s used by ~70% of developers across all programming languages.</p>
+
+<p><strong>GitHub</strong> is a platform to which hosts code for collaboration. It&#39;s also a good way to store the work you are doing so that you are backed up in an extra place. You can link GitHub projects with the Open Science Framework.</p>
+
+<div style='float:left;width:48%;'>
+  
+</div>
+<div style='float:right;width:48%;'>
+  
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Git Glossary</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p><strong>repository</strong>: A repository represents a project - it&#39;s a directory where changes will be tracked. A repository is where your project is stored.</p>
+
+<p><strong>branches</strong>: Branches are different (parallel) versions of the repository. You should make a new branch for each different feature in your code.</p>
+
+<p><strong>fork</strong>: A fork is your own private version of the repository (stored on GitHub) which you can make changes to without affecting the original version.</p>
+
+<p><strong>commit</strong>: A commit is a snapshot of your files at a particular time.</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div class="rimage center"><img src="fig/git-tree.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="65%" class="plot" /></div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>The git/github workflow</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <ul>
+<li><font size = 3>The <strong>master</strong> branch should always be in good working order.</font></li>
+<li><font size = 3>If you want to add new functionality/work on the code, create and move to (<strong>checkout</strong>) a development <strong>branch</strong>.</font></li>
+<li><font size = 3>When you make changes to a local branch that you are happy with, you can decide to take a snapshot of your files (a <strong>commit</strong>) and label them with a message about the changes. To <strong>commit</strong> you must first decide which files you wish you commit to changing - known as adding the files to to a <strong>staging</strong> area. Then you <strong>push</strong> your committed changes from your local copy of the repository to the remote (online) version.</font></li>
+<li><font size = 3>After many commits, when you have finished the new functionality for the branch, you can <strong>merge</strong> it into the master branch/trunk of the tree (via GitHub) by creating a <strong>pull_request</strong>.</font></li>
+</ul>
+
+</div>
+<div style='float:right;width:48%;'>
+  <div class="rimage center"><img src="fig/git-tree.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="65%" class="plot" /></div>
+
+<div class="rimage center"><img src="fig/git_basic.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="60%" class="plot" /></div>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>GitHub &quot;Tour&quot;</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;'>
+  <p>Let&#39;s check out the GitHub website where we have <a href="https://github.com/RobertArbon/analysis_best_practice">the repository</a> that me and Rob used to collaborate on this workshop. Here you can find all the information for this workshop! </p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>Things to note:</p>
+
+<ul>
+<li>The README.md</li>
+<li>How to navigate</li>
+<li>How to fork and clone an existing repository</li>
+<li>How to make a new repository</li>
+</ul>
+
+<p>GitHub likes Markdown. It will:</p>
+
+<ul>
+<li>automatically render READMEs written in Markdown</li>
+<li>render commit and pull request messages written in Markdown.</li>
+</ul>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Getting started</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Forking the repository and finding the rest of the instructions.</h3>
+
+<ul>
+<li>Go to [<a href="https://github.com/RobertArbon/analysis_best_practice">https://github.com/RobertArbon/analysis_best_practice</a>]. Login and fork the repository.</li>
+<li>The instructions for the rest of the exercise in &quot;exercises/version_control.Rmd&quot;</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='NA'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Version Control'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Git and GitHub'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Git Glossary'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='The git/github workflow'>
+         5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='GitHub &quot;Tour&quot;'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Getting started'>
+         7
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="../libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="../libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>

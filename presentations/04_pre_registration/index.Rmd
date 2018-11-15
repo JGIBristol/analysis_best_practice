@@ -30,8 +30,6 @@ options(xtable.type = 'html')
 knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
 
----
-
 ## Pre-registration
 
 Pre-registration is a solution to HARKing (Hypothesising After Results are Known). It the practice of saying in advance exactly what analysis you are going to do, including:
@@ -40,28 +38,31 @@ Pre-registration is a solution to HARKing (Hypothesising After Results are Known
 * what you will exclude from your sample
 * what variables you are going to correct for
 
---- &twcol
+---&twocol
 
 ## Benefits of pre-registration
 
-***=left
+*** =left
 
 Pre-registering has many benefits, including:
-* It prevents HARKing, which you can do unconsciously and accidentally if you don't have a record of exactly what you want to test. This increases your credibility to others and your condience in your results!
-* Proves that you came up with the idea first since you will have timestamped proof of your idea.
-* Helps you write papers/your thesis later.
-* Doesn't get in the way of exploratory research. If you are doing exploratory research, you just have to say that you are doing that, instead of pretending you knew exactly what to test in advance.
+> - It prevents HARKing, which you can do unconsciously and accidentally if you don't have a record of exactly what you want to test. This increases your credibility to others and your condience in your results!
+> - Proves that you came up with the idea first since you will have timestamped proof of your idea.
+> - Helps you write papers/your thesis later.
+> - Doesn't get in the way of exploratory research. If you are doing exploratory research, you just have to say that you are doing that, instead of pretending you knew exactly what to test in advance.
 
-***=right
+*** =right
+*The first principle is you must not fool yourself — and you are the easiest person to fool* - Richard Feynman
+
 ```{r, echo=F, out.width='50%'}
 include_graphics('fig/feynman.jpg')
 ```
-The first principle is you must not fool yourself — and you are the easiest person to fool - Richard Feynman
+
+
 ---
 
 ## Where and how to pre-register your research
 
-* Use the Open Science Framework to timestamp and archive a pre-registration, so you can prove you made a prediction ahead of time.
+* Use the Open Science Framework to timestamp and archive a pre-registration, so you can prove you made a prediction ahead of time (not deletable).
 * Visit AsPredicted.org which provides a form to complete, which will help you structure your pre-registration (making sure you include all relevant information).
 * [Registered reports](https://cos.io/rr/): send a journal your method and analysis plan for review before data collection begins and if they like your plan they will agree to publish once the results are in (however they turn out).
 * Write your data collection and analysis plan down and post it on your blog.
@@ -72,11 +73,11 @@ The first principle is you must not fool yourself — and you are the easiest pe
 
 Registered reports are a new model for publishing papers. Instead of applying to journals once you have your results, you apply while after you have made plans for research and analysis, but before you have collected your data.
 
-In addition to correcting for HARKing, registered reports also correct for publication bias (positive results are more interesting than negative ones, so they get published more, even though they just as important!)
+In addition to correcting for HARKing, registered reports also correct for publication bias (positive results are more easily published than negative results)
 
 Extra great for research(ers) because:
 * You can publish non-significant results 
-* You will be able to benefit from knowing what __doesn't__ work.
+* We will all be able to benefit from knowing what __doesn't__ work.
 
 ```{r, echo=F, out.width='100%'}
 include_graphics('fig/reg_reports.jpg')
@@ -104,4 +105,4 @@ include_graphics('fig/open-science-badges.jpg')
 
 1. Navigate to https://cos.io/rr/ and see if you can find a journal in your area that allows registered reports. 
 2. Navigate to http://help.osf.io/m/registrations, consider the different types of template registration forms and choose which might be most applicable for your research (use the form from AsPredicted.org as a starting point if you aren't sure).
-3. Attempt to fill out your chosen form related to either your current research or an upcoming piece of research.
+3. Fill in the form for your current or upcoming research. 

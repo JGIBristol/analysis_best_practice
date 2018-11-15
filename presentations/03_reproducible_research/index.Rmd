@@ -5,33 +5,34 @@ author: "Natalie Thurlby"
 highlighter: highlight.js
 hitheme: tomorrow
 job: Data scientist, Jean Golding Institute
-logo: 
+# logo: jgi-logo.jpg
 mode: selfcontained
 framework: io2012
 url:
   assets: ../assets
-  lib: ../librariesNew
+  lib: ../libraries
 widgets: mathjax
-output: ioslides_presentation
 ---
 
 ```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
 # make this an external chunk that can be included in any file
 library(knitr)
+library(tidyverse)
+library(FSA)
+library(xtable)
 options(width = 100)
 opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
 options(xtable.type = 'html')
-# knit_hooks$set(inline = function(x) {
-#   if(is.numeric(x)) {
-#     round(x, getOption('digits'))
-#   } else {
-#     paste(as.character(x), collapse = ', ')
-#   }
-# })
+knit_hooks$set(inline = function(x) {
+  if(is.numeric(x)) {
+    round(x, getOption('digits'))
+  } else {
+    paste(as.character(x), collapse = ', ')
+  }
+})
 knit_hooks$set(plot = knitr:::hook_plot_html)
 ```
-
 
 ## What is reproducibility?
 
@@ -195,7 +196,6 @@ __Avoid because:__
 - Will take you ages to repeat analysis if you need to.
 - The order of doing things could change the results (results might be wrong).
 - Other people will not be able to reproduce your work.
----&twocol
 
 *** =right
 
@@ -232,52 +232,46 @@ __Solve by:__
 *** =left
 
 __What does it mean if p < 0.05?__
-  * Your result is true?
-  * There's a 95% chance your hypothesis is true?
-  * There's a 5% (1 in 20) chance that your hypothesis testing has resulted in a false positive assuming that you're using the right measure and all your assumptions are correct?
-  * Your result is interesting? 
-  * Your result will be easier to publish?
-  
-> If p = 0.05, it means there is a 1 in 20 chance that your result is false.
-> To put this another way: if the effect you are measuring is completely random, then one in 20 times you will get a false positive (p<0.05).
+> - Your result is true?
+> - Your result is interesting? 
+> - Your result will be easier to publish?
+> - There is a 1 in 20 chance that your result is a false positive (assuming that you're using the right measure and all your assumptions are correct).
+
+> - To put this another way: if your hypothesis is completely wrong (it has no effect on your measure), then assuming you are doing your statistics correctly, one in 20 times you will randomly get a false positive (p<0.05).
 
 *** =right
-```{r, echo=F, out.width='100%'}
+```{r, echo=F, out.width='80%'}
 include_graphics('fig/dice.jpg')
 ```
 
 ---
+
 ## Experiments - Simulation 1
 
-Imagine that you are a researcher, you have your own dataset and you are going to test one scientific hypothesis. The hypothesis you have chosen is __NOT TRUE__, but of course you don't know that yet! 
+Imagine that you are a researcher, you have your own dataset and you are going to test one scientific hypothesis. The hypothesis you have chosen is __not true__, but of course you don't know that yet!
 
-__Rules:__
-* Rolling a dice = testing a hypothesis (which isn't true) 
-* Rolling a 1 => p<0.05 (a false positive)
+We are going to simulate this situation by rolling a 20-sided dice!
+* Rolling a 1 is equivalent to p<0.05 (a false positive)
 * Rolling anything else => p>0.05 (a true negative)
 
-__Instructions:__
-* Roll a 20-sided dice once each.
-
-__Results 1:__
-* How many of you rolled a 1? (Got a false positive)
-
-> What do you think the probability is of each of you rolling a 1?
+Instructions:
+> - Roll a 20-sided dice once each.
+> - How many of you rolled a 1? (Got a false positive)
+> - For one of you, what do you think the probability is of you rolling a 1 (getting a false positive)?
 
 ---&twocol
 
 ## Experiments - Simulation 2
 
-Imagine now that I am the PI of a lab and you are all my PhD students. I have one dataset with many different variables in it, and you are all testing very slighly different hypotheses for me on that dataset. 
+You are still a researcher with your own dataset, but now you are going to test 10 slightly different variations on your scientific hypotheses on your dataset. All of these hypothesis are still __not true__, but again, you don't know that!
 
 *** =left
-__Instructions:__
-* Roll a 20-sided dice once each. 
 
-__Results:__
-* How many of you rolled a 1? (Got a false positive)
-
-> What do you think the probability is of at least one of you rolling a 1?
+Instructions:
+> - Roll a 20-sided dice 10 times each. 
+> - How many of you rolled at least one "1"? (Got a false positive)
+> - How many of you rolled more than one "1"?
+> - What do you think the probability is of rolling at least one 1 (getting a false positive) if you test 10 hypotheses?
 
 *** =right
 ```{r, echo=F, out.width='100%'}
@@ -364,4 +358,4 @@ __Main causes of poor reproducibility:__
 If you don't do anything else, these three things will massively improve the reproducibility of your work:
 * <font size = 20>Write some scripts</font>
 * <font size = 20>Share your data and code</font>
-* <font size = 20>Use version control</font> (after coffee)
+* <font size = 20>Use version control</font> 
