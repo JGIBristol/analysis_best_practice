@@ -64,6 +64,7 @@ widgets: mathjax
 
 ## Our project
 The plan for today will be: 
+
 1. Set up an `Open Science Framework` project and plan the analysis. 
 2. Understand how and why to make this project *reproducible*. 
 3. Get familiar with `git` and `Github` for *version control*. 

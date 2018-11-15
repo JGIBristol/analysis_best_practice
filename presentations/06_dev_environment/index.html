@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Course Introduction</title>
+  <title>Integrated Development Environment (IDE)</title>
   <meta charset="utf-8">
-  <meta name="description" content="Course Introduction">
+  <meta name="description" content="Integrated Development Environment (IDE)">
   <meta name="author" content="Robert Arbon">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -31,7 +31,7 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Course Introduction</h1>
+    <h1>Integrated Development Environment (IDE)</h1>
     <h2>Data analysis best practice</h2>
     <p>Robert Arbon<br/>Data scientist, Jean Golding Institute</p>
   </hgroup>
@@ -42,90 +42,66 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Jean Golding Institute</h2>
+    <h2>IDEs</h2>
   </hgroup>
   <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-  <ul>
-<li>Jean Golding Institute for data intensive research </li>
-<li><a href="http://www.bristol.ac.uk/golding/">http://www.bristol.ac.uk/golding/</a> </li>
-<li>We support interdisciplinary research across the university. </li>
-<li>This year: 
+    <ul>
+<li>Goal: <strong>Make coding/data analysis easier</strong></li>
+<li>Content:
 
 <ul>
-<li>Data science competition</li>
-<li>Reproducibility experiment and data visualisation competition</li>
-<li><em>Data week</em> - a week of training in various </li>
+<li>Text editor with syntax highlighting</li>
+<li>Compiler or interpreter</li>
+<li>Debugger</li>
+<li>Lots of other <em>little</em> things easier, e.g. version control, file manager, console, terminal, autocomplete...</li>
 </ul></li>
 </ul>
 
-</div>
-<div style='float:right;width:48%;'>
-  <ul>
-<li><strong>Ask-JGI</strong>: <code>ask-jgi@bristol.ac.uk</code></li>
-<li>For researchers and staff, offering support, signposting and advice for all your data intensive research queries.</li>
-</ul>
-
-<div class="rimage center"><img src="fig/concepts-with-hyphens.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="70%" class="plot" /></div>
-
-</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-2" style="background:;">
   <hgroup>
-    <h2>Jean Golding</h2>
+    <h2>IDE examples</h2>
   </hgroup>
   <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-  <ul>
-<li>Professor Jean Golding OBE is an epidemiologist at Bristol</li>
-<li>She set up the ALSPAC (<em>Child of the 90s</em>) study</li>
-<li>Led to many important discoveries in child development and health<br></li>
+    <ul>
+<li>For <code>R</code> there is <a href="https://www.rstudio.com/">R Studio</a> </li>
+<li>For <code>Python</code> there is <a href="https://www.jetbrains.com/pycharm/">PyCharm</a></li>
+<li>For general purpose there is <a href="https://www.sublimetext.com/">Sublime Text</a>. There are lots of others!</li>
+<li>For datascience type applications, the <a href="http://jupyter.org/">Jupyter</a> project is powerful. </li>
 </ul>
 
-<div class="rimage center"><img src="fig/backs.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="75%" class="plot" /></div>
-
-</div>
-<div style='float:right;width:48%;'>
-  <div class="rimage center"><img src="fig/jean.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="80%" class="plot" /></div>
-
-</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Who we are</h2>
+    <h2>RStudio - projects</h2>
   </hgroup>
   <article data-timings="">
     
 <div style='float:left;width:48%;'>
-  <h3>Natalie Thurlby</h3>
-
-<div class="rimage left"><img src="fig/natalie.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="50%" class="plot" /></div>
-
-<ul>
-<li><code>@statalieT</code></li>
-<li>Phd in computational biology</li>
-<li>Data science specialist at Jean Golding Institute</li>
+  <ul>
+<li><code>.RData</code> - a snapshot of your workspace</li>
+<li><code>.RHistory</code> - a history of commands you ran in text</li>
+<li><code>MyProject.RProj</code> - project level settings for RStudio</li>
+<li>File templates: R scripts, RMarkdown, plain text, C++, R Presentation...</li>
+<li><code>Console</code>: Run R commands from a terminal</li>
+<li><code>Terminal</code>: run bash commands from a terminal</li>
 </ul>
 
 </div>
 <div style='float:right;width:48%;'>
-  <h3>Robert Arbon</h3>
-
-<div class="rimage left"><img src="fig/robert.jpg" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" class="plot" /></div>
-
-<ul>
-<li><code>@bertiearbon</code></li>
-<li>Finishing PhD in computational chemistry </li>
-<li>Data scientist at Jean Golding Institute</li>
-<li>Previously data scientist/economics analyst for dev. agencies (e.g. World Bank)</li>
+  <ul>
+<li><code>Environment</code>: view all objects in various environments</li>
+<li><code>History</code>: list of previously run commands</li>
+<li><code>Git</code>: manage your version control</li>
+<li><code>Files</code>: view and manage your files. </li>
+<li><code>Plots/Viewer</code>: view plots and other output (e.g. html documents)</li>
+<li><code>Packages</code>: manage packages</li>
 </ul>
 
 </div>
@@ -135,21 +111,25 @@
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>UK Reproducibility Network</h2>
+    <h2>Writing code</h2>
   </hgroup>
   <article data-timings="">
     
 <div style='float:left;width:48%;'>
-  <p><img src="fig/ukrn-logo.jpg" alt=""></p>
+  <ul>
+<li>LOTS of commands to make writing code easier in <code>Code</code> menu</li>
+<li><strong>Most useful</strong> is <code>tab</code> complete: </li>
+</ul>
+
+<div class="rimage center"><img src="fig/tabcomplete.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="100%" class="plot" /></div>
+
+<ul>
+<li>Debugger is also very useful</li>
+</ul>
 
 </div>
 <div style='float:right;width:48%;'>
-  <ul>
-<li>Multi-disciplinary network  working to promote reproducible research in the UK (<code>@ukrepro</code>)</li>
-<li>Chair of advisory board is <em>Dorothy Bishop</em> (<code>@deevybee</code>) (Professor of developmental neuropsychology at Oxford)</li>
-<li>There will be a local Bristol working group</li>
-<li>Please email <a href="mailto:marcus.munafo@bristol.ac.uk">marcus.munafo@bristol.ac.uk</a> (<code>@marcusmunafo</code>) to be put on the mailing list</li>
-</ul>
+  <div class="rimage center"><img src="fig/code.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="50%" class="plot" /></div>
 
 </div>
   </article>
@@ -158,38 +138,16 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>About this course</h2>
+    <h2>Customize RStudio</h2>
   </hgroup>
   <article data-timings="">
     
 <div style='float:left;width:48%;'>
-  <ul>
-<li>First course of its type at Bristol (AFAWK)</li>
-<li><strong>Aim</strong>: introduce you to ideas and tools which you will take further in your own time</li>
-<li><strong>Delivery</strong>:
-
-<ul>
-<li>Lectures</li>
-<li>Discussion</li>
-<li>Practicals</li>
-</ul></li>
-<li><strong>Outcomes</strong>:
-
-<ul>
-<li>Introduced to the ideas and tools of reproducible research</li>
-<li>Reproduce results of a paper </li>
-</ul></li>
-</ul>
+  <div class="rimage center"><img src="fig/global.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
 
 </div>
 <div style='float:right;width:48%;'>
-  <ul>
-<li>Please give constructive feedback on:</li>
-</ul>
-
-<p><a href="https://github.com/RobertArbon/analysis_best_practice">github.com/RobertArbon/analysis_best_practice</a></p>
-
-<p><img src="fig/gihutb-issues.png" alt="issues"></p>
+  <div class="rimage center"><img src="fig/project.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="100%" class="plot" /></div>
 
 </div>
   </article>
@@ -198,37 +156,22 @@
 
 <slide class="" id="slide-6" style="background:;">
   <hgroup>
-    <h2>Itinerary (approximate!)</h2>
+    <h2>Exercises</h2>
   </hgroup>
   <article data-timings="">
-    
-<div style='float:left;width:48%;'>
-  <ul>
-<li>9:00 - Welcome</li>
-<li>9:15 - Course introduction</li>
-<li>9:20 - Project introduction</li>
-<li>9:25 - Open science framework</li>
-<li>9:45 - Reproducible research</li>
-<li>10:15 - Pre-registration</li>
-<li>10:30 - Break</li>
-<li>11:00 - Development environment</li>
-<li>11:15 - (R)Markdown</li>
-<li>12:00 - Lunch</li>
-</ul>
+    <ol>
+<li><p>Configure your RStudio with the following layout: </p>
 
-</div>
-<div style='float:right;width:48%;'>
-  <ul>
-<li>13:00 - Version control</li>
-<li>14:00 - Getting data</li>
-<li>14:15 - Tidy data</li>
-<li>15:00 - Coffee</li>
-<li>15:30 - Analysis </li>
-<li>16:00 - Feedback, wrap up, independent study</li>
-<li>17:00 - Finish</li>
-</ul>
+<ol>
+<li>Bottom left: <code>Console</code> and <code>Terminal</code></li>
+<li>Top left: <code>Source</code></li>
+<li>Top right: <code>Environment</code>, <code>History</code>, <code>VCS</code></li>
+<li>Bottom right: <code>Files</code>, <code>Plots</code>, <code>Packages</code>, <code>Help</code>, <code>Viewer</code></li>
+</ol></li>
+<li><p>Check the &#39;Options&#39;&gt; &#39;RMarkdown&#39;: What directory are code chunks evaluted in?  Can you change this? What does this mean?</p></li>
+<li><p>Look in the &#39;History&#39; pane - try and run a previous command in the console without typing it out. </p></li>
+</ol>
 
-</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -239,37 +182,37 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Jean Golding Institute'>
+        data-slide=1 title='IDEs'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Jean Golding'>
+        data-slide=2 title='IDE examples'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Who we are'>
+        data-slide=3 title='RStudio - projects'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='UK Reproducibility Network'>
+        data-slide=4 title='Writing code'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='About this course'>
+        data-slide=5 title='Customize RStudio'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Itinerary (approximate!)'>
+        data-slide=6 title='Exercises'>
          6
       </a>
     </li>

@@ -1,6 +1,6 @@
 ---
-title: "Data analysis best practice"
-subtitle: "Course Introduction"
+title: "Course Introduction"
+subtitle:  "Data analysis best practice"
 author: "Robert Arbon"
 highlighter: highlight.js
 hitheme: tomorrow
@@ -107,8 +107,27 @@ widgets: mathjax
 
 ![issues](fig/gihutb-issues.png)
 
----
+---&twocol
 
 ## Itinerary (approximate!)
 
-skdjhfalkdsjhf
+*** =left
+* 9:00 - Welcome
+* 9:15 - Course introduction
+* 9:20 - Project introduction
+* 9:25 - Open science framework
+* 9:45 - Reproducible research
+* 10:15 - Pre-registration
+* 10:30 - Break
+* 11:00 - Development environment
+* 11:15 - (R)Markdown
+* 12:00 - Lunch
+
+*** =right
+* 13:00 - Version control
+* 14:00 - Getting data
+* 14:15 - Tidy data
+* 15:00 - Coffee
+* 15:30 - Analysis 
+* 16:00 - Feedback, wrap up, independent study
+* 17:00 - Finish

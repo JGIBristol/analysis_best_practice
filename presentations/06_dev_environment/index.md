@@ -14,22 +14,7 @@ url:
 widgets: mathjax
 ---
 
-```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}
-# make this an external chunk that can be included in any file
-library(knitr)
-options(width = 100)
-opts_chunk$set(eval=T, results = 'markup', include=T, message = F, error = F, warning = F, comment = NA, fig.align = 'center', dpi = 100, tidy = F, cache.path = '.cache/', fig.path = 'fig/')
 
-options(xtable.type = 'html')
-# knit_hooks$set(inline = function(x) {
-#   if(is.numeric(x)) {
-#     round(x, getOption('digits'))
-#   } else {
-#     paste(as.character(x), collapse = ', ')
-#   }
-# })
-knit_hooks$set(plot = knitr:::hook_plot_html)
-```
 
 ## IDEs
 
@@ -78,9 +63,7 @@ knit_hooks$set(plot = knitr:::hook_plot_html)
 * LOTS of commands to make writing code easier in `Code` menu
 * **Most useful** is `tab` complete: 
 
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/tabcomplete.png')
-```
+<div class="rimage center"><img src="fig/tabcomplete.png" title="plot of chunk unnamed-chunk-1" alt="plot of chunk unnamed-chunk-1" width="100%" class="plot" /></div>
 
 * Debugger is also very useful
 
@@ -88,9 +71,7 @@ include_graphics('fig/tabcomplete.png')
 *** =right
 
 
-```{r, echo=F, out.width='50%'}
-include_graphics('fig/code.png')
-```
+<div class="rimage center"><img src="fig/code.png" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="50%" class="plot" /></div>
 
 ---&twocol
 
@@ -98,15 +79,11 @@ include_graphics('fig/code.png')
 
 *** =left
 
-```{r, echo=F,out.width='100%'}
-include_graphics('fig/global.png')
-```
+<div class="rimage center"><img src="fig/global.png" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
 
 *** =right
 
-```{r, echo=F, out.width='100%'}
-include_graphics('fig/project.png')
-```
+<div class="rimage center"><img src="fig/project.png" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="100%" class="plot" /></div>
 
 ---
 
