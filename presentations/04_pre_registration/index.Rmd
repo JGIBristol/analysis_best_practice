@@ -82,6 +82,22 @@ Extra great for research(ers) because:
 include_graphics('fig/reg_reports.jpg')
 ```
 
+---&twocol
+
+## Open science badges
+
+*** =left
+[Open Science Badges](https://cos.io/our-services/open-science-badges/) are an incentive for researcher's to share data, materials and to preregister their reports. 
+
+They are issued by a growing number of journals (currently ~35).
+
+They help other researchers see that your work is reproducible.
+
+*** =right
+```{r, echo=F, out.width='100%'}
+include_graphics('fig/open-science-badges.jpg')
+```
+
 ---
 
 ## Exercise
