@@ -9,11 +9,3 @@
 * `outline.md` - the outline of the course
 * `resources.md` - links to resources used and recommended in this course. 
 * `/scripts` - some scripts used in creating this course. 
-
-
-hello
-
-
-
-
-
