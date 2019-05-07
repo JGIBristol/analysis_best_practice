@@ -8,11 +8,13 @@ You will be using the following web services in the course, so please use sign u
 1. [Open science framework](https://osf.io) - Web based service for sharing your work. Also provides time stamps and is a preprint server.
 1. [Github](https://github.com/) - Web hosting service for Git
 
-Will be using the following software.  This should already be installed on your machine but please do check.
+Will be using the following software.  Please make sure that it's installed on your machine.
 
 1. [Git](https://git-scm.com/) - Version control software
 1. [R](https://www.r-project.org/) - The R programming language
 1. [RStudio](https://www.rstudio.com/) - Intergrated Development Environment for R
+
+Finally, please make sure that Rstudio can find Git. The instructions [here](https://happygitwithr.com/rstudio-see-git.html) will help you check (and set-up if necessary).
 
 ## Packages in R
 
