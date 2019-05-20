@@ -9,19 +9,20 @@ output: html_document
 
 * 9:00: Introduction
   * `presentations/00_course_introduction`
+  * 5 mins: JGI intro
   * 5 mins: Nat & Rob 
   * 10 mins: Participants intros to their groups of 5. 
     * Why are you here?
     * What department are you from?
     
-* 9:15: Course introduction 
+* 9:20: Course introduction 
   * 5 mins: Code of conduct. N & R.
   * 10 mins: Overview of topics with post-it notes explanation. N. 
   
 
-* 09:30: Reproducible research
+* 09:35: Reproducible research
   * `presentations/03_reproducible_research`
-  * 60 mins: Presentation
+  * 55 mins: Presentation
     * Problems: P hacking/Harking/Publication Bias/Reuseability (FAIR).
     * Applications: dicsussion
     * Solutions: Preregistration/RR/Literate programming/Versions control/OA
