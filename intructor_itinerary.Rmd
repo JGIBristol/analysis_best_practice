@@ -17,8 +17,7 @@ output: html_document
     
 * 9:20: Course introduction 
   * 5 mins: Code of conduct. N & R.
-  * 10 mins: Overview of topics with post-it notes explanation. N. 
-  
+  * 10 mins: Overview of topics with post-it notes explanation. N.  
 
 * 09:35: Reproducible research
   * `presentations/03_reproducible_research`
