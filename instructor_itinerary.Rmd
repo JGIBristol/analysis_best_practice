@@ -22,8 +22,8 @@ output: html_document
 * 09:35: Reproducible research
   * `presentations/03_reproducible_research`
   * 55 mins: Presentation
-    * Problems: P hacking/Harking/Publication Bias/Reuseability (FAIR).
-    * Applications: dicsussion
+    * Problems: P-hacking/Harking/Publication Bias/Un"FAIR"ness.
+    * Applications: dicussion
     * Solutions: Preregistration/RR/Literate programming/Versions control/OA
   * 15 mins: start concept map. Group work developing CM. All together finish.
 

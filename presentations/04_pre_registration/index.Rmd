@@ -10,7 +10,7 @@ mode: selfcontained
 framework: io2012
 url:
   assets: ../assets
-  lib: ../libraries
+  lib: ../librariesNew
 widgets: mathjax
 ---
 ```{r setup, cache = F, echo = F, message = F, warning = F, tidy = F}

@@ -13,20 +13,19 @@ Topics not covered:
  * Machine learning
  * Use the `tidyverse` to create a **tidy data** set. 
  * Use all of the skills learnt to reproduce some findings from a paper and make your project **FAIR**. 
-
  
 ## Itinerary
 
 * 9:00 - Welcome and introductions
 * 9:20 - Course introduction
-* 9:35 - Reproducible research (data management, p-hacking, publication bias)
+* 9:35 - Reproducible research (P-hacking/Harking/Publication Bias/Un"FAIR"ness)
 * 10:45 - Break
 * 11:00 - Reproducible research environment 
   - Open Science Framework
   - RStudio
   - (R)Markdown
 * 12:00 - Lunch
-* 13:00 - Version control
+* 13:00 - [Version Control with Git](http://swcarpentry.github.io/git-novice/)
 * 14:45 - Break
 * 15:00 - Putting it all together
 * 15:30 - Finish 
