@@ -45,6 +45,8 @@ output: html_document
 
 * 13.05: Version control with Git
 
+* 14:40: Update concept map. 
+
 * 14:45: Break
 
 * 15:00: Putting it all together. R. 
