@@ -1,0 +1,59 @@
+---
+title: "instructor_itinerary"
+author: "Robert Arbon"
+date: "20/05/2019"
+output: html_document
+---
+
+
+
+* 9:00: Introduction
+  * `presentations/00_course_introduction`
+  * 5 mins: Nat & Rob 
+  * 10 mins: Participants intros to their groups of 5. 
+    * Why are you here?
+    * What department are you from?
+    
+* 9:15: Course introduction 
+  * 5 mins: Code of conduct. N & R.
+  * 10 mins: Overview of topics with post-it notes explanation. N. 
+  
+
+* 09:30: Reproducible research
+  * `presentations/03_reproducible_research`
+  * 60 mins: Presentation
+    * Problems: P hacking/Harking/Publication Bias/Reuseability (FAIR).
+    * Applications: dicsussion
+    * Solutions: Preregistration/RR/Literate programming/Versions control/OA
+  * 15 mins: start concept map. Group work developing CM. All together finish.
+
+* 10:45: BREAK 15 MINS
+
+* 11:00: Reproducible Research Environment. R. 
+  * 15 mins: OSF walk through online (MAPS). Get people signed up. 
+  * 15 mins: R Studio walk-through.
+  * 20 mins: (R) markdown practical. 
+  * 5 mins: concept map update
+
+* 11:55: Feedback - 1 thing good, 1 question.
+
+* 12:00: Lunch
+
+* 12:30: Lunch-time-walk. 
+
+* 13:00: Talk about post-it note questions
+
+* 13.05: Version control with Git
+
+* 14:45: Break
+
+* 15:00: Putting it all together. R. 
+  * Set up project. 
+  * Download data. 
+  * Create notebook. 
+  * Knit. 
+  * Upload to OSF. 
+  
+* 15:30. Fin. 
+  
+
