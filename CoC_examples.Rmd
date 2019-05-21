@@ -1,0 +1,19 @@
+---
+title: "coc_examples"
+author: "Robert Arbon"
+date: "20/05/2019"
+output: html_document
+---
+
+1. No Feigning Surprise
+  * R studio. (I'm using text edit - it's difficult. )
+  * Open science framework. (I keep having to share code via zipped file in emai. )
+  * Ontology. 
+  
+2. No 'Well actually'. 
+  * Weight/mass of subject. 
+  
+3. No Backseat driving. 
+  * 
+  
+4. Subtle isms. 
