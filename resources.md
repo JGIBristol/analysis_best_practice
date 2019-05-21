@@ -22,6 +22,7 @@
 * [Python Data Science Handbook](https://jakevdp.github.io/PythonDataScienceHandbook/) - Free online book (jupyter notebooks, data manipulation and visualisation)
 
 ## Git and GitHub
+* [Git - Software Carpentries](http://swcarpentry.github.io/git-novice/)
 * [The Git Parable](http://tom.preston-werner.com/2009/05/19/the-git-parable.html) - A story about the design of Git.
 * [Git tutorial - by Atlassian](https://www.atlassian.com/git/tutorials/what-is-version-control).
   * You should work through `Beginner`, `Getting started` and `Collaborating`
