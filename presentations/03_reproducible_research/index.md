@@ -10,34 +10,35 @@ mode: selfcontained
 framework: io2012
 url:
   assets: ../assets
-  lib: ../libraries
+  lib: ../librariesNew
 widgets: mathjax
 ---
 
 
-```
-## Error in library(tidyverse): there is no package called 'tidyverse'
-```
 
-```
-## Error in library(FSA): there is no package called 'FSA'
-```
+<style>
+.title-slide {
+  background-color: #750A50
+}
+.title-slide hgroup > h1, 
+.title-slide hgroup > h2 {
+  color: #FFFFFF
+}
+em {
+    font-style: italic
+}
+strong {
+    font-weight: bold;
+}
+</style>
 
 ## What is reproducibility?
 
 These are the terms which most people seem to be using:
-
-__Reproducible:__ Your research is reproducible if other people get the same results running the same analysis on your data.
-
-__Replicabile:__ Your research replicates if other people repeat the experiment and their results are consistent with yours. 
-
-___________
-
-Being reproducible is a prerequisite for being replicable; __at a minimum your work should be reproducible__. 
-
-Today we're going to try and __reproduce__ the results of a paper.
-
-Good practices in data analysis will help you with both reproducibility and replicability (plus other benefits)!
+* __Reproducible__ if you/other people get the same results running the same analysis on the same data.
+* __Replicabile__ if a repeat of the experiment (with new data, same analysis) gets the same result.
+* __Robust__ if a other people get the same result with different analyses (same data).
+* __Generalisable__ if other people get the same result, even with new data and different analyses.
 
 ---
 
@@ -57,19 +58,17 @@ Begley, C. Glenn, and Lee M. Ellis. "Drug development: Raise standards for precl
 ## Most researchers think there is a problem with reproducibility
 
 *** =left
-
 <div class="rimage center"><img src="fig/is-there-a-crisis.jpg" title="plot of chunk unnamed-chunk-2" alt="plot of chunk unnamed-chunk-2" width="100%" class="plot" /></div>
 
 *** =right
-
 Baker, Monya. "1,500 scientists lift the lid on reproducibility." Nature News 533.7604 (2016): 452
 
 
----&twocol
+--- &twocol
 
 ## Most researchers have failed to reproduce a result
-*** =left
 
+*** =left
 <div class="rimage center"><img src="fig/failed-to-reproduce.jpg" title="plot of chunk unnamed-chunk-3" alt="plot of chunk unnamed-chunk-3" width="100%" class="plot" /></div>
 
 *** =right
@@ -78,245 +77,210 @@ Of the 1576 scientists surveyed, __over 70% of scientists surveyed have experien
 
 ---
 
-## Why should we be reproducible?
+## Why did it take us so long to notice?
+### Un"FAIR" data and analyses
+It used to be harder to share and access data and analyses. FAIR principles describe how data/analyses need to be stored in order for them to be used by others:
 
-* It's the right thing to do - it gives us all better science.
-* Helps you to avoid disaster/embarrassment.
-* Saves you time in the long run
-    * Helps you to write papers/your thesis.
-    * Helps you continue your research by remembering what you did, so you or someone else can build on your previous work.
-* Makes you a better researcher (because you know people can check your work, you will too)
-* Good for your reputation (makes you more trustworthy). 
+* __F__indable: People need to know the data exists (e.g. link to in your paper)
+* __A__ccessible: Data needs to be available in a format that humans and computers can understand (e.g. downloadable on the internet)
+* __I__nteroperable: The data needs to be in a format that people usually use.
+* __R__eusable: Data must be clearly licensed so people know if they're allowed to reuse them.
 
----
-
-## Types of reproducibility problems
-
-* Lacking information: data or methods not provided in full.
-* Data Storage problems
-* Analysis environment
-* P-hacking (and HARKing)
-
---- &twocol
-## Provide your methods and data!
-
-*** =left
-In order for your work to be reproducible, at minimum, you must provide enough information for another researcher to be able to reproduce it.
-
-This requires you to __make your data and methods available!__
-
-And __make what you provide usable to others__ by making sure that you store your data (with documentation) publicly wherever possible and provide a full description of your methodology as well as a script that others can run to check your results.
-
-*** =right
-If you don't then, great, but if sharing your code sounds scary:
-* You could run your scripts through a linter ([lintr](https://cran.r-project.org/web/packages/lintr/index.html) in R - supported in RStudio) first to have it tell you about any errors that can be automatially detected.
-* Everyone can improve at this stuff, so I think everyone finds it a bit scary. Share your stuff anyway, please!
-
-<div class="rimage center"><img src="fig/imposter.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="100%" class="plot" /></div>
+If data is messy, unlabelled, or doesn't exist no one can check if the result is correct. 
 
 ---&twocol
 
-## Data Storage 
+## Why is it happening?
+### Data storage mistakes
+* High-profile studies have been shown to be wrong because of problems like accidentally deleting columns of excel files, or rewriting important values.
 
-*** =left
-__Avoid:__
-- Accidentally editing data or results
-- Forgetting version or origin of data
-- Making it hard or impossible for your data to be accessed and understood by others/your future self.
-
-__Avoid because:__
-- Overwriting data will affect your results. 
-- No one will be able to reproduce your results (including you), even if they are right.
-
-*** =right
-__Suboptimal file names:__
-* "data.csv""
-* "mice friendliness.txt"
-* "deprivation_final_actually_for_realsies.txt"
-* "bees_measurements.xls"
-
-<div class="rimage center"><img src="fig/duke-scandal.jpg" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="80%" class="plot" /></div>
+### Data analysis mistakes
+* When data analysis is carried out by clicking on buttons in a certain order (using a Graphical User Interface, i.e. GUI), they can accidentally be clicked in the wrong order and give incorrect results. 
+* People's code doesn't always do what they think it does.
 
 ---&twocol
-
-## Data Storage 
-
+## Why is it happening?
 *** =left
+### P-hacking
+P-hacking is a catch-all term for making p-values appear smaller than they are. 
 
-__Anxiety-inducing:__
-<div class="rimage center"><img src="fig/directory_bad.jpg" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="90%" class="plot" /></div>
-
-*** =right
-__Pretty good:__
-<div class="rimage center"><img src="fig/directory_good.jpg" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="90%" class="plot" /></div>
-
-* Organise files sensibly. 
-* Make data folders read only. 
-* Name files well. 
-* Include all information you need to re-collect the data in a readme file.
-* Store data in text format where possible (easy to share and to version control)
-
----&twocol
-
-## Analysis environment - Scripts
-
-*** =left
-__Avoid:__
-- Clicking through a GUI to run analysis.
-- Using proprietry software.
-- Writing scripts that no one can understand.
-- Forgetting what your scripts do.
-
-__Avoid because:__
-- Will take you ages to repeat analysis if you need to.
-- The order of doing things could change the results (results might be wrong).
-- Other people will not be able to reproduce your work.
+__Examples of p-hacking:__
+- Collecting samples until your sample size gives you p < 0.05
+- Choosing different statistical tests until you get p<0.05
+- Running lots of statistical tests and not correcting for mulitple hypotheses
 
 *** =right
 
-__Solve by:__
-- Writing scripts
-- Writing scripts in non-proprietry software (i.e. R and python beat STATA and SPSS)
-- Writing scripts that are easy to understand: comment your code or embed it in "notebooks" (eg. [Jupyter](http://jupyter.org/) or [R notebooks](https://rmarkdown.rstudio.com/r_notebooks) and name your variables sensibly. 
-- Documenting your scripts (README files, comments, documented functions)
+<div class="rimage center"><img src="fig/forking_paths.jpg" title="plot of chunk unnamed-chunk-4" alt="plot of chunk unnamed-chunk-4" width="60%" class="plot" /></div>
 
----&twocol
-
-## Analysis environment - Version Control
-
-*** =left
-__Avoid:__
-- Saving over earlier work without being able to get back to it 
-- Having files named "analysis_version32_final_actually_final.R"
-
-__Avoid because:__
-- Nothing is worse than knowing your program worked a minute ago.
-- You won't be able to remember which is the actually_actually_real_final_file.txt
-
-*** =right
-<div class="rimage center"><img src="fig/final_version.jpg" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="50%" class="plot" /></div>
-
-__Solve by:__
-- <font color='red'>Using version control (i.e. Git)</font>
-
----&twocol
-## P-values
-
-*** =left
-
-__What does it mean if p < 0.05?__
-> - Your result is true?
-> - Your result is interesting? 
-> - Your result will be easier to publish?
-> - There is a 1 in 20 chance that your result is a false positive (assuming that you're using the right measure and all your assumptions are correct).
-
-> - To put this another way: if your hypothesis is completely wrong (it has no effect on your measure), then assuming you are doing your statistics correctly, one in 20 times you will randomly get a false positive (p<0.05).
-
-*** =right
-<div class="rimage center"><img src="fig/dice.jpg" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="80%" class="plot" /></div>
-
----
-
-## Experiments - Simulation 1
-
-Imagine that you are a researcher, you have your own dataset and you are going to test one scientific hypothesis. The hypothesis you have chosen is __not true__, but of course you don't know that yet!
-
-We are going to simulate this situation by rolling a 20-sided dice!
-* Rolling a 1 is equivalent to p<0.05 (a false positive)
-* Rolling anything else => p>0.05 (a true negative)
-
-Instructions:
-> - Roll a 20-sided dice once each.
-> - How many of you rolled a 1? (Got a false positive)
-> - For one of you, what do you think the probability is of you rolling a 1 (getting a false positive)?
-
----&twocol
-
-## Experiments - Simulation 2
-
-You are still a researcher with your own dataset, but now you are going to test 10 slightly different variations on your scientific hypotheses on your dataset. All of these hypothesis are still __not true__, but again, you don't know that!
-
-*** =left
-
-Instructions:
-> - Roll a 20-sided dice 10 times each. 
-> - How many of you rolled at least one "1"? (Got a false positive)
-> - How many of you rolled more than one "1"?
-> - What do you think the probability is of rolling at least one 1 (getting a false positive) if you test 10 hypotheses?
-
-*** =right
-<div class="rimage center"><img src="fig/forking_paths.jpg" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="100%" class="plot" /></div>
+<div class="rimage center"><img src="fig/p-curve.jpg" title="plot of chunk unnamed-chunk-5" alt="plot of chunk unnamed-chunk-5" width="45%" class="plot" /></div>
 
 --- &twocol
 
-## HARKing
+### HARKing = Hypothesising After Results are Known
 
 *** =left
-__HARKing = Hypothesising After Results are Known__
 
 Instead of trying the same hypothesis with 20 different methodologies, you can get the same effect (finding erroneous "significant" results) by testing 20 different hypotheses and decide what you hypothesised afterwards.
 
 *** =right
 
-<div class="rimage center"><img src="fig/jellybean_xkcd.jpg" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="45%" class="plot" /></div>
+<div class="rimage center"><img src="fig/jellybean_xkcd.jpg" title="plot of chunk unnamed-chunk-6" alt="plot of chunk unnamed-chunk-6" width="45%" class="plot" /></div>
+
+--- &twocol
+## Reasons for p-hacking and HARKing
+
+*** =left
+### Publication Bias
+
+* Journals often expect p-values to be reported
+* Journals often want low p-values or refuse to publish
+* Researchers feel pressured into chasing low p-values
+
+*** =right
+### Didn't realise that it was wrong
+
+* Not everyone knows statistics very well (that makes sense)
+* Be careful of doing too many statistical tests (it's easy to accidentally p-hack)
+* If you're ever unsure about if what you're doing is right, consult a statistician (use ask-JGI or the stats clinic to find one!)
+
+---&twocol
+
+## Why should we be reproducible?
+
+*** =left
+* It's the right thing to do - it gives us all better science.
+* It's a nicer and easier way to do science.
+    * Time-saver when writing up
+    * You (or collaborators) can pick up where you left off in the future.
+    * Stops you repeating analyses
+* Makes you a better researcher (because you know people can check your work, you will too)
+* Good for your reputation!
+
+*** =right
+
+<div class="rimage center"><img src="fig/for-you.jpg" title="plot of chunk unnamed-chunk-7" alt="plot of chunk unnamed-chunk-7" width="100%" class="plot" /></div>
 
 ---
 
-## HARKing example
+## Discussion! 
 
-<div class="rimage center"><img src="fig/HARKing_real.jpg" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="100%" class="plot" /></div>
+We've mentioned some barriers to reproducibility:
+* P-hacking
+* HARKing
+* Un"FAIR"ness.
+* Data storage/analysis mistakes
 
-__Bold__ = abstract presented
+In small groups (~5 people), discuss how you think the 4 reproducibility problems mentioned might affect yours field. 
+__(10 minutes)__
 
-Text = full description of experiment
+Then we will discuss as the whole room 
+__(5 minutes)__
 
----&twocol
-
-## P-hacking
-
-P-hacking is a catch-all term for making p-values appear smaller than they are. 
-
-*** =left
-__Examples of p-hacking:__
-- HARKing
-- Collecting samples until your sample size gives you p < 0.05
-- Choosing a different test to get p<0.05
-
-__Solutions to p-hacking:__
-* Pre-registration and [Registered reports](https://cos.io/rr/) (saying what you analysis you will do in advance: more on this later)
-* Multi-hypothesis corrections (e.g. [Bonferroni correction](https://en.wikipedia.org/wiki/Bonferroni_correction))
-* Simulating data.
-
-*** =right
-<div class="rimage center"><img src="fig/p_values_xkcd.jpg" title="plot of chunk unnamed-chunk-13" alt="plot of chunk unnamed-chunk-13" width="40%" class="plot" /></div>
-<div class="rimage center"><img src="fig/p-curve.jpg" title="plot of chunk unnamed-chunk-14" alt="plot of chunk unnamed-chunk-14" width="50%" class="plot" /></div>
-
-
----&twocol
-
-## Summary 
+--- &twocol
+## Reproducibility Solutions
+### Make data available
 
 *** =left
-__Reproducible research is important because:__.
-* It saves your time when you come back to your work.
-* Its good for your reputation (by avoiding disaster, improving your motivation to do good work, and through open science badges, etc).
-* It saves us from bad science.
+Make some data available:
+- You can make your original data available
+- You can store research data on data.bris. They can even store sensitive data and help you decide who to share it with (DAC)
+- You can make anonymised data available
+- You synthesise data which is similar to your original data, but does not contain any real subjects.
+- Whatever you make available, make sure that it is labelled and described.
 
 *** =right
-__Main causes of poor reproducibility:__
-* (1) Poor data storage
-* (2) Poor analysis pipeline
-* (3) Lack of sharing data/methods
-* (4) Poor use of p-values
-
-(1)-(3) are just a matter of becoming familiar with the tools we're going to be using today. If you have any more questions about (4), you can email us <ask-jgi@bristol.ac.uk>
-
----&twocol
+<div class="rimage center"><img src="fig/github.png" title="plot of chunk unnamed-chunk-8" alt="plot of chunk unnamed-chunk-8" width="50%" class="plot" /></div>
 
 
-## Take home message:
+<div class="rimage center"><img src="fig/osf.jpeg" title="plot of chunk unnamed-chunk-9" alt="plot of chunk unnamed-chunk-9" width="60%" class="plot" /></div>
 
-If you don't do anything else, these three things will massively improve the reproducibility of your work:
-* <font size = 20>Write some scripts</font>
-* <font size = 20>Share your data and code</font>
-* <font size = 20>Use version control</font> 
+--- &twocol
+## Reproducibility Solutions
+### Make analysis available
+*** =left
+__Scripts__ make analysis available by writing scripts, they:
+- Describe exactly what your analysis is and can be shared with others
+- Can be written in any programming language (e.g R, Python)
+- Always perform in the same order and get the same result
+- Those written in non-proprietry software (e.g. R and python, rather than SPSS/Stata) are more accessible.
+
+*** =right
+__Literate programming__ = scripts + describing what's happening
+
+Ways to do it:
+- Comments
+- Documentation
+- README files
+- Notebooks (e.g. RMarkdown, Jupyter)
+
+--- &twocol
+## Reproducibility Solutions
+### Version Control
+
+*** =left
+
+* You will want different versions of your scripts/notebooks.
+* Nothing is worse than knowing your program worked earlier.
+* Having files named `analysis_ver32_final_actually_final.R` is not fun and it's easy to make mistakes.
+* When you come back to your work later, you won't be able to remember which is the `for_realsies_final_file.txt`
+
+Version control is a system for avoiding these problems.
+
+*** =right
+<div class="rimage center"><img src="fig/final_version.jpg" title="plot of chunk unnamed-chunk-10" alt="plot of chunk unnamed-chunk-10" width="70%" class="plot" /></div>
+
+--- &twocol
+## Reproducibility Solutions
+### Pre-registration
+*** =left
+*The first principle is you must not fool yourself — and you are the easiest person to fool* - Richard Feynman
+
+<div class="rimage center"><img src="fig/feynman.jpg" title="plot of chunk unnamed-chunk-11" alt="plot of chunk unnamed-chunk-11" width="50%" class="plot" /></div>
+*** =right
+
+Pre-registering your analyis is saying what analysis you are going to do in advance, including:
+* which variables you are going to look at
+* what sample size you will aim for
+* what you will exclude from your sample
+* what variables you are going to correct for
+
+__Pre-registration is only for analyses where you are seeking to confirm a hypothesis__
+
+
+--- &twocol
+## Reproducibility solutions
+### [Registered reports](https://cos.io/rr/)
+
+Registered reports are a new model for publishing papers. Instead of applying to journals once you have your results, you apply while after you have made plans for research and analysis, but before you have collected your data.
+
+Extra great for research(ers) because:
+* You can publish non-significant results 
+* We will all be able to benefit from knowing what __doesn't__ work.
+
+<div class="rimage center"><img src="fig/reg_reports.jpg" title="plot of chunk unnamed-chunk-12" alt="plot of chunk unnamed-chunk-12" width="100%" class="plot" /></div>
+
+--- &twocol
+
+## Draw a "concept map" about reproducibility
+
+*** =left
+__Task:__
+
+1. Create concept maps in small groups  (10 minutes)
+2. Feed back to the group (5 minutes)
+
+*** =right
+__How-to:__
+
+Start by writing down some words that you have heard today in relation to reproducibility, e.g.:
+* p-hacking
+* publication bias
+* pre-registration
+
+Then draw relationships between them, e.g.:
+* publication bias --rewards--> p-hacking
+* pre-registration --prevents--> p-hacking
+
+---
+## Break (15 minutes)
